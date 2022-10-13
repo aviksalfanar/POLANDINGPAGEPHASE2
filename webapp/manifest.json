@@ -42,6 +42,15 @@
                     "annotations": [],
                     "localUri": "localService/ZPUR_M01_Q0002_ODATA_SRV/metadata.xml"
                 }
+            },
+            "ZPUR_V02_Q19_ODATA_SRV": {
+                "uri": "/sap/opu/odata/sap/ZPUR_V02_Q19_ODATA_SRV",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/ZPUR_V02_Q19_ODATA_SRV/metadata.xml"
+                }
             }
         }
     },
@@ -105,6 +114,15 @@
             },
             "ZPUR_M01_Q0002_ODATA_SRV": {
                 "dataSource": "ZPUR_M01_Q0002_ODATA_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+            "ZPUR_V02_Q19_ODATA_SRV": {
+                "dataSource": "ZPUR_V02_Q19_ODATA_SRV",
                 "preload": true,
                 "settings": {
                     "defaultBindingMode": "TwoWay",

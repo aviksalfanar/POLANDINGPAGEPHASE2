@@ -42,6 +42,10 @@ server:
             url: http://fbd:44300
             client: '500'
             destination: BIPCE
+          - path: /sap/opu/odata/sap/ZPUR_V02_Q19_ODATA_SRV
+            url: http://fbd:44300
+            client: '500'
+            destination: BIPCE
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:

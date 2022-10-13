@@ -30,9 +30,24 @@ sap.ui.define([
                 await this.setMaterialUom();
                 await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
                 await this.setBoBarMap(data.VndCode, data.PurOrg);
+                await this.setBoLineMap(data.Plant, data.PurOrg, data.VndCode);
                 this.getView().getModel("appModel").refresh(true);
                 console.log(data);
 
+            },
+
+            setBoLineMap: async function(sPlant, sPurchaseOrg, sVCode){
+                // This chart is for Vendor Evaluation line Chart
+                const sPath = `/ZPUR_V02_Q19_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurchaseOrg}')/Results`;
+                const sModelName = "ZPUR_V02_Q19_ODATA_SRV";
+                const data = await this.getData(sPath, sModelName, []);
+                let aLine = data.results?.map(data => {
+                    return {
+                        Year: data.A0CALQUARTER, 
+                        OrderValue: data.A00O2TO0FGB1NVGKPA8Y55BN3Z
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },
 
             setBoBarMap: async function(sVCode, sPurchaseOrg){
