@@ -1,0 +1,30 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout">
+    <layout:HorizontalLayout allowWrapping="true">
+        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+            <Label text="{i18n>VendorName}:"></Label>
+            <Text text="{appModel>/VndCode}-{appModel>/VndName}"></Text>
+        </layout:VerticalLayout>
+        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+            <Label text="{i18n>VendorCountry}:"></Label>
+            <Text text="{appModel>/VndCntr}"></Text>
+        </layout:VerticalLayout>
+        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+            <Label text="{i18n>DMSVendorQuotationsComparison}:"></Label>
+            <Text text="To be fixed"></Text>
+        </layout:VerticalLayout>
+    </layout:HorizontalLayout>
+
+    <FlexBox direction="Column" alignContent="SpaceBetween" class="sapUiSmallMarginTop">
+        <!-- Three Years Vendor Analysis Chart Section -->
+        <FlexBox direction="Row" justifyContent="SpaceBetween">
+            <Text text="Vendor Area Chart"></Text>
+            <Text text="Vendor Bar Chart"></Text>
+        </FlexBox>
+        <!-- Vendor Evaluation Chart Section -->
+        <FlexBox direction="Row" justifyContent="SpaceBetween">
+            <Text text="BO Line Map"></Text>
+            <Text text="Card for Evaluation"></Text>
+        </FlexBox>
+    </FlexBox>
+
+</core:FragmentDefinition>

@@ -1,0 +1,40 @@
+specVersion: "2.5"
+metadata:
+  name: com.alfanar.polandingpage.polandingpage
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            url: http://vhafafedci.sap.alfanar.com:44300
+            client: "500"
+            destination: ERPPCE
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZPO_LANDING_PAGE_SRV/
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
+            mockdataRootPath: ./webapp/localService/data
+          - urlPath: /sap/opu/odata/sap/ZPUR_O02_Q01_ODATA_SRV
+            metadataPath: ./webapp/localService/ZPUR_O02_Q01_ODATA_SRV/metadata.xml
+            mockdataPath: ./webapp/localService/ZPUR_O02_Q01_ODATA_SRV/mockdata
+            generateMockData: true
+        annotations: []

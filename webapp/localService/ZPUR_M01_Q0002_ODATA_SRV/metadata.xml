@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://fbd:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZPUR_M01_Q0002_ODATA_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZPUR_M01_Q0002_ODATAResult" sap:label="Purchase Order Schedule Lines(OData)" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:label="Total/Subtotal" sap:sortable="false"/>
+                <Property Name="A0CALYEAR" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:creatable="false" sap:filterable="false" sap:text="A0CALYEAR_T" sap:updatable="false" sap:label="Calendar Year" sap:semantics="year"/>
+                <Property Name="A0CALYEAR_T" Type="Edm.String" MaxLength="4" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Calendar Year (Description)"/>
+                <Property Name="A00O2TO0FGB1NVFLX04ATD3CFS" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVFLX04ATD3CFS_F" sap:unit="" sap:updatable="false" sap:label="Order Value (Local Currency)"/>
+                <Property Name="A00O2TO0FGB1NVFLX04ATD3CFS_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Order Value (Local Currency) (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVFLX04ATD3CFS_E" Type="Edm.String" MaxLength="5" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Order Value (Local Currency) ()" sap:semantics="currency-code"/>
+                <NavigationProperty Name="Parameters" Relationship="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParametersToResult" FromRole="ToRole_ZPUR_M01_Q0002_ODATAParametersToResult" ToRole="FromRole_ZPUR_M01_Q0002_ODATAParametersToResult"/>
+            </EntityType>
+            <EntityType Name="ZPUR_M01_Q0002_ODATAParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="A_0PURCH_ORG_01"/>
+                    <PropertyRef Name="OS_0VENDOR_01"/>
+                </Key>
+                <Property Name="A_0PURCH_ORG_01" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Purchase Organization" sap:parameter="optional" sap:text="A_0PURCH_ORG_01Text" sap:sortable="false"/>
+                <Property Name="A_0PURCH_ORG_01Text" Type="Edm.String" MaxLength="60" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OS_0VENDOR_01" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:parameter="optional" sap:text="OS_0VENDOR_01Text" sap:sortable="false"/>
+                <Property Name="OS_0VENDOR_01Text" Type="Edm.String" MaxLength="60" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="A_0PURCH_ORG_01Details" Relationship="ZPUR_M01_Q0002_ODATA_SRV.A_0PURCH_ORG_01ToListOfValues" FromRole="ToRole_A_0PURCH_ORG_01ToListOfValues" ToRole="FromRole_A_0PURCH_ORG_01ToListOfValues"/>
+                <NavigationProperty Name="OS_0VENDOR_01Details" Relationship="ZPUR_M01_Q0002_ODATA_SRV.OS_0VENDOR_01ToListOfValues" FromRole="ToRole_OS_0VENDOR_01ToListOfValues" ToRole="FromRole_OS_0VENDOR_01ToListOfValues"/>
+                <NavigationProperty Name="Results" Relationship="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParametersToResult" FromRole="FromRole_ZPUR_M01_Q0002_ODATAParametersToResult" ToRole="ToRole_ZPUR_M01_Q0002_ODATAParametersToResult"/>
+            </EntityType>
+            <EntityType Name="A_0PURCH_ORG_01" sap:label="Purchase Organization" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="A_0PURCH_ORG_01_ID"/>
+                </Key>
+                <Property Name="A_0PURCH_ORG_01_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Purchase Organization" sap:sortable="false" sap:text="A_0PURCH_ORG_01_TEXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="A_0PURCH_ORG_01_TEXT" Type="Edm.String" sap:sortable="false" sap:label="Purchase Organization (Description)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="OS_0VENDOR_01" sap:label="Vendor" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OS_0VENDOR_01_ID"/>
+                </Key>
+                <Property Name="OS_0VENDOR_01_ID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:sortable="false" sap:text="OS_0VENDOR_01_TEXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OS_0VENDOR_01_TEXT" Type="Edm.String" sap:sortable="false" sap:label="Vendor (Description)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="OS_0VENDOR_01ToListOfValues" sap:content-version="1">
+                <End Type="ZPUR_M01_Q0002_ODATA_SRV.OS_0VENDOR_01" Multiplicity="1" Role="FromRole_OS_0VENDOR_01ToListOfValues"/>
+                <End Type="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParameters" Multiplicity="*" Role="ToRole_OS_0VENDOR_01ToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_OS_0VENDOR_01ToListOfValues">
+                        <PropertyRef Name="OS_0VENDOR_01_ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_OS_0VENDOR_01ToListOfValues">
+                        <PropertyRef Name="OS_0VENDOR_01"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="A_0PURCH_ORG_01ToListOfValues" sap:content-version="1">
+                <End Type="ZPUR_M01_Q0002_ODATA_SRV.A_0PURCH_ORG_01" Multiplicity="1" Role="FromRole_A_0PURCH_ORG_01ToListOfValues"/>
+                <End Type="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParameters" Multiplicity="*" Role="ToRole_A_0PURCH_ORG_01ToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_A_0PURCH_ORG_01ToListOfValues">
+                        <PropertyRef Name="A_0PURCH_ORG_01_ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_A_0PURCH_ORG_01ToListOfValues">
+                        <PropertyRef Name="A_0PURCH_ORG_01"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ZPUR_M01_Q0002_ODATAParametersToResult" sap:content-version="1">
+                <End Type="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParameters" Multiplicity="1" Role="FromRole_ZPUR_M01_Q0002_ODATAParametersToResult"/>
+                <End Type="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAResult" Multiplicity="*" Role="ToRole_ZPUR_M01_Q0002_ODATAParametersToResult"/>
+            </Association>
+            <EntityContainer Name="ZPUR_M01_Q0002_ODATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="OS_0VENDOR_01" EntityType="ZPUR_M01_Q0002_ODATA_SRV.OS_0VENDOR_01" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="ZPUR_M01_Q0002_ODATA_SRV.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPUR_M01_Q0002_ODATAResults" EntityType="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPUR_M01_Q0002_ODATA" EntityType="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_0PURCH_ORG_01" EntityType="ZPUR_M01_Q0002_ODATA_SRV.A_0PURCH_ORG_01" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="OS_0VENDOR_01ToListOfValues_AssocSet" Association="ZPUR_M01_Q0002_ODATA_SRV.OS_0VENDOR_01ToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="OS_0VENDOR_01" Role="FromRole_OS_0VENDOR_01ToListOfValues"/>
+                    <End EntitySet="ZPUR_M01_Q0002_ODATA" Role="ToRole_OS_0VENDOR_01ToListOfValues"/>
+                </AssociationSet>
+                <AssociationSet Name="ZPUR_M01_Q0002_ODATAParametersToResult_A" Association="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParametersToResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPUR_M01_Q0002_ODATA" Role="FromRole_ZPUR_M01_Q0002_ODATAParametersToResult"/>
+                    <End EntitySet="ZPUR_M01_Q0002_ODATAResults" Role="ToRole_ZPUR_M01_Q0002_ODATAParametersToResult"/>
+                </AssociationSet>
+                <AssociationSet Name="A_0PURCH_ORG_01ToListOfValues_AssocSet" Association="ZPUR_M01_Q0002_ODATA_SRV.A_0PURCH_ORG_01ToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_0PURCH_ORG_01" Role="FromRole_A_0PURCH_ORG_01ToListOfValues"/>
+                    <End EntitySet="ZPUR_M01_Q0002_ODATA" Role="ToRole_A_0PURCH_ORG_01ToListOfValues"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParameters/A_0PURCH_ORG_01" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Purchase Organization"/>
+                        <PropertyValue Property="CollectionPath" String="A_0PURCH_ORG_01"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="A_0PURCH_ORG_01"/>
+                                    <PropertyValue Property="ValueListProperty" String="A_0PURCH_ORG_01_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="A_0PURCH_ORG_01_TEXT"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZPUR_M01_Q0002_ODATA_SRV.ZPUR_M01_Q0002_ODATAParameters/OS_0VENDOR_01" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Vendor"/>
+                        <PropertyValue Property="CollectionPath" String="OS_0VENDOR_01"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OS_0VENDOR_01"/>
+                                    <PropertyValue Property="ValueListProperty" String="OS_0VENDOR_01_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OS_0VENDOR_01_TEXT"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://fbd:44300/sap/opu/odata/sap/ZPUR_M01_Q0002_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://fbd:44300/sap/opu/odata/sap/ZPUR_M01_Q0002_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

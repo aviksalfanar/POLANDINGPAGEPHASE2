@@ -1,0 +1,31 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mc="sap.suite.ui.microchart" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:card="sap.f.cards">
+    <FlexBox justifyContent="SpaceBetween" wrap="Wrap">
+        <f:Card width="90%" height="100%">
+            <f:header>
+                <card:Header title="{i18n>MatPriceVsOldPrice}" />
+            </f:header>
+            <f:content>
+                <FlexBox direction="Column" alignItems="Start">
+                    <mc:RadialMicroChart size="M" percentage="99.9" alignContent="Center" valueColor="Neutral" />
+                    <FlexBox direction="Row" justifyContent="SpaceBetween" class="sapUiContentPadding">
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Matching" emphasized="true" />
+                            <Text text="1"></Text>
+                        </FlexBox>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Non-Matching" emphasized="true" textAlign="End" />
+                            <Text text="2"></Text>
+                        </FlexBox>
+                    </FlexBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>
+
+        <!-- <GenericTile header="{i18n>MatPriceVsOldPrice}">
+            <TileContent>
+                <mc:RadialMicroChart size="S" percentage="99.9" alignContent="Center" valueColor="Neutral" />
+            </TileContent>
+        </GenericTile> -->
+ 
+    </FlexBox>
+</core:FragmentDefinition>
