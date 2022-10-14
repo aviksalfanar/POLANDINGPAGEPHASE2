@@ -27,6 +27,7 @@ sap.ui.define([
                 const data = await this.getData(sPath, null, aExpands);
                 this.getView().getModel("appModel").setData(data)
                 this.setHDRToMstones(data.HdrToMStones.results)
+                this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
                 await this.setMaterialUom();
                 await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
                 await this.setBoBarMap(data.VndCode, data.PurOrg);

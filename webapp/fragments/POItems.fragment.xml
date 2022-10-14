@@ -1,0 +1,50 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Table id="idPoItemsTable" autoPopinMode="true" contextualWidth="Auto" mode="MultiSelect" alternateRowColors="true" items="{appModel>/PoDataItems}" class="sapUiMediumMarginBottom">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="{i18n>POItems}" level="H2"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column width="7em" minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>ItemNo}"></Text>
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Material}"></Text>
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>MaterialDescription}"></Text>
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>MaterialPrice}"></Text>
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Currency}"></Text>
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Per}"></Text>
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>OrderQuantity}"></Text>
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Unit}"></Text>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem >
+                <cells>
+                    <Text text="{appModel>Item}"></Text>
+                    <Text text="{appModel>MatNum}"></Text>
+                    <Text text="{appModel>MatDesc}"></Text>
+                    <Text text="{appModel>MatPrice}"></Text>
+                    <Text text="{appModel>Currency}"></Text>
+                    <Text text="{appModel>OrdQty}"></Text>
+                    <Text text="{appModel>Unit}"></Text>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>

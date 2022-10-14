@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.alfanar.polandingpage.polandingpage.controller.LandingPage" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns="sap.m">
+<mvc:View controllerName="com.alfanar.polandingpage.polandingpage.controller.LandingPage" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns="sap.m" height="100%">
     <f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
         <!-- DynamicPage Title -->
         <f:title>
@@ -36,11 +36,11 @@
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
-            <layout:Splitter id="idSplitterLayoutMain" height="100vh" orientation="Vertical">
+            <layout:Splitter id="idSplitterLayoutMain" height="150vh" orientation="Vertical">
                 <!-- Splitter 1 -->
                 <layout:Splitter id="_IDGenSplitter1">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="50%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="30%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanel1" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
@@ -72,7 +72,7 @@
                 <!-- Splitter 2 -->
                 <layout:Splitter id="_IDGenSplitter2">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="36%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="22%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanelPOANalysis" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
@@ -91,7 +91,7 @@
                 <!-- Splitter 3 -->
                 <layout:Splitter id="_IDGenSplitter3">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="40%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="30%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
@@ -101,7 +101,7 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <Text text="This is for PO Items"></Text> 
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItems" type="XML"/>
                             </content>
                         </Panel>
 

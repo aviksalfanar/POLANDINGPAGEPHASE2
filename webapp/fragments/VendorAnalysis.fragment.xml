@@ -1,7 +1,7 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
-    <layout:HorizontalLayout allowWrapping="true">
-        <layout:VerticalLayout class="sapUiMediumMarginEnd">
-            <Label text="{i18n>VendorName}:" />
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+    <layout:HorizontalLayout id="idVendorDetailsHL" allowWrapping="true">
+        <layout:VerticalLayout id="idVendorNameVL" class="sapUiMediumMarginEnd">
+            <Label id="idVendorNameLabel" text="{i18n>VendorName}:" />
             <Text text="{appModel>/VndCode}-{appModel>/VndName}" />
         </layout:VerticalLayout>
         <layout:VerticalLayout class="sapUiMediumMarginEnd">
@@ -86,7 +86,74 @@
                     </viz:VizFrame>
                 </layout:flexContent>
             </layout:FixFlex>
-            <Text text="Card for Evaluation" />
+            <FlexBox direction="Row" justifyContent="Center">
+                <Table autoPopinMode="true" contextualWidth="Auto" class="sapUiTinyMargin">
+                    <columns>
+                        <Column>
+                            <Text text="Dimension" />
+                        </Column>
+                        <Column>
+                            <Text text="%" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="Quality" />
+                                <Text text="100" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="Price" />
+                                <Text text="70" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="Delivery" />
+                                <Text text="53" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="Grade" />
+                                <Text text="C" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <Table autoPopinMode="true" contextualWidth="Auto" class="sapUiTinyMargin">
+                    <columns>
+                        <Column>
+                            <Text text="#" />
+                        </Column>
+                        <Column>
+                            <Text text="Values" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="Purchase Order" />
+                                <Text text="13" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="Plants" />
+                                <Text text="1" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="Supplied Materials" />
+                                <Text text="30" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </FlexBox>
         </FlexBox>
     </FlexBox>
 </core:FragmentDefinition>
