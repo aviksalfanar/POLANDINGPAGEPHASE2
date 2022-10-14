@@ -91,7 +91,7 @@
                 <!-- Splitter 3 -->
                 <layout:Splitter id="_IDGenSplitter3">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="30%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="40%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
