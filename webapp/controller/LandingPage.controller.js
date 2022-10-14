@@ -40,13 +40,37 @@ sap.ui.define([
                 // This chart is for Vendor Evaluation line Chart
                 const sPath = `/ZPUR_V02_Q19_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurchaseOrg}')/Results`;
                 const sModelName = "ZPUR_V02_Q19_ODATA_SRV";
-                const data = await this.getData(sPath, sModelName, []);
-                let aLine = data.results?.map(data => {
-                    return {
-                        Year: data.A0CALQUARTER, 
-                        OrderValue: data.A00O2TO0FGB1NVGKPA8Y55BN3Z
+                // const data = await this.getData(sPath, sModelName, []);
+                // let aLine = data.results?.map(data => {
+                //     return {
+                //         Year: data.A0CALQUARTER, 
+                //         OrderValue: data.A00O2TO0FGB1NVGKPA8Y55BN3Z
+                //     }
+                // });
+
+                let aLine = [
+                    {
+                        Year: "2019",
+                        OrderValue: 100.23
+                    },
+                    {
+                        Year: "2020",
+                        OrderValue: 200.23
+                    },
+                    {
+                        Year: "2021",
+                        OrderValue: 500.23
+                    },
+                    {
+                        Year: "2022",
+                        OrderValue: 300.23
+                    },
+                    {
+                        Year: "2022",
+                        OrderValue: 800.23
                     }
-                });
+                ];
+
                 this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },
 
@@ -61,6 +85,31 @@ sap.ui.define([
                         OrderValue: data.A00O2TO0FGB1NVFLX04ATD3CFS
                     }
                 });
+
+                aBarMap = [
+                    {
+                        Year: "2019",
+                        OrderValue: 100.23
+                    },
+                    {
+                        Year: "2020",
+                        OrderValue: 200.23
+                    },
+                    {
+                        Year: "2021",
+                        OrderValue: 500.23
+                    },
+                    {
+                        Year: "2022",
+                        OrderValue: 300.23
+                    },
+                    {
+                        Year: "2022",
+                        OrderValue: 800.23
+                    }
+                ];
+
+
                 this.getView().getModel("appModel").setProperty("/BoBarMap", aBarMap)
             },
 
@@ -75,6 +124,42 @@ sap.ui.define([
                         OrderValue: data.A00O2TO0FGB1NVG5GB16Q5X4N0
                     }
                 });
+
+                aLineArea = [
+                    {
+                        Month: "Jan",
+                        OrderValue: 100.23
+                    },
+                    {
+                        Month: "Feb",
+                        OrderValue: 200.23
+                    },
+                    {
+                        Month: "Mar",
+                        OrderValue: 500.23
+                    },
+                    {
+                        Month: "Apr",
+                        OrderValue: 300.23
+                    },
+                    {
+                        Month: "May",
+                        OrderValue: 800.23
+                    },
+                    {
+                        Month: "Jun",
+                        OrderValue: 540.23
+                    },
+                    {
+                        Month: "Jul",
+                        OrderValue: 900.23
+                    },
+                    {
+                        Month: "Aug",
+                        OrderValue: 100.23
+                    },
+                ]
+                
                 this.getView().getModel("appModel").setProperty("/BoLineAreaMap", aLineArea)
 
             },
