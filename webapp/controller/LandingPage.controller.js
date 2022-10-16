@@ -37,6 +37,31 @@ sap.ui.define([
 
             },
 
+            onItemSelect: async function(){
+                let sMatNo = this.getView().byId("idPoItemsTable").getSelectedItem().getBindingContext("appModel").getObject().MatNum;
+                let sPoNum = this.getView().getModel("appModel").getData().PoNum;
+                await this.setItemHistory(sPoNum, sMatNo);
+                 
+            },
+
+            setItemHistory: async function(sPoNo, sMatNo){
+                const sPath = "/ItemHistorySet";
+                const aFilters = [];
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, sPoNo));
+			    aFilters.push(new Filter("MatNum", FilterOperator.EQ, sMatNo));
+                const data = await this.getData(sPath, "", [], aFilters);
+                console.log(data);
+                
+                let aItemHistory = data.results.map(oData => {
+                    return {
+                        Date: oData.CreDate.toLocaleDateString(),
+                        Price: oData.MatPrice
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/ItemHistorySet", data.results);
+                this.getView().getModel("appModel").setProperty("/ItemHisData", aItemHistory);
+            },
+
             setBoLineMap: async function(sPlant, sPurchaseOrg, sVCode){
                 // This chart is for Vendor Evaluation line Chart
                 const sPath = `/ZPUR_V02_Q19_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurchaseOrg}')/Results`;

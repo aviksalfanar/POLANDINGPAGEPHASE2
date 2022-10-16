@@ -1,21 +1,18 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
-    <Table id="idPoItemsTable" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{appModel>/PoDataItems}" itemPress="onItemSelect" class="sapUiMediumMarginBottom">
+    <Table id="idPoItemsHistTable" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{appModel>/ItemHistorySet}" class="sapUiMediumMarginBottom">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="{i18n>POItems}" level="H2"/>
+                    <Title text="{i18n>POItemsHist}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
             <Column width="7em" minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>ItemNo}"></Text>
+                <Text text="{i18n>OrderPo}"></Text>
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Material}"></Text>
-            </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>MaterialDescription}"></Text>
+                <Text text="{i18n>CreationDate}"></Text>
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>MaterialPrice}"></Text>
@@ -24,25 +21,21 @@
                 <Text text="{i18n>Currency}"></Text>
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Per}"></Text>
-            </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>OrderQuantity}"></Text>
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Unit}"></Text>
+                <Text text="{i18n>VendorName}"></Text>
             </Column>
         </columns>
         <items>
-            <ColumnListItem type="Navigation">
+            <ColumnListItem >
                 <cells>
-                    <Text text="{appModel>Item}"></Text>
-                    <Text text="{appModel>MatNum}"></Text>
-                    <Text text="{appModel>MatDesc}"></Text>
+                    <Text text="{appModel>PoNum}"></Text>
+                    <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}"></Text>
                     <Text text="{appModel>MatPrice}"></Text>
                     <Text text="{appModel>Currency}"></Text>
                     <Text text="{appModel>OrdQty}"></Text>
-                    <Text text="{appModel>Unit}"></Text>
+                    <Text text="{appModel>VndName}"></Text>
                 </cells>
             </ColumnListItem>
         </items>

@@ -112,7 +112,7 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <Text text="This is for PO Items History"></Text> 
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML"/>
                             </content>
                         </Panel>
                     </layout:contentAreas>
