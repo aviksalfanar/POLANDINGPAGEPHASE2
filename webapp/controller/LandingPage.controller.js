@@ -3,7 +3,7 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "com/alfanar/polandingpage/polandingpage/utils/formatter",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterOperator"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -37,21 +37,40 @@ sap.ui.define([
 
             },
 
-            onItemSelect: async function(){
+            setOpenNcr: async function (sPoNo) {
+                const sPath = "/POAnalysisMatsSet";
+                const aFilters = [];
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, sPoNo));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "N"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "N"));
+                const data = await this.getData(sPath, "", [], aFilters);
+                let aOpenNcr = data?.results.map(oData => {
+                    return {
+                        MatNum: oData.MatNum,
+                        MatDesc: oData.MatDesc,
+                        NotificationNo: oData.MiscDat.split(";")[0],
+                        NotificationDesc: oData.MiscDat.split(";")[1],
+                        Plant: oData.MiscDat.split(";")[2]
+                    }
+                });
+                this.getModel("appModel").setProperty("/OpenNcr", aOpenNcr)                
+            },
+
+            onItemSelect: async function () {
                 let sMatNo = this.getView().byId("idPoItemsTable").getSelectedItem().getBindingContext("appModel").getObject().MatNum;
                 let sPoNum = this.getView().getModel("appModel").getData().PoNum;
                 await this.setItemHistory(sPoNum, sMatNo);
-                 
+
             },
 
-            setItemHistory: async function(sPoNo, sMatNo){
+            setItemHistory: async function (sPoNo, sMatNo) {
                 const sPath = "/ItemHistorySet";
                 const aFilters = [];
                 aFilters.push(new Filter("PoNum", FilterOperator.EQ, sPoNo));
-			    aFilters.push(new Filter("MatNum", FilterOperator.EQ, sMatNo));
+                aFilters.push(new Filter("MatNum", FilterOperator.EQ, sMatNo));
                 const data = await this.getData(sPath, "", [], aFilters);
                 console.log(data);
-                
+
                 let aItemHistory = data.results.map(oData => {
                     return {
                         Date: oData.CreDate.toLocaleDateString(),
@@ -62,7 +81,7 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/ItemHisData", aItemHistory);
             },
 
-            setBoLineMap: async function(sPlant, sPurchaseOrg, sVCode){
+            setBoLineMap: async function (sPlant, sPurchaseOrg, sVCode) {
                 // This chart is for Vendor Evaluation line Chart
                 const sPath = `/ZPUR_V02_Q19_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurchaseOrg}')/Results`;
                 const sModelName = "ZPUR_V02_Q19_ODATA_SRV";
@@ -72,7 +91,7 @@ sap.ui.define([
                 //         Year: data.A0CALQUARTER, 
                 //         OrderValue: data.A00O2TO0FGB1NVGKPA8Y55BN3Z
                 //     }
-                // });
+                // }); 
 
                 let aLine = [
                     {
@@ -100,14 +119,14 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },
 
-            setBoBarMap: async function(sVCode, sPurchaseOrg){
+            setBoBarMap: async function (sVCode, sPurchaseOrg) {
                 // This chart is for Three Years Bar Chart
                 const sPath = `/ZPUR_M01_Q0002_ODATA(A_0PURCH_ORG_01='${sPurchaseOrg}',OS_0VENDOR_01='${sVCode}')/Results`;
                 const sModelName = "ZPUR_M01_Q0002_ODATA_SRV";
                 const data = await this.getData(sPath, sModelName, []);
                 let aBarMap = data.results?.map(data => {
                     return {
-                        Year: data.A0CALYEAR, 
+                        Year: data.A0CALYEAR,
                         OrderValue: data.A00O2TO0FGB1NVFLX04ATD3CFS
                     }
                 });
@@ -146,7 +165,7 @@ sap.ui.define([
                 const data = await this.getData(sPath, sModelName, []);
                 let aLineArea = data.results?.map(data => {
                     return {
-                        Month: data.A0CALMONTH, 
+                        Month: data.A0CALMONTH,
                         OrderValue: data.A00O2TO0FGB1NVG5GB16Q5X4N0
                     }
                 });
@@ -185,7 +204,7 @@ sap.ui.define([
                         OrderValue: 100.23
                     },
                 ]
-                
+
                 this.getView().getModel("appModel").setProperty("/BoLineAreaMap", aLineArea)
 
             },
