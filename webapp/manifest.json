@@ -51,7 +51,14 @@
                     "annotations": [],
                     "localUri": "localService/ZPUR_V02_Q19_ODATA_SRV/metadata.xml"
                 }
-            }
+            },
+			"ZMYINBOX_SRV": {
+				"uri": "/sap/opu/odatapp/sap/ZMYINBOX_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZMYINBOX_SRV/metadata.xml"
+				}
+			}            
         }
     },
     "sap.ui": {
@@ -129,7 +136,21 @@
                     "defaultCountMode": "Inline",
                     "refreshAfterChange": false
                 }
-            }
+            },
+            "INBOX": {
+				"dataSource": "ZMYINBOX_SRV",
+				"preload": true
+			},
+			"MyInbox": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZMYINBOX_SRV",
+				"preload": true
+			}            
         },
         "resources": {
             "css": [
@@ -151,7 +172,7 @@
             "routes": [
                 {
                     "name": "RouteLandingPage",
-                    "pattern": ":?query:",
+                    "pattern": "",
                     "target": [
                         "TargetLandingPage"
                     ]

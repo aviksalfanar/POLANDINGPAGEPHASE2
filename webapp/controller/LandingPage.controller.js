@@ -16,14 +16,29 @@ sap.ui.define([
             onInit: function () {
                 const oComponent = this.getOwnerComponent();
                 const oRouter = oComponent.getRouter();
-                oRouter.attachRoutePatternMatched(this.onPoNumberMatched, this);
+                oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
                 this.getView().setModel(new JSONModel({}), "appModel");
             },
 
             onPoNumberMatched: async function (oEvent) {
-                //TODO Need to be fixed the aExpands and sPath they are for time being Static. They need to transformed to Dynamic
+                let sPoNo, TT, WI, TI;
+                if (window.location.hostname.includes("webide") === true) {
+                    sPoNo = "4200136330"
+                    TT = "POR"
+                    WI = "000002605618"
+                    TI = "TS99000076"
+                } else {
+                    const url = new URL(window.location.href);
+                    const encodedURL = url.searchParams.get("PRM");
+                    let parameter = atob(encodedURL)
+                    sPoNo = parameter.split("&")[0].split("=")[1]
+                    TT = parameter.split("&")[1].split("=")[1]
+                    WI = parameter.split("&")[2].split("=")[1]
+                    TI = parameter.split("&")[3].split("=")[1]
+                }
+                
                 const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
-                const sPath = "/POHeaderSet('4200008157')"; // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data)
+                const sPath = `/POHeaderSet('${sPoNo}')`; // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data)
                 const data = await this.getData(sPath, null, aExpands);
                 this.getView().getModel("appModel").setData(data)
                 this.setHDRToMstones(data.HdrToMStones.results)
@@ -53,7 +68,7 @@ sap.ui.define([
                         Plant: oData.MiscDat.split(";")[2]
                     }
                 });
-                this.getModel("appModel").setProperty("/OpenNcr", aOpenNcr)                
+                this.getModel("appModel").setProperty("/OpenNcr", aOpenNcr)
             },
 
             onItemSelect: async function () {

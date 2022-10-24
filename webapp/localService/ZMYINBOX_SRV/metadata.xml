@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZMYINBOX_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false" sap:label="User Name" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Time Stamp" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title" sap:filterable="false"/>
+                <Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/>
+                <Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/>
+                <Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/>
+                <Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+            </EntityType>
+            <EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/>
+                <Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Time Stamp"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+                <Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/>
+                <Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="HeaderService" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cat1Key"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat1Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeptDes" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ServiceAssNav" Relationship="ZMYINBOX_SRV.ServiceAsociation" FromRole="FromRole_ServiceAsociation" ToRole="ToRole_ServiceAsociation"/>
+            </EntityType>
+            <EntityType Name="ChildServices" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cat1Key"/>
+                    <PropertyRef Name="Cat2Key"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat1Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat2Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServDes" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Approval" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DecisionKey"/>
+                </Key>
+                <Property Name="AppType" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DecisionKey" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="256" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TaskID" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ApprovalHeaderSet" Relationship="ZMYINBOX_SRV.HeaderToApprovalItem" FromRole="ToRole_HeaderToApprovalItem" ToRole="FromRole_HeaderToApprovalItem"/>
+            </EntityType>
+            <EntityType Name="ApprovalHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Decision"/>
+                </Key>
+                <Property Name="Decision" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ApprovalSet" Relationship="ZMYINBOX_SRV.HeaderToApprovalItem" FromRole="FromRole_HeaderToApprovalItem" ToRole="ToRole_HeaderToApprovalItem"/>
+            </EntityType>
+            <EntityType Name="ServiceDepartment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cat1Key"/>
+                </Key>
+                <Property Name="Cat1Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeptDes" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ServiceSection" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cat1Key"/>
+                    <PropertyRef Name="Cat2Key"/>
+                </Key>
+                <Property Name="Cat1Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat2Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServDes" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ServiceUnit" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cat1Key"/>
+                    <PropertyRef Name="Cat2Key"/>
+                    <PropertyRef Name="Cat3Key"/>
+                </Key>
+                <Property Name="Cat1Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat2Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat3Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnitDes" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Service Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ServiceLevel" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cat1Key"/>
+                    <PropertyRef Name="Cat2Key"/>
+                    <PropertyRef Name="Cat3Key"/>
+                    <PropertyRef Name="Cat4Key"/>
+                </Key>
+                <Property Name="Cat1Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat2Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat3Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat4Key" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Services" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServiceDes" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Services" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="WorkItemList" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WiId"/>
+                </Key>
+                <Property Name="Filter" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Filter" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="User" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name"/>
+                <Property Name="WiId" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="ID"/>
+                <Property Name="ShortDesc" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Short Description"/>
+                <Property Name="TaskTypeID" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="TaskTypeID"/>
+                <Property Name="TaskType" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Task Type"/>
+                <Property Name="Createdon" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Created on"/>
+                <Property Name="Created_on" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Created on"/>
+                <Property Name="TaskID" Type="Edm.String" MaxLength="14" sap:unicode="false" sap:label="Task ID"/>
+                <Property Name="StartDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Start Date"/>
+                <Property Name="EndDate" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="End Date"/>
+                <Property Name="Createdby" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Created by"/>
+                <Property Name="DefGuid" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Unique ID"/>
+                <Property Name="Remarks" Type="Edm.String" MaxLength="250" sap:unicode="false" sap:label="Remarks"/>
+                <Property Name="Url" Type="Edm.String" sap:unicode="false" sap:label="Url"/>
+                <Property Name="ApproveCheck" Type="Edm.Boolean" sap:unicode="false" sap:label="ApproveCheck"/>
+                <Property Name="RejectCheck" Type="Edm.Boolean" sap:unicode="false" sap:label="RejectCheck"/>
+                <Property Name="Amount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unicode="false" sap:label="Amount" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Due_Date" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Due Date"/>
+                <Property Name="CAT1_KEY" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Service Department"/>
+                <Property Name="CAT2_KEY" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Service Section"/>
+                <Property Name="CAT3_KEY" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Service Unit"/>
+                <Property Name="CAT4_KEY" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Services"/>
+                <Property Name="Mobile" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SERVICE_DES" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Services" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TaskList" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TaskID"/>
+                </Key>
+                <Property Name="TaskID" Type="Edm.String" Nullable="false" MaxLength="14" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TaskTypeID" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TaskDescription" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="FilterDesc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cat1Key"/>
+                    <PropertyRef Name="Cat2Key"/>
+                    <PropertyRef Name="ServKey"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat1Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Department" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cat2Key" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServKey" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ServDes" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Service Section" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="HeaderToApprovalItem" sap:content-version="1">
+                <End Type="ZMYINBOX_SRV.ApprovalHeader" Multiplicity="*" Role="FromRole_HeaderToApprovalItem"/>
+                <End Type="ZMYINBOX_SRV.Approval" Multiplicity="*" Role="ToRole_HeaderToApprovalItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_HeaderToApprovalItem">
+                        <PropertyRef Name="Decision"/>
+                    </Principal>
+                    <Dependent Role="ToRole_HeaderToApprovalItem">
+                        <PropertyRef Name="DecisionKey"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ServiceAsociation" sap:content-version="1">
+                <End Type="ZMYINBOX_SRV.HeaderService" Multiplicity="*" Role="FromRole_ServiceAsociation"/>
+                <End Type="ZMYINBOX_SRV.ChildServices" Multiplicity="*" Role="ToRole_ServiceAsociation"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ServiceAsociation">
+                        <PropertyRef Name="Cat1Key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ServiceAsociation">
+                        <PropertyRef Name="Cat1Key"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZMYINBOX_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SubscriptionCollection" EntityType="ZMYINBOX_SRV.Subscription" sap:content-version="1"/>
+                <EntitySet Name="NotificationCollection" EntityType="ZMYINBOX_SRV.Notification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="HeaderServiceSet" EntityType="ZMYINBOX_SRV.HeaderService" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ChildServicesSet" EntityType="ZMYINBOX_SRV.ChildServices" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ApprovalSet" EntityType="ZMYINBOX_SRV.Approval" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ApprovalHeaderSet" EntityType="ZMYINBOX_SRV.ApprovalHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ServiceDepartmentSet" EntityType="ZMYINBOX_SRV.ServiceDepartment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ServiceSectionSet" EntityType="ZMYINBOX_SRV.ServiceSection" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ServiceUnitSet" EntityType="ZMYINBOX_SRV.ServiceUnit" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ServiceLevelSet" EntityType="ZMYINBOX_SRV.ServiceLevel" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="WorkItemListSet" EntityType="ZMYINBOX_SRV.WorkItemList" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="TaskListSet" EntityType="ZMYINBOX_SRV.TaskList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="FilterDescSet" EntityType="ZMYINBOX_SRV.FilterDesc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="ServiceAsociationSet" Association="ZMYINBOX_SRV.ServiceAsociation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="HeaderServiceSet" Role="FromRole_ServiceAsociation"/>
+                    <End EntitySet="ChildServicesSet" Role="ToRole_ServiceAsociation"/>
+                </AssociationSet>
+                <AssociationSet Name="HeaderToApprovalItemSet" Association="ZMYINBOX_SRV.HeaderToApprovalItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ApprovalHeaderSet" Role="FromRole_HeaderToApprovalItem"/>
+                    <End EntitySet="ApprovalSet" Role="ToRole_HeaderToApprovalItem"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://vhafafedci.sap.alfanar.com:44300/sap/opu/odata/sap/ZMYINBOX_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://vhafafedci.sap.alfanar.com:44300/sap/opu/odata/sap/ZMYINBOX_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
