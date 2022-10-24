@@ -38,7 +38,7 @@ sap.ui.define([
                 }
                 
                 const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
-                const sPath = `/POHeaderSet('${sPoNo}')`; // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data)
+                const sPath = `/POHeaderSet('${sPoNo}')`;
                 const data = await this.getData(sPath, null, aExpands);
                 this.getView().getModel("appModel").setData(data)
                 this.setHDRToMstones(data.HdrToMStones.results)

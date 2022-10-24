@@ -37,7 +37,7 @@
         </f:header>
         <f:content>
             <layout:Splitter id="idSplitterLayoutMain" height="150vh" orientation="Vertical">
-                <!-- Splitter 1 -->
+                <!-- Splitter 1 Vendor History and Milestone Data-->
                 <layout:Splitter id="_IDGenSplitter1">
                     <layout:layoutData>
                         <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="30%" />
@@ -69,7 +69,7 @@
                     </layout:contentAreas>
                 </layout:Splitter>
 
-                <!-- Splitter 2 -->
+                <!-- Splitter 2 PO Analysis -->
                 <layout:Splitter id="_IDGenSplitter2">
                     <layout:layoutData>
                         <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="22%" />
@@ -88,10 +88,10 @@
                     </layout:contentAreas>
                 </layout:Splitter>
 
-                <!-- Splitter 3 -->
+                <!-- Splitter 3 PO Item and PO Item History -->
                 <layout:Splitter id="_IDGenSplitter3">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="40%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="30%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
@@ -117,6 +117,25 @@
                         </Panel>
                     </layout:contentAreas>
                 </layout:Splitter>
+
+                <!-- Splitter 4 Approval Decision -->            
+                <layout:Splitter id="_IDGenSplitter4">
+                    <layout:layoutData>
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData10" size="22%" />
+                    </layout:layoutData>
+                    <layout:contentAreas>
+                        <Panel id="_IDGenPanelPOANalysis4" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                            <headerToolbar>
+                                <OverflowToolbar id="_IDGenOverflowToolbar4">
+                                    <Title text="{i18n>ApprovalDecision}" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <content>
+                            </content>
+                        </Panel>
+                    </layout:contentAreas>
+                </layout:Splitter>
+
             </layout:Splitter>
         </f:content>
     </f:DynamicPage>
