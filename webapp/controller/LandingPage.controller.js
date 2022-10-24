@@ -100,36 +100,13 @@ sap.ui.define([
                 // This chart is for Vendor Evaluation line Chart
                 const sPath = `/ZPUR_V02_Q19_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurchaseOrg}')/Results`;
                 const sModelName = "ZPUR_V02_Q19_ODATA_SRV";
-                // const data = await this.getData(sPath, sModelName, []);
-                // let aLine = data.results?.map(data => {
-                //     return {
-                //         Year: data.A0CALQUARTER, 
-                //         OrderValue: data.A00O2TO0FGB1NVGKPA8Y55BN3Z
-                //     }
-                // }); 
-
-                let aLine = [
-                    {
-                        Year: "2019",
-                        OrderValue: 100.23
-                    },
-                    {
-                        Year: "2020",
-                        OrderValue: 200.23
-                    },
-                    {
-                        Year: "2021",
-                        OrderValue: 500.23
-                    },
-                    {
-                        Year: "2022",
-                        OrderValue: 300.23
-                    },
-                    {
-                        Year: "2022",
-                        OrderValue: 800.23
+                const data = await this.getData(sPath, sModelName, []);
+                let aLine = data.results?.map(data => {
+                    return {
+                        Year: data.A0CALQUARTER, 
+                        OrderValue: data.A00O2TO0FGB1NVGKPA8Y55BN3Z
                     }
-                ];
+                }); 
 
                 this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },
@@ -146,30 +123,6 @@ sap.ui.define([
                     }
                 });
 
-                aBarMap = [
-                    {
-                        Year: "2019",
-                        OrderValue: 100.23
-                    },
-                    {
-                        Year: "2020",
-                        OrderValue: 200.23
-                    },
-                    {
-                        Year: "2021",
-                        OrderValue: 500.23
-                    },
-                    {
-                        Year: "2022",
-                        OrderValue: 300.23
-                    },
-                    {
-                        Year: "2022",
-                        OrderValue: 800.23
-                    }
-                ];
-
-
                 this.getView().getModel("appModel").setProperty("/BoBarMap", aBarMap)
             },
 
@@ -185,43 +138,7 @@ sap.ui.define([
                     }
                 });
 
-                aLineArea = [
-                    {
-                        Month: "Jan",
-                        OrderValue: 100.23
-                    },
-                    {
-                        Month: "Feb",
-                        OrderValue: 200.23
-                    },
-                    {
-                        Month: "Mar",
-                        OrderValue: 500.23
-                    },
-                    {
-                        Month: "Apr",
-                        OrderValue: 300.23
-                    },
-                    {
-                        Month: "May",
-                        OrderValue: 800.23
-                    },
-                    {
-                        Month: "Jun",
-                        OrderValue: 540.23
-                    },
-                    {
-                        Month: "Jul",
-                        OrderValue: 900.23
-                    },
-                    {
-                        Month: "Aug",
-                        OrderValue: 100.23
-                    },
-                ]
-
                 this.getView().getModel("appModel").setProperty("/BoLineAreaMap", aLineArea)
-
             },
             setMaterialUom: async function () {
                 const sPath = "/POAnalysisMatsSet";
@@ -241,38 +158,14 @@ sap.ui.define([
                     var rPM = oData.filter(row => row.Mtyp === 'R');
                     if (aPM.length !== 0) {
                         this.getView().getModel("appModel").setProperty("/AdvnPM", aPM)
-                        // this.byId("idAvPM").setVisible(true)
-                        // this.byId("idAvPML").setVisible(true)
-
-                    } else {
-                        // this.byId("idAvPM").setVisible(false)
-                        // this.byId("idAvPML").setVisible(false)
                     }
                     if (dPM.length !== 0) {
-                        // this.byId("idDPM").setVisible(true)
-                        // this.byId("idDPML").setVisible(true)
                         this.getView().getModel("appModel").setProperty("/DeliverPM", dPM)
-
-                    } else {
-                        // this.byId("idDPM").setVisible(false)
-                        // this.byId("idDPML").setVisible(false)
                     }
                     if (rPM.length !== 0) {
-                        // this.byId("idRM").setVisible(true)
-                        // this.byId("idRML").setVisible(true)
                         this.getView().getModel("appModel").setProperty("/RetentionPM", rPM)
-
-                    } else {
-                        // this.byId("idRM").setVisible(false)
-                        // this.byId("idRML").setVisible(false)
                     }
                 } else {
-                    // this.byId("idAvPM").setVisible(false)
-                    // this.byId("idAvPML").setVisible(false)
-                    // this.byId("idDPM").setVisible(false)
-                    // this.byId("idDPML").setVisible(false)
-                    // this.byId("idRM").setVisible(false)
-                    // this.byId("idRML").setVisible(false)
                 }
             },
 
