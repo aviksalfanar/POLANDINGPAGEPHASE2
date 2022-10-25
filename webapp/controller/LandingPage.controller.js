@@ -3,12 +3,13 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "com/alfanar/polandingpage/polandingpage/utils/formatter",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
+    "sap/m/MessageBox"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, formatter, Filter, FilterOperator) {
+    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox) {
         "use strict";
 
         return Controller.extend("com.alfanar.polandingpage.polandingpage.controller.LandingPage", {
@@ -38,25 +39,29 @@ sap.ui.define([
                     TI = parameter.split("&")[3].split("=")[1]
                 }
 
-                const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
-                const sPath = `/POHeaderSet('${sPoNo}')`;
-                const data = await this.getData(sPath, null, aExpands);
-                this.getView().getModel("appModel").setData(data)
-                this.setHDRToMstones(data.HdrToMStones.results)
-                this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
-                this.setPoAnalysisModels(data.HdrToAnalysis.results);
-                console.log(this.getView().getModel("appModel").getData());
-                await this.setBOHeader(data.Plant, data.VndCode, data.PurOrg);
-                await this.setMaterialUom();
-                await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
-                await this.setBoBarMap(data.VndCode, data.PurOrg);
-                await this.setBoLineMap(data.Plant, data.PurOrg, data.VndCode);
-                this.getView().getModel("appModel").refresh(true);
+                try {
+                    const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
+                    const sPath = `/POHeaderSet('${sPoNo}')`;
+                    const data = await this.getData(sPath, null, aExpands);
+                    this.getView().getModel("appModel").setData(data)
+                    this.setHDRToMstones(data.HdrToMStones.results)
+                    this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
+                    this.setPoAnalysisModels(data.HdrToAnalysis.results);
+                    console.log(this.getView().getModel("appModel").getData());
+                    await this.setBOHeader(data.PlantCod, data.VndCode, data.PurOrg);
+                    await this.setMaterialUom();
+                    await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
+                    await this.setBoBarMap(data.VndCode, data.PurOrg);
+                    await this.setBoLineMap(data.PlantCod, data.PurOrg, data.VndCode);
+                    this.getView().getModel("appModel").refresh(true);
+                } catch (error) {
+                    MessageBox.error(error.responseText);
+                }
 
             },
 
             setBOHeader: async function (sPlant, sVCode, sPurg) {
-                const sPath = `/ZPUR_V02_Q17_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurg}'/Results`;
+                const sPath =  `/ZPUR_V02_Q17_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurg}'/Results`;
                 const oData = await this.getData(sPath, "ZPUR_V02_Q17_ODATA_SRV", [], []);
                 let vGrade, vPlant, vDelivery, vQuality, vPrice, vPurchaseOrder, vPlantnumber, vSuppliedMaterials;
                 if (oData.results.length > 0) {
