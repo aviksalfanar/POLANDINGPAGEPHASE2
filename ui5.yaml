@@ -36,6 +36,10 @@ server:
             url: http://vhafafedci.sap.alfanar.com:44300
             client: '500'
             destination: ERPPCE
+          - path: /sap/opu/odata/sap/ZPUR_V02_Q17_ODATA_SRV
+            url: http://fbd:44300
+            client: '500'
+            destination: BIPCE
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

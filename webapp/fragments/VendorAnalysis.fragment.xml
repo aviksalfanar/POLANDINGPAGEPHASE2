@@ -100,25 +100,25 @@
                         <ColumnListItem>
                             <cells>
                                 <Text text="Quality" />
-                                <Text text="100" />
+                                <Text text="{appModel>/BOQUALITY}" />
                             </cells>
                         </ColumnListItem>
                         <ColumnListItem>
                             <cells>
                                 <Text text="Price" />
-                                <Text text="70" />
+                                <Text text="{appModel>/BOPRICE}" />
                             </cells>
                         </ColumnListItem>
                         <ColumnListItem>
                             <cells>
                                 <Text text="Delivery" />
-                                <Text text="53" />
+                                <Text text="{appModel>/BODELIVERY}" />
                             </cells>
                         </ColumnListItem>
                         <ColumnListItem>
                             <cells>
                                 <Text text="Grade" />
-                                <Text text="C" />
+                                <Text text="{appModel>/BOGRADE}" />
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -136,19 +136,19 @@
                         <ColumnListItem>
                             <cells>
                                 <Text text="Purchase Order" />
-                                <Text text="13" />
+                                <Text text="{appModel>/BOPURCHASEORDER}" />
                             </cells>
                         </ColumnListItem>
                         <ColumnListItem>
                             <cells>
                                 <Text text="Plants" />
-                                <Text text="1" />
+                                <Text text="{appModel>/BOPLANT}" />
                             </cells>
                         </ColumnListItem>
                         <ColumnListItem>
                             <cells>
                                 <Text text="Supplied Materials" />
-                                <Text text="30" />
+                                <Text text="{appModel>/BOSUPLLIEDMATERIALS}" />
                             </cells>
                         </ColumnListItem>
                     </items>

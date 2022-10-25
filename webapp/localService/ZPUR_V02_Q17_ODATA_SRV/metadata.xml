@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://fbd:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZPUR_V02_Q17_ODATA_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZPUR_V02_Q17_ODATAResult" sap:label="Vendor Evaluation Query(OData)" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:label="Total/Subtotal" sap:sortable="false"/>
+                <Property Name="A0VENDOR" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:creatable="false" sap:text="A0VENDOR_T" sap:updatable="false" sap:label="Vendor"/>
+                <Property Name="A0VENDOR_T" Type="Edm.String" MaxLength="40" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Vendor (Description)"/>
+                <Property Name="A00O2TO0FGB1NVGS7XVZZEUV2A" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGS7XVZZEUV2A_F" sap:updatable="false" sap:label="QDD"/>
+                <Property Name="A00O2TO0FGB1NVGS7XVZZEUV2A_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="QDD (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGQWPL7YM3MIP" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGQWPL7YM3MIP_F" sap:updatable="false" sap:label="QDE"/>
+                <Property Name="A00O2TO0FGB1NVGQWPL7YM3MIP_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="QDE (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGSDQLAUZPI2Q" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGSDQLAUZPI2Q_F" sap:updatable="false" sap:label="Weighted Delivery (Maximum Score 20%)-10"/>
+                <Property Name="A00O2TO0FGB1NVGSDQLAUZPI2Q_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Weighted Delivery (Maximum Score 20%)-10"/>
+                <Property Name="A00O2TO0FGB1NVGKPA8Y55BAGV" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKPA8Y55BAGV_F" sap:updatable="false" sap:label="Weighted Quality  (Maximum Score 30.25%)"/>
+                <Property Name="A00O2TO0FGB1NVGKPA8Y55BAGV_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Weighted Quality  (Maximum Score 30.25%)"/>
+                <Property Name="A00O2TO0FGB1NVGSE72L8RT9Z6" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGSE72L8RT9Z6_F" sap:updatable="false" sap:label="Price
+                (Maximum Score 12%)."/>
+                <Property Name="A00O2TO0FGB1NVGSE72L8RT9Z6_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Price
+                (Maximum Score 12%). (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVH2NQ47412AIQ" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVH2NQ47412AIQ_F" sap:updatable="false" sap:label="Weighted Price  (Maximum Score 12%)-100%"/>
+                <Property Name="A00O2TO0FGB1NVH2NQ47412AIQ_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Weighted Price  (Maximum Score 12%)-100%"/>
+                <Property Name="A00O2TO0FGB1NVGKPA8Y55BGSF" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKPA8Y55BGSF_F" sap:updatable="false" sap:label="Total Score
+                For Supplier"/>
+                <Property Name="A00O2TO0FGB1NVGKPA8Y55BGSF_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Total Score
+                For Supplier (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKPA8Y55BN3Z" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKPA8Y55BN3Z_F" sap:unit="A00O2TO0FGB1NVGKPA8Y55BN3Z_E" sap:updatable="false" sap:label="Total Score %
+                For Supplier"/>
+                <Property Name="A00O2TO0FGB1NVGKPA8Y55BN3Z_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Total Score %
+                For Supplier (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKPA8Y55BN3Z_E" Type="Edm.String" MaxLength="1" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Total Score %
+                For Supplier ()" sap:semantics="unit-of-measure"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ5I9R" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ5I9R_F" sap:updatable="false" sap:label="Weighted Total Score %"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ5I9R_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Weighted Total Score % (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ5OLB" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ5OLB_F" sap:updatable="false" sap:label="Grade A
+                # Suppliers"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ5OLB_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Grade A
+                # Suppliers (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ5UWV" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ5UWV_F" sap:updatable="false" sap:label="Grade B
+                # Suppliers"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ5UWV_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Grade B
+                # Suppliers (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ618F" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ618F_F" sap:updatable="false" sap:label="Grade  C
+                # Suppliers"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ618F_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Grade  C
+                # Suppliers (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ67JZ" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ67JZ_F" sap:updatable="false" sap:label="Grade D
+                # Suppliers"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ67JZ_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Grade D
+                # Suppliers (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ6DVJ" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ6DVJ_F" sap:updatable="false" sap:label="#Purchase Orders"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ6DVJ_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="#Purchase Orders (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ6K73" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ6K73_F" sap:updatable="false" sap:label="#Plants"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ6K73_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="#Plants (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ6QIN" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVGKOO1IXJ6QIN_F" sap:updatable="false" sap:label="#Materials"/>
+                <Property Name="A00O2TO0FGB1NVGKOO1IXJ6QIN_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="#Materials (Formatted)"/>
+                <Property Name="A00O2TO0FGB1NVLKD6NDCWW5AP" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVLKD6NDCWW5AP_F" sap:updatable="false" sap:label="Weighted Quality
+                (Maximum Score 30.25%"/>
+                <Property Name="A00O2TO0FGB1NVLKD6NDCWW5AP_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Weighted Quality
+                (Maximum Score 30.25%"/>
+                <Property Name="A00O2TO0FGB1NVLKDRTIOAX58X" Type="Edm.Decimal" Precision="42" Scale="34" sap:aggregation-role="measure" sap:creatable="false" sap:filterable="false" sap:text="A00O2TO0FGB1NVLKDRTIOAX58X_F" sap:updatable="false" sap:label="Weighted Price
+                (Maximum Score 12%)"/>
+                <Property Name="A00O2TO0FGB1NVLKDRTIOAX58X_F" Type="Edm.String" MaxLength="60" sap:creatable="false" sap:filterable="false" sap:updatable="false" sap:label="Weighted Price
+                (Maximum Score 12%) (Fo"/>
+                <NavigationProperty Name="Parameters" Relationship="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParametersToResult" FromRole="ToRole_ZPUR_V02_Q17_ODATAParametersToResult" ToRole="FromRole_ZPUR_V02_Q17_ODATAParametersToResult"/>
+            </EntityType>
+            <EntityType Name="ZPUR_V02_Q17_ODATAParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZAUTH_0PLANT_VAR_001"/>
+                    <PropertyRef Name="ZAUTH_0PLANT_VAR_001To"/>
+                    <PropertyRef Name="OS_0VENDOR_01"/>
+                    <PropertyRef Name="A_0PURCH_ORG_01"/>
+                </Key>
+                <Property Name="ZAUTH_0PLANT_VAR_001" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:parameter="optional" sap:text="ZAUTH_0PLANT_VAR_001Text" sap:upper-boundary="ZAUTH_0PLANT_VAR_001To" sap:sortable="false"/>
+                <Property Name="ZAUTH_0PLANT_VAR_001Text" Type="Edm.String" MaxLength="60" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZAUTH_0PLANT_VAR_001To" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:lower-boundary="ZAUTH_0PLANT_VAR_001" sap:parameter="optional" sap:text="ZAUTH_0PLANT_VAR_001Text" sap:sortable="false"/>
+                <Property Name="OS_0VENDOR_01" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:parameter="optional" sap:text="OS_0VENDOR_01Text" sap:sortable="false"/>
+                <Property Name="OS_0VENDOR_01Text" Type="Edm.String" MaxLength="60" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="A_0PURCH_ORG_01" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Purchase Organization" sap:parameter="optional" sap:text="A_0PURCH_ORG_01Text" sap:sortable="false"/>
+                <Property Name="A_0PURCH_ORG_01Text" Type="Edm.String" MaxLength="60" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ZAUTH_0PLANT_VAR_001Details" Relationship="ZPUR_V02_Q17_ODATA_SRV.ZAUTH_0PLANT_VAR_001ToListOfValues" FromRole="ToRole_ZAUTH_0PLANT_VAR_001ToListOfValues" ToRole="FromRole_ZAUTH_0PLANT_VAR_001ToListOfValues"/>
+                <NavigationProperty Name="ZAUTH_0PLANT_VAR_001ToDetails" Relationship="ZPUR_V02_Q17_ODATA_SRV.ZAUTH_0PLANT_VAR_001ToToListOfValues" FromRole="ToRole_ZAUTH_0PLANT_VAR_001ToToListOfValues" ToRole="FromRole_ZAUTH_0PLANT_VAR_001ToToListOfValues"/>
+                <NavigationProperty Name="OS_0VENDOR_01Details" Relationship="ZPUR_V02_Q17_ODATA_SRV.OS_0VENDOR_01ToListOfValues" FromRole="ToRole_OS_0VENDOR_01ToListOfValues" ToRole="FromRole_OS_0VENDOR_01ToListOfValues"/>
+                <NavigationProperty Name="A_0PURCH_ORG_01Details" Relationship="ZPUR_V02_Q17_ODATA_SRV.A_0PURCH_ORG_01ToListOfValues" FromRole="ToRole_A_0PURCH_ORG_01ToListOfValues" ToRole="FromRole_A_0PURCH_ORG_01ToListOfValues"/>
+                <NavigationProperty Name="Results" Relationship="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParametersToResult" FromRole="FromRole_ZPUR_V02_Q17_ODATAParametersToResult" ToRole="ToRole_ZPUR_V02_Q17_ODATAParametersToResult"/>
+            </EntityType>
+            <EntityType Name="ZAUTH_0PLANT_VAR_001" sap:label="Plant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZAUTH_0PLANT_VAR_001_ID"/>
+                </Key>
+                <Property Name="ZAUTH_0PLANT_VAR_001_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:sortable="false" sap:text="ZAUTH_0PLANT_VAR_001_TEXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ZAUTH_0PLANT_VAR_001_TEXT" Type="Edm.String" sap:sortable="false" sap:label="Plant (Description)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="OS_0VENDOR_01" sap:label="Vendor" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OS_0VENDOR_01_ID"/>
+                </Key>
+                <Property Name="OS_0VENDOR_01_ID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:sortable="false" sap:text="OS_0VENDOR_01_TEXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OS_0VENDOR_01_TEXT" Type="Edm.String" sap:sortable="false" sap:label="Vendor (Description)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="A_0PURCH_ORG_01" sap:label="Purchase Organization" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="A_0PURCH_ORG_01_ID"/>
+                </Key>
+                <Property Name="A_0PURCH_ORG_01_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Purchase Organization" sap:sortable="false" sap:text="A_0PURCH_ORG_01_TEXT" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="A_0PURCH_ORG_01_TEXT" Type="Edm.String" sap:sortable="false" sap:label="Purchase Organization (Description)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ZAUTH_0PLANT_VAR_001ToToListOfValues" sap:content-version="1">
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZAUTH_0PLANT_VAR_001" Multiplicity="1" Role="FromRole_ZAUTH_0PLANT_VAR_001ToToListOfValues"/>
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters" Multiplicity="*" Role="ToRole_ZAUTH_0PLANT_VAR_001ToToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ZAUTH_0PLANT_VAR_001ToToListOfValues">
+                        <PropertyRef Name="ZAUTH_0PLANT_VAR_001_ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ZAUTH_0PLANT_VAR_001ToToListOfValues">
+                        <PropertyRef Name="ZAUTH_0PLANT_VAR_001"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ZAUTH_0PLANT_VAR_001ToListOfValues" sap:content-version="1">
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZAUTH_0PLANT_VAR_001" Multiplicity="1" Role="FromRole_ZAUTH_0PLANT_VAR_001ToListOfValues"/>
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters" Multiplicity="*" Role="ToRole_ZAUTH_0PLANT_VAR_001ToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ZAUTH_0PLANT_VAR_001ToListOfValues">
+                        <PropertyRef Name="ZAUTH_0PLANT_VAR_001_ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ZAUTH_0PLANT_VAR_001ToListOfValues">
+                        <PropertyRef Name="ZAUTH_0PLANT_VAR_001"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="OS_0VENDOR_01ToListOfValues" sap:content-version="1">
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.OS_0VENDOR_01" Multiplicity="1" Role="FromRole_OS_0VENDOR_01ToListOfValues"/>
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters" Multiplicity="*" Role="ToRole_OS_0VENDOR_01ToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_OS_0VENDOR_01ToListOfValues">
+                        <PropertyRef Name="OS_0VENDOR_01_ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_OS_0VENDOR_01ToListOfValues">
+                        <PropertyRef Name="OS_0VENDOR_01"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="A_0PURCH_ORG_01ToListOfValues" sap:content-version="1">
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.A_0PURCH_ORG_01" Multiplicity="1" Role="FromRole_A_0PURCH_ORG_01ToListOfValues"/>
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters" Multiplicity="*" Role="ToRole_A_0PURCH_ORG_01ToListOfValues"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_A_0PURCH_ORG_01ToListOfValues">
+                        <PropertyRef Name="A_0PURCH_ORG_01_ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_A_0PURCH_ORG_01ToListOfValues">
+                        <PropertyRef Name="A_0PURCH_ORG_01"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ZPUR_V02_Q17_ODATAParametersToResult" sap:content-version="1">
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters" Multiplicity="1" Role="FromRole_ZPUR_V02_Q17_ODATAParametersToResult"/>
+                <End Type="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAResult" Multiplicity="*" Role="ToRole_ZPUR_V02_Q17_ODATAParametersToResult"/>
+            </Association>
+            <EntityContainer Name="ZPUR_V02_Q17_ODATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="OS_0VENDOR_01" EntityType="ZPUR_V02_Q17_ODATA_SRV.OS_0VENDOR_01" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="A_0PURCH_ORG_01" EntityType="ZPUR_V02_Q17_ODATA_SRV.A_0PURCH_ORG_01" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="ZPUR_V02_Q17_ODATA_SRV.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPUR_V02_Q17_ODATAResults" EntityType="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPUR_V02_Q17_ODATA" EntityType="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZAUTH_0PLANT_VAR_001" EntityType="ZPUR_V02_Q17_ODATA_SRV.ZAUTH_0PLANT_VAR_001" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="ZAUTH_0PLANT_VAR_001ToToListOfValues_Ass" Association="ZPUR_V02_Q17_ODATA_SRV.ZAUTH_0PLANT_VAR_001ToToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAUTH_0PLANT_VAR_001" Role="FromRole_ZAUTH_0PLANT_VAR_001ToToListOfValues"/>
+                    <End EntitySet="ZPUR_V02_Q17_ODATA" Role="ToRole_ZAUTH_0PLANT_VAR_001ToToListOfValues"/>
+                </AssociationSet>
+                <AssociationSet Name="ZPUR_V02_Q17_ODATAParametersToResult_Ass" Association="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParametersToResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPUR_V02_Q17_ODATA" Role="FromRole_ZPUR_V02_Q17_ODATAParametersToResult"/>
+                    <End EntitySet="ZPUR_V02_Q17_ODATAResults" Role="ToRole_ZPUR_V02_Q17_ODATAParametersToResult"/>
+                </AssociationSet>
+                <AssociationSet Name="OS_0VENDOR_01ToListOfValues_AssocSet" Association="ZPUR_V02_Q17_ODATA_SRV.OS_0VENDOR_01ToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="OS_0VENDOR_01" Role="FromRole_OS_0VENDOR_01ToListOfValues"/>
+                    <End EntitySet="ZPUR_V02_Q17_ODATA" Role="ToRole_OS_0VENDOR_01ToListOfValues"/>
+                </AssociationSet>
+                <AssociationSet Name="A_0PURCH_ORG_01ToListOfValues_AssocSet" Association="ZPUR_V02_Q17_ODATA_SRV.A_0PURCH_ORG_01ToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="A_0PURCH_ORG_01" Role="FromRole_A_0PURCH_ORG_01ToListOfValues"/>
+                    <End EntitySet="ZPUR_V02_Q17_ODATA" Role="ToRole_A_0PURCH_ORG_01ToListOfValues"/>
+                </AssociationSet>
+                <AssociationSet Name="ZAUTH_0PLANT_VAR_001ToListOfValues_Assoc" Association="ZPUR_V02_Q17_ODATA_SRV.ZAUTH_0PLANT_VAR_001ToListOfValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAUTH_0PLANT_VAR_001" Role="FromRole_ZAUTH_0PLANT_VAR_001ToListOfValues"/>
+                    <End EntitySet="ZPUR_V02_Q17_ODATA" Role="ToRole_ZAUTH_0PLANT_VAR_001ToListOfValues"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters/ZAUTH_0PLANT_VAR_001" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plant"/>
+                        <PropertyValue Property="CollectionPath" String="ZAUTH_0PLANT_VAR_001"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ZAUTH_0PLANT_VAR_001"/>
+                                    <PropertyValue Property="ValueListProperty" String="ZAUTH_0PLANT_VAR_001_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ZAUTH_0PLANT_VAR_001_TEXT"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters/OS_0VENDOR_01" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Vendor"/>
+                        <PropertyValue Property="CollectionPath" String="OS_0VENDOR_01"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OS_0VENDOR_01"/>
+                                    <PropertyValue Property="ValueListProperty" String="OS_0VENDOR_01_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OS_0VENDOR_01_TEXT"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZPUR_V02_Q17_ODATA_SRV.ZPUR_V02_Q17_ODATAParameters/A_0PURCH_ORG_01" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Purchase Organization"/>
+                        <PropertyValue Property="CollectionPath" String="A_0PURCH_ORG_01"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="A_0PURCH_ORG_01"/>
+                                    <PropertyValue Property="ValueListProperty" String="A_0PURCH_ORG_01_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="A_0PURCH_ORG_01_TEXT"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://fbd:44300/sap/opu/odata/sap/ZPUR_V02_Q17_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://fbd:44300/sap/opu/odata/sap/ZPUR_V02_Q17_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

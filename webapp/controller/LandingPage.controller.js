@@ -22,8 +22,9 @@ sap.ui.define([
 
             onPoNumberMatched: async function (oEvent) {
                 let sPoNo, TT, WI, TI;
-                if (window.location.hostname.includes("webide") === true) {
-                    sPoNo = "4200136330"
+                if (window.location.hostname.includes("applicationstudio.cloud.sap")) {
+                    // This section is for Static Testing
+                    sPoNo = "4200008157" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data)
                     TT = "POR"
                     WI = "000002605618"
                     TI = "TS99000076"
@@ -36,39 +37,115 @@ sap.ui.define([
                     WI = parameter.split("&")[2].split("=")[1]
                     TI = parameter.split("&")[3].split("=")[1]
                 }
-                
+
                 const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
                 const sPath = `/POHeaderSet('${sPoNo}')`;
                 const data = await this.getData(sPath, null, aExpands);
                 this.getView().getModel("appModel").setData(data)
                 this.setHDRToMstones(data.HdrToMStones.results)
                 this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
+                this.setPoAnalysisModels(data.HdrToAnalysis.results);
+                console.log(this.getView().getModel("appModel").getData());
+                await this.setBOHeader(data.Plant, data.VndCode, data.PurOrg);
                 await this.setMaterialUom();
                 await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
                 await this.setBoBarMap(data.VndCode, data.PurOrg);
                 await this.setBoLineMap(data.Plant, data.PurOrg, data.VndCode);
                 this.getView().getModel("appModel").refresh(true);
-                console.log(data);
 
             },
 
-            setOpenNcr: async function (sPoNo) {
-                const sPath = "/POAnalysisMatsSet";
-                const aFilters = [];
-                aFilters.push(new Filter("PoNum", FilterOperator.EQ, sPoNo));
-                aFilters.push(new Filter("MCode", FilterOperator.EQ, "N"));
-                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "N"));
-                const data = await this.getData(sPath, "", [], aFilters);
-                let aOpenNcr = data?.results.map(oData => {
-                    return {
-                        MatNum: oData.MatNum,
-                        MatDesc: oData.MatDesc,
-                        NotificationNo: oData.MiscDat.split(";")[0],
-                        NotificationDesc: oData.MiscDat.split(";")[1],
-                        Plant: oData.MiscDat.split(";")[2]
+            setBOHeader: async function (sPlant, sVCode, sPurg) {
+                const sPath = `/ZPUR_V02_Q17_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurg}'/Results`;
+                const oData = await this.getData(sPath, "ZPUR_V02_Q17_ODATA_SRV", [], []);
+                let vGrade, vPlant, vDelivery, vQuality, vPrice, vPurchaseOrder, vPlantnumber, vSuppliedMaterials;
+                if (oData.results.length > 0) {
+                    vPlant = oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ6K73']
+                    vDelivery = oData.results[0]['A00O2TO0FGB1NVNSQDWPZ9XVIP']
+                    if (vDelivery) {
+                        vDelivery = parseFloat(vDelivery).toFixed(3)
+                        vDelivery = Math.round(vDelivery)
+                    }
+                    vQuality = oData.results[0]['A00O2TO0FGB1NVNSQDWPZ9XP75']
+                    if (vQuality) {
+                        vQuality = parseFloat(vQuality).toFixed(3)
+                        vQuality = Math.round(vQuality)
+                    }
+                    vPurchaseOrder = oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ6DVJ']
+                    vPlantnumber = oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ6K73']
+                    vSuppliedMaterials = oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ6QIN']
+                    vPrice = oData.results[0]['A00O2TO0FGB1NVNSQDWPZ9XIVL']
+                    if (vPrice) {
+                        vPrice = parseFloat(vPrice).toFixed(3)
+                        vPrice = Math.round(vPrice)
+                    }
+
+                    if (oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ5OLB'] !== "0") {
+                        vGrade = "A"
+                    } else if (oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ5UWV'] !== "0") {
+                        vGrade = "B"
+                    } else if (oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ618F'] !== "0") {
+                        vGrade = "C"
+                    } else if (oData.results[0]['A00O2TO0FGB1NVGKOO1IXJ67JZ'] !== "0") {
+                        vGrade = "D"
+                    } else {
+                        vGrade = "-"
+                    }
+                }
+                this.getView().getModel("appModel").setProperty("/BOGRADE", vGrade)
+                this.getView().getModel("appModel").setProperty("/BOPLANT", vPlant)
+                this.getView().getModel("appModel").setProperty("/BODELIVERY", vDelivery)
+                this.getView().getModel("appModel").setProperty("/BOQUALITY", vQuality)
+                this.getView().getModel("appModel").setProperty("/BOPURCHASEORDER", vPurchaseOrder)
+                this.getView().getModel("appModel").setProperty("/BOPLANTNUMBER", vPlantnumber)
+                this.getView().getModel("appModel").setProperty("/BOSUPLLIEDMATERIALS", vSuppliedMaterials)
+                this.getView().getModel("appModel").setProperty("/BOPRICE", vPrice)
+
+            },
+
+            setPoAnalysisModels: function (oData) {
+                oData.forEach(data => {
+                    if (data.MCode === "P") {
+                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        data.Percentage = fPercentage;
+                        this.getView().getModel("appModel").setProperty("/MatPriceVsOldPrice", data);
+                    }
+                    if (data.MCode === "U") {
+                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        data.Percentage = fPercentage;
+                        this.getView().getModel("appModel").setProperty("/MaterialUom", data);
+                    }
+                    if (data.MCode === "C") {
+                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        data.Percentage = fPercentage;
+                        this.getView().getModel("appModel").setProperty("/OrderCurrency", data);
+                    }
+                    if (data.MCode === "Y") {
+                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        data.Percentage = fPercentage;
+                        this.getView().getModel("appModel").setProperty("/POType", data);
+                    }
+                    if (data.MCode === "T") {
+                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        data.Percentage = fPercentage;
+                        this.getView().getModel("appModel").setProperty("/PaymentTerms", data);
+                    }
+                    if (data.MCode === "I") {
+                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        data.Percentage = fPercentage;
+                        this.getView().getModel("appModel").setProperty("/InventoryAnalysis", data);
+                    }
+                    if (data.MCode === "N") {
+                        let fPercentage;
+                        if (parseFloat(data.YMatch) === 0) {
+                            fPercentage = 0;
+                        } else {
+                            fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        }
+                        data.Percentage = fPercentage;
+                        this.getView().getModel("appModel").setProperty("/OpenNcrVsVendor", data);
                     }
                 });
-                this.getModel("appModel").setProperty("/OpenNcr", aOpenNcr)
             },
 
             onItemSelect: async function () {
@@ -103,10 +180,10 @@ sap.ui.define([
                 const data = await this.getData(sPath, sModelName, []);
                 let aLine = data.results?.map(data => {
                     return {
-                        Year: data.A0CALQUARTER, 
+                        Year: data.A0CALQUARTER,
                         OrderValue: data.A00O2TO0FGB1NVGKPA8Y55BN3Z
                     }
-                }); 
+                });
 
                 this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },

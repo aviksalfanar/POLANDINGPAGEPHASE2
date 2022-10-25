@@ -26,6 +26,22 @@ sap.ui.define([
 
             return sCalculatedDate;
 
+        },
+
+        getMicroChartValueColor: function(sPercentage){
+            const fPercentage = parseFloat(sPercentage);
+            let sValueColor;
+            if(fPercentage > 99){
+                sValueColor = "Good";
+            }else {
+                sValueColor = "Error"
+            }
+
+            return sValueColor;
+        },
+        getPercentageForMicroChart: function(sPercentage){
+            const fPercentage = parseFloat(sPercentage);
+            return fPercentage;                 
         }
     }
 });

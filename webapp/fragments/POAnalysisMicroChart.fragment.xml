@@ -1,31 +1,162 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mc="sap.suite.ui.microchart" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:card="sap.f.cards">
-    <FlexBox justifyContent="SpaceBetween" wrap="Wrap">
+    <FlexBox justifyContent="SpaceAround" wrap="Wrap">
+        <!-- Material Price Vs Old Price Card -->
         <f:Card width="90%" height="100%">
             <f:header>
                 <card:Header title="{i18n>MatPriceVsOldPrice}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="M" percentage="40.9" alignContent="Center" valueColor="Error" />
+                    <mc:RadialMicroChart
+                        size="M"
+                        percentage="{path: 'appModel>/MatPriceVsOldPrice/Percentage', formatter: '.formatter.getPercentageForMicroChart'}"
+                        alignContent="Center"
+                        valueColor="{path: 'appModel>/MatPriceVsOldPrice/Percentage', formatter: '.formatter.getMicroChartValueColor'}"
+                    />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
-                        <FlexBox direction="Column" alignItems="Center" >
-                            <Text text="Match"/>
-                            <Text text="1"></Text>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Text text="Match" />
+                            <Text text="{appModel>/MatPriceVsOldPrice/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
                             <Link text="Non-Match" emphasized="true" textAlign="End" />
-                            <Text text="2"></Text>
+                            <Text text="{appModel>/MatPriceVsOldPrice/NMatch}" />
                         </FlexBox>
                     </FlexBox>
                 </FlexBox>
             </f:content>
         </f:Card>
 
-        <!-- <GenericTile header="{i18n>MatPriceVsOldPrice}">
-            <TileContent>
-                <mc:RadialMicroChart size="S" percentage="99.9" alignContent="Center" valueColor="Neutral" />
-            </TileContent>
-        </GenericTile> -->
- 
+        <!-- Materials UOM -->
+        <f:Card width="110%" height="100%">
+            <f:header>
+                <card:Header title="{i18n>MaterialsUom}" />
+            </f:header>
+            <f:content>
+                <FlexBox direction="Column" alignItems="Start">
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/MaterialUom/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/MaterialUom/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Text text="Match" />
+                            <Text text="{appModel>/MaterialUom/YMatch}" />
+                        </FlexBox>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Text text="{appModel>/MaterialUom/NMatch}" />
+                        </FlexBox>
+                    </FlexBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>
+
+        <!-- Order Currency -->
+        <f:Card width="110%" height="100%">
+            <f:header>
+                <card:Header title="{i18n>OrderCurrency}" />
+            </f:header>
+            <f:content>
+                <FlexBox direction="Column" alignItems="Start">
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/OrderCurrency/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OrderCurrency/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Text text="Match" />
+                            <Text text="{appModel>/OrderCurrency/YMatch}" />
+                        </FlexBox>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Text text="{appModel>/OrderCurrency/NMatch}" />
+                        </FlexBox>
+                    </FlexBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>     
+
+        <!-- PO Type -->
+        <f:Card width="110%" height="100%">
+            <f:header>
+                <card:Header title="{i18n>POType}" />
+            </f:header>
+            <f:content>
+                <FlexBox direction="Column" alignItems="Start">
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/POType/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/POType/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Text text="Match" />
+                            <Text text="{appModel>/POType/YMatch}" />
+                        </FlexBox>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Text text="{appModel>/POType/NMatch}" />
+                        </FlexBox>
+                    </FlexBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>       
+
+        <!-- Payment Terms -->
+        <f:Card width="113%" height="100%">
+            <f:header>
+                <card:Header title="{i18n>PaymentTerms}" />
+            </f:header>
+            <f:content>
+                <FlexBox direction="Column" alignItems="Start">
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/PaymentTerms/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/PaymentTerms/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Text text="Match" />
+                            <Text text="{appModel>/PaymentTerms/YMatch}" />
+                        </FlexBox>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Text text="{appModel>/PaymentTerms/NMatch}" />
+                        </FlexBox>
+                    </FlexBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>     
+
+        <!-- Inventory Analysis -->
+        <f:Card width="113%" height="100%">
+            <f:header>
+                <card:Header title="{i18n>InventoryAnalysis}" />
+            </f:header>
+            <f:content>
+                <FlexBox direction="Column" alignItems="Start">
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/InventoryAnalysis/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/InventoryAnalysis/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Text text="Match" />
+                            <Text text="{appModel>/InventoryAnalysis/YMatch}" />
+                        </FlexBox>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Text text="{appModel>/InventoryAnalysis/NMatch}" />
+                        </FlexBox>
+                    </FlexBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>  
+
+        <!-- Open NCR VS Vendor -->
+        <f:Card width="105%" height="100%">
+            <f:header>
+                <card:Header title="{i18n>OpenNCRVsVendor}" />
+            </f:header>
+            <f:content>
+                <FlexBox direction="Column" alignItems="Start">
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Text text="Match" />
+                            <Text text="{appModel>/OpenNcrVsVendor/YMatch}" />
+                        </FlexBox>
+                        <FlexBox direction="Column" alignItems="Center">
+                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Text text="{appModel>/OpenNcrVsVendor/NMatch}" />
+                        </FlexBox>
+                    </FlexBox>
+                </FlexBox>
+            </f:content>
+        </f:Card>                            
     </FlexBox>
 </core:FragmentDefinition>

@@ -72,7 +72,7 @@
                 <!-- Splitter 2 PO Analysis -->
                 <layout:Splitter id="_IDGenSplitter2">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="22%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="25%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanelPOANalysis" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
