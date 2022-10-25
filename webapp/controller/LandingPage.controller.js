@@ -55,7 +55,7 @@ sap.ui.define([
                     await this.setBoLineMap(data.PlantCod, data.PurOrg, data.VndCode);
                     this.getView().getModel("appModel").refresh(true);
                 } catch (error) {
-                    MessageBox.error(error.responseText);
+                    console.log(error.responseText);
                 }
 
             },
