@@ -62,7 +62,7 @@
                 }
             },
 			"ZMYINBOX_SRV": {
-				"uri": "/sap/opu/odatapp/sap/ZMYINBOX_SRV/",
+				"uri": "/sap/opu/odata/sap/ZMYINBOX_SRV/",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/ZMYINBOX_SRV/metadata.xml"
