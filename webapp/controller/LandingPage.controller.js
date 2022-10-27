@@ -72,7 +72,7 @@ sap.ui.define([
             },
 
             setBOHeader: async function (sPlant, sVCode, sPurg) {
-                const sPath = `/ZPUR_V02_Q17_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurg}'/Results`;
+                const sPath = `/ZPUR_V02_Q17_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurg}')/Results`;
                 const oData = await this.getData(sPath, "ZPUR_V02_Q17_ODATA_SRV", [], []);
                 let vGrade, vPlant, vDelivery, vQuality, vPrice, vPurchaseOrder, vPlantnumber, vSuppliedMaterials;
                 if (oData.results.length > 0) {
