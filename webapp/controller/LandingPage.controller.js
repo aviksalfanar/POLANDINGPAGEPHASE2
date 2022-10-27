@@ -31,12 +31,23 @@ sap.ui.define([
                     TI = "TS99000076"
                 } else {
                     const url = new URL(window.location.href);
-                    const encodedURL = url.searchParams.get("PRM");
-                    let parameter = atob(encodedURL)
-                    sPoNo = parameter.split("&")[0].split("=")[1]
-                    TT = parameter.split("&")[1].split("=")[1]
-                    WI = parameter.split("&")[2].split("=")[1]
-                    TI = parameter.split("&")[3].split("=")[1]
+                    let encodedURL;
+
+                    encodedURL = url.searchParams.get("PRM");
+
+                    if (encodedURL) {
+                        let parameter = atob(encodedURL)
+                        sPoNo = parameter.split("&")[0].split("=")[1]
+                        TT = parameter.split("&")[1].split("=")[1]
+                        WI = parameter.split("&")[2].split("=")[1]
+                        TI = parameter.split("&")[3].split("=")[1]
+                    }else{
+                        sPoNo = url.searchParams.get("PONO");
+                        TT = url.searchParams.get("TT");                        
+                        WI = url.searchParams.get("WI");                        
+                        TI = url.searchParams.get("TI");                        
+                    }
+
                 }
 
                 try {
@@ -61,7 +72,7 @@ sap.ui.define([
             },
 
             setBOHeader: async function (sPlant, sVCode, sPurg) {
-                const sPath =  `/ZPUR_V02_Q17_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurg}'/Results`;
+                const sPath = `/ZPUR_V02_Q17_ODATA(ZAUTH_0PLANT_VAR_001='${sPlant}',ZAUTH_0PLANT_VAR_001To='',OS_0VENDOR_01='${sVCode}',A_0PURCH_ORG_01='${sPurg}'/Results`;
                 const oData = await this.getData(sPath, "ZPUR_V02_Q17_ODATA_SRV", [], []);
                 let vGrade, vPlant, vDelivery, vQuality, vPrice, vPurchaseOrder, vPlantnumber, vSuppliedMaterials;
                 if (oData.results.length > 0) {
