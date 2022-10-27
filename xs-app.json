@@ -10,7 +10,7 @@
             "csrfProtection": false
         },
         {
-            "source": "^/sap/opu/odata/(.*)$",
+            "source": "^/sap/opu/odataq/(.*)$",
             "target": "/sap/opu/odata/$1",
             "destination": "BIPCE",
             "authenticationType": "xsuaa",
