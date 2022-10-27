@@ -17,10 +17,10 @@ sap.ui.define([
             onInit: function () {
                 const oComponent = this.getOwnerComponent();
                 const oRouter = oComponent.getRouter();
-                oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
                 this.getView().setModel(new JSONModel({}), "appModel");
+                this.screenWidth = oComponent.getModel("device").getData().resize.width;
+                oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
             },
-
             onPoNumberMatched: async function (oEvent) {
                 let sPoNo, TT, WI, TI;
                 if (window.location.hostname.includes("applicationstudio.cloud.sap")) {
