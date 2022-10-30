@@ -121,7 +121,7 @@
                 <!-- Splitter 4 Approval Decision -->
                 <layout:Splitter>
                     <layout:layoutData>
-                        <layout:SplitterLayoutData  size="25%" />
+                        <layout:SplitterLayoutData  size="26%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel  width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
