@@ -36,7 +36,7 @@
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
-            <layout:Splitter id="idSplitterLayoutMain" height="150vh" orientation="Vertical">
+            <layout:Splitter id="idSplitterLayoutMain" height="200vh" orientation="Vertical">
                 <!-- Splitter 1 Vendor History and Milestone Data-->
                 <layout:Splitter id="_IDGenSplitter1">
                     <layout:layoutData>
@@ -50,9 +50,9 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML"/>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStones" type="XML"/>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMiles" type="XML"/>
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStones" type="XML" />
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMiles" type="XML" />
                             </content>
                         </Panel>
 
@@ -63,7 +63,7 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.VendorAnalysis" type="XML"/>
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.VendorAnalysis" type="XML" />
                             </content>
                         </Panel>
                     </layout:contentAreas>
@@ -72,7 +72,7 @@
                 <!-- Splitter 2 PO Analysis -->
                 <layout:Splitter id="_IDGenSplitter2">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="25%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="18%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanelPOANalysis" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
@@ -82,7 +82,7 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POAnalysisMicroChart" type="XML"/>
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POAnalysisMicroChart" type="XML" />
                             </content>
                         </Panel>
                     </layout:contentAreas>
@@ -91,51 +91,62 @@
                 <!-- Splitter 3 PO Item and PO Item History -->
                 <layout:Splitter id="_IDGenSplitter3">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="30%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="25%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
                             <headerToolbar>
-                                <OverflowToolbar >
-                                    <Title  text="{i18n>POItemsCap}" />
+                                <OverflowToolbar>
+                                    <Title text="{i18n>POItemsCap}" />
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItems" type="XML"/>
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItems" type="XML" />
                             </content>
                         </Panel>
 
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
                             <headerToolbar>
-                                <OverflowToolbar >
-                                    <Title  text="{i18n>POItemsHistCap}" />
+                                <OverflowToolbar>
+                                    <Title text="{i18n>POItemsHistCap}" />
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML"/>
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML" />
                             </content>
                         </Panel>
                     </layout:contentAreas>
                 </layout:Splitter>
 
-                <!-- Splitter 4 Approval Decision -->            
-                <layout:Splitter id="_IDGenSplitter4">
+                <!-- Splitter 4 Approval Decision -->
+                <layout:Splitter>
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData10" size="22%" />
+                        <layout:SplitterLayoutData  size="25%" />
                     </layout:layoutData>
                     <layout:contentAreas>
-                        <Panel id="_IDGenPanelPOANalysis4" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                        <Panel  width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
                             <headerToolbar>
-                                <OverflowToolbar id="_IDGenOverflowToolbar4">
-                                    <Title text="{i18n>ApprovalDecision}" />
+                                <OverflowToolbar >
+                                    <Title  text="{i18n>ApprovalDecision}" />
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.Approval" type="XML" />
+                            </content>
+                        </Panel>
+
+                        <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                            <headerToolbar>
+                                <OverflowToolbar >
+                                    <Title text="{i18n>ApproverDecision}" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <content>
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.ApproverDecision" type="XML" />
                             </content>
                         </Panel>
                     </layout:contentAreas>
                 </layout:Splitter>
-
             </layout:Splitter>
         </f:content>
     </f:DynamicPage>

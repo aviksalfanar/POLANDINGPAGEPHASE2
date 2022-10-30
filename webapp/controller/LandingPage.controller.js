@@ -57,6 +57,7 @@ sap.ui.define([
                     this.getView().getModel("appModel").setData(data)
                     this.setHDRToMstones(data.HdrToMStones.results)
                     this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
+                    this.getModel("appModel").setProperty("/ApprovalLevels", data.HdrToApDec.results);
                     this.setPoAnalysisModels(data.HdrToAnalysis.results);
                     console.log(this.getView().getModel("appModel").getData());
                     await this.setBOHeader(data.PlantCod, data.VndCode, data.PurOrg);

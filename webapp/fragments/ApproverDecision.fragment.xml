@@ -1,0 +1,13 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <VBox backgroundDesign="Solid" id="pdfAppbox">
+        <HBox justifyContent="Start" class="BackgroundApproverDecisionBox sapUiTinyMarginTop">
+            <Label text="Approver Decision" class="fontColor" />
+        </HBox>
+        <TextArea id="idGetText" placeholder="Please enter comments" height="8em" width="100%" class="sapUiSmallMarginTop" />
+        <HBox justifyContent="Center">
+            <Button id="idApprovButton" press="onApprove" text="{i18n>Approve}" class="sapUiLargeMarginEnd ApproveButton ApproveIcon" icon="sap-icon://accept" />
+            <Button id="idRejectButton" press="onReject" text="{i18n>Reject}" class="sapUiLargeMarginEnd RejectButton" icon="sap-icon://decline" />
+            <Button id="idSubmit" press="onForward" text="{i18n>Forward}" icon="sap-icon://forward" type="Emphasized" visible="false" />
+        </HBox>
+    </VBox>
+</core:FragmentDefinition>
