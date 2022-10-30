@@ -50,6 +50,11 @@ sap.ui.define([
 
                 }
 
+                this.WI = WI;
+                this.TI = TI;
+                this.TT = TT;
+                this.PONumber = sPoNo;
+
                 try {
                     const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
                     const sPath = `/POHeaderSet('${sPoNo}')`;
@@ -285,7 +290,113 @@ sap.ui.define([
                         }
                     })
                 })
-            }
+            },
+
+            onApprove: function (oEvent) {
+                MessageBox.show("Are you sure you want to Approve this PO?", {
+                    icon: MessageBox.Icon.WARNING,
+                    title: this.getView().getModel("i18n").getProperty("APPROVE"),
+                    actions: ["OK", "CANCEL"],
+                    onClose: jQuery.proxy(this._fnHandleApproveTask, this)
+                });
+            },
+    
+            _fnHandleApproveTask: function (sAction) {
+                if (sAction === "OK") {
+                    var oRemarks = this.byId("idGetText").getValue();
+                    var oApprovepayload = {
+                        "Decision": "0",
+                        "ApprovalSet": [{
+                            "DecisionKey": "0001",
+                            "WiId": this.WI,
+                            "TaskID": this.TI,
+                            "AppType": this.TT,
+                            "Remarks": oRemarks
+                        }]
+                    }
+                    // this._getBusyDialog().setText("Purchase Order is Approved ");
+                    // this._getBusyDialog().open();
+                    this.getView().getModel("INBOX").create("/ApprovalHeaderSet", oApprovepayload, {
+                        success: jQuery.proxy(this._fnHandleSuccessApprove, this),
+                        error: jQuery.proxy(this._fnHandleErrorApprove, this)
+                    });
+                }
+    
+            },
+    
+            _fnHandleSuccessApprove: function (oData, oResponce) {
+                this._getBusyDialog().close();
+                if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
+                    MessageBox.error("Purchase Order :" + "" + this.PONumber + " " + "is Not Approved, Please contact Admin");
+                } else {
+                    MessageBox.success("Purchase Order :" + "" + this.PONumber + " " + "is Approved");
+                    this.getView().byId("idApprovButton").setEnabled(false)
+                    this.getView().byId("idRejectButton").setEnabled(false)
+                    this.getView().byId("idGetText").setEnabled(false)
+                    window.close()
+                }
+            },
+    
+            _fnHandleErrorApprove: function (oError) {
+    
+            },
+    
+            onReject: function (oEvent) {
+                MessageBox.show("Are you sure you want  to Reject this PO?", {
+                    icon: MessageBox.Icon.WARNING,
+                    title: this.getView().getModel("i18n").getProperty("REJECT"),
+                    actions: ["OK", "CANCEL"],
+                    onClose: jQuery.proxy(this._fnHandleRejectTask, this)
+                });
+            },
+    
+            _fnHandleRejectTask: function (sAction) {
+                if (sAction === "OK") {
+                    var oRemarks = this.byId("idGetText").getValue();
+                    if (oRemarks !== "") {
+                        this.getView().byId("idGetText").setValueState("None")
+                        var oApprovepayload = {
+                            "Decision": "0",
+                            "ApprovalSet": [{
+                                "DecisionKey": "0002",
+                                "WiId": this.WI,
+                                "TaskID": this.TI,
+                                "AppType": this.TT,
+                                "Remarks": oRemarks
+                            }]
+                        }
+                        // this._getBusyDialog().setText("Purchase Order is Rejected");
+                        // this._getBusyDialog().open();
+                        this.getModel("INBOX").create("/ApprovalHeaderSet", oApprovepayload, {
+                            success: jQuery.proxy(this._fnHandleSuccessReject, this),
+                            error: jQuery.proxy(this._fnHandleErrorReject, this)
+                        });
+                    } else {
+                        this.getView().byId("idGetText").setValueStateText("Please enter comments")
+                        this.getView().byId("idGetText").setValueState("Error")
+    
+                    }
+                }
+    
+            },
+    
+            _fnHandleSuccessReject: function (oData, oResponce) {
+                this._getBusyDialog().close();
+                if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
+                    MessageBox.error("Purchase Order :" + "" + this.PONumber + " " + "is Not Rejected, Please contact Admin");
+                } else {
+                    MessageBox.success("Purchase Order :" + "" + this.PONumber + " " + "is Rejected");
+                    this.getView().byId("idApprovButton").setEnabled(false)
+                    this.getView().byId("idRejectButton").setEnabled(false)
+                    this.getView().byId("idGetText").setEnabled(false)
+                    window.close()
+                }
+    
+            },
+    
+            _fnHandleErrorReject: function (oError) {
+    
+            },            
 
         });
     });
