@@ -66,12 +66,18 @@ sap.ui.define([
                     const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
                     // Setting up the URL.
                     const sPath = `/POHeaderSet('${sPoNo}')`;
-                    // Get the Data.
+                    // Get the Data for PO Read .
                     const data = await this.getData(sPath, null, aExpands);
+                    // Setting the Data in the APPModel 
                     this.getView().getModel("appModel").setData(data)
+                    // Getting the Mile Stone Data processed
                     this.setHDRToMstones(data.HdrToMStones.results)
+                    // Setting the PO Items Data
                     this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
                     this.getView().getModel("appModel").setProperty("/ApprovalLevels", data.HdrToApDec.results);
+                    // Set the property for attachments
+                    this.getView().getModel("appModel").setProperty("/POAttach", data.HdrToAttach.results)
+                    this.addVendorAttachmentsIcons(data.HdrToAttach.results);
                     this.setPoAnalysisModels(data.HdrToAnalysis.results);
                     console.log(this.getView().getModel("appModel").getData());
                     await this.setBOHeader(data.PlantCod, data.VndCode, data.PurOrg);
@@ -84,6 +90,95 @@ sap.ui.define([
                     console.log(error.responseText);
                 }
 
+            },
+
+            addVendorAttachmentsIcons: function (aData) {
+                const oHBox = this.getView().byId("idHBoxAttach");
+                if (aData.length) {
+                    aData.forEach((data, index) => {
+                        const oIcon = new sap.ui.core.Icon("icon" + index, {
+                            src: "sap-icon://attachment",
+                            press: [this.onVendorAttchmentIconPress, this],
+                            customData: {
+                                Type: "sap.ui.core.CustomData",
+                                key: this.getView().getModel("appModel").getData().POAttach[index].LogDoc
+                            }
+
+                        });
+                        oHBox.addItem(oIcon);
+                    })
+                }
+            },
+
+            onVendorAttchmentIconPress: function (oEvent) {
+                // this._getBusyDialog().open();
+                const oData = this.getView().getModel("appModel").getData().POAttach.filter(row => row.LogDoc === oEvent.getSource().getAggregation(
+                    "customData")[0].getKey())[0];
+                this.downloadTheFile(oData.DocNum, oData.DocPrt, oData.DocType, oData.DocVer, oData.LogDoc);
+            },
+
+            downloadTheFile: function (DocNum, DocPrt, DocType, DocVer, LogDoc) {
+                var sPath = "/DMSFileSet(DocType='" + DocType + "',DocNum='" + DocNum + "',DocVer='" + DocVer + "',DocPrt='" + DocPrt +
+                    "',LogDoc='" + LogDoc + "')";
+                this.getView().getModel().read(sPath, {
+                    success: jQuery.proxy(this._fnHandleSuccessFileRead, this),
+                    error: jQuery.proxy(this._fnHandleErrorFileRead, this)
+                });
+    
+            },
+
+            _fnHandleSuccessFileRead: function (oData, oResponce) {
+                var contentType
+                var formate = oData.FilName.split(".")[oData.FilName.split(".").length - 1]
+                if (formate === "XLSX" || formate === "xls" || formate === "xlsx") {
+                    contentType = 'application/vnd.ms-excel';
+                }
+                if (formate === "MSG" || formate === "msg") {
+                    contentType = 'application/vnd.ms-outlook';
+                }
+                if (formate === "PDF" || formate === "pdf") {
+                    contentType = 'application/pdf';
+                }
+                if (formate === "TXT" || formate === "txt") {
+                    contentType = 'text/plain';
+                }
+                if (formate === "PPT" || formate === "ppt") {
+                    contentType = 'application/vnd.ms-powerpoint';
+                }
+                if (formate === "JPEG" || formate === "jpeg") {
+                    contentType = 'image/jpeg';
+                }
+                if (formate === "JPG" || formate === "jpg") {
+                    contentType = 'image/jpeg';
+                }
+                if (formate === "DOC" || formate === "doc") {
+                    contentType = 'application/msword';
+                }
+                if (formate === "HTML" || formate === "html") {
+                    contentType = 'text/html';
+                }
+                if (formate === "DWG" || formate === "dwg") {
+                    contentType = 'application/dwg';
+                }
+                if (formate === "MHT" || formate === "mht") {
+                    contentType = 'message/rfc822';
+                }
+                if (formate === "MHTML" || formate === "mhtml") {
+                    contentType = 'message/rfc822';
+                }
+                var blob = this._fnb64toBlob(oData.FilCont, contentType);
+                var a = document.createElement("a")
+                var blobURL = URL.createObjectURL(blob)
+                a.download = oData.FilName
+                a.href = blobURL
+                document.body.appendChild(a)
+                a.click()
+                document.body.removeChild(a)
+                // this._getBusyDialog().close();
+            },
+
+            _fnHandleErrorFileRead: function (oError) {
+                // this._getBusyDialog().close();
             },
 
             setBOHeader: async function (sPlant, sVCode, sPurg) {
@@ -334,7 +429,7 @@ sap.ui.define([
             },
 
             _fnHandleSuccessApprove: function (oData, oResponce) {
-                this._getBusyDialog().close();
+                // this._getBusyDialog().close();
                 if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
                     MessageBox.error("Purchase Order :" + "" + this.PONumber + " " + "is Not Approved, Please contact Admin");
                 } else {
@@ -390,7 +485,7 @@ sap.ui.define([
             },
 
             _fnHandleSuccessReject: function (oData, oResponce) {
-                this._getBusyDialog().close();
+                // this._getBusyDialog().close();
                 if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
                     MessageBox.error("Purchase Order :" + "" + this.PONumber + " " + "is Not Rejected, Please contact Admin");
                 } else {

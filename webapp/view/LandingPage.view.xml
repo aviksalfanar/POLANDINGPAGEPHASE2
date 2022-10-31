@@ -115,19 +115,30 @@
                                 <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML" />
                             </content>
                         </Panel>
+
+                        <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="PO Item History Chart" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <content>
+                                <!-- <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML" /> -->
+                            </content>
+                        </Panel>
                     </layout:contentAreas>
                 </layout:Splitter>
 
                 <!-- Splitter 4 Approval Decision -->
                 <layout:Splitter>
                     <layout:layoutData>
-                        <layout:SplitterLayoutData  size="26%" />
+                        <layout:SplitterLayoutData size="26%" />
                     </layout:layoutData>
                     <layout:contentAreas>
-                        <Panel  width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                        <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
                             <headerToolbar>
-                                <OverflowToolbar >
-                                    <Title  text="{i18n>ApprovalDecision}" />
+                                <OverflowToolbar>
+                                    <Title text="{i18n>ApprovalDecision}" />
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
@@ -137,7 +148,7 @@
 
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
                             <headerToolbar>
-                                <OverflowToolbar >
+                                <OverflowToolbar>
                                     <Title text="{i18n>ApproverDecision}" />
                                 </OverflowToolbar>
                             </headerToolbar>
