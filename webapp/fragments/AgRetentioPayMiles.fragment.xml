@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
-    <Table id="idRM" autoPopinMode="true" mode="MultiSelect" contextualWidth="Auto" items="{appModel>/RetentionPM}">
+    <Table id="idRM" autoPopinMode="true" mode="None" contextualWidth="Auto" items="{appModel>/RetentionPM}">
         <headerToolbar>
             <OverflowToolbar>
                 <content>

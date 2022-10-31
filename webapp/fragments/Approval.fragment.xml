@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
-    <Table id="idApprovalDecision" autoPopinMode="true" contextualWidth="Auto" mode="MultiSelect" alternateRowColors="true" items="{appModel>/ApprovalLevels}" class="sapUiMediumMarginBottom">
+    <Table id="idApprovalDecision" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/ApprovalLevels}" class="sapUiMediumMarginBottom">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
