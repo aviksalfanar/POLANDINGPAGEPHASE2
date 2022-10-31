@@ -15,21 +15,27 @@ sap.ui.define([
         return Controller.extend("com.alfanar.polandingpage.polandingpage.controller.LandingPage", {
             formatter: formatter,
             onInit: function () {
+                // Getting the Component Object
                 const oComponent = this.getOwnerComponent();
+                // Fetching the Routing Object from the Component Object
                 const oRouter = oComponent.getRouter();
+                // Creating the appModel which is the central Model we would be using it
                 this.getView().setModel(new JSONModel({}), "appModel");
+                // Taking the Screesn width of the Browser or App for future
                 this.screenWidth = oComponent.getModel("device").getData().resize.width;
+                // Attaching the PatternMatched Event to get called after each URL Load
                 oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
             },
             onPoNumberMatched: async function (oEvent) {
                 let sPoNo, TT, WI, TI;
+                // Checking if the HostName has applicationstudio.cloud.sap that means it is running from BAS So that
                 if (window.location.hostname.includes("applicationstudio.cloud.sap")) {
                     // This section is for Static Testing
                     sPoNo = "4200008157" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data)
                     TT = "POR"
                     WI = "000002605618"
                     TI = "TS99000076"
-                } else {
+                } else { // Else it is running from the BTP
                     const url = new URL(window.location.href);
                     let encodedURL;
 
@@ -41,23 +47,26 @@ sap.ui.define([
                         TT = parameter.split("&")[1].split("=")[1]
                         WI = parameter.split("&")[2].split("=")[1]
                         TI = parameter.split("&")[3].split("=")[1]
-                    }else{
+                    } else {
                         sPoNo = url.searchParams.get("PONO");
-                        TT = url.searchParams.get("TT");                        
-                        WI = url.searchParams.get("WI");                        
-                        TI = url.searchParams.get("TI");                        
+                        TT = url.searchParams.get("TT");
+                        WI = url.searchParams.get("WI");
+                        TI = url.searchParams.get("TI");
                     }
 
                 }
-
+                // Setting up the WI, TI, TT PONumber Globally
                 this.WI = WI;
                 this.TI = TI;
                 this.TT = TT;
                 this.PONumber = sPoNo;
 
                 try {
+                    // Getting the Expands so that we can get the data.
                     const aExpands = ["HdrToMStones", "HdrToItems", "HdrToApDec", "HdrToAnalysis", "HdrToAttach"];
+                    // Setting up the URL.
                     const sPath = `/POHeaderSet('${sPoNo}')`;
+                    // Get the Data.
                     const data = await this.getData(sPath, null, aExpands);
                     this.getView().getModel("appModel").setData(data)
                     this.setHDRToMstones(data.HdrToMStones.results)
@@ -300,7 +309,7 @@ sap.ui.define([
                     onClose: jQuery.proxy(this._fnHandleApproveTask, this)
                 });
             },
-    
+
             _fnHandleApproveTask: function (sAction) {
                 if (sAction === "OK") {
                     var oRemarks = this.byId("idGetText").getValue();
@@ -321,9 +330,9 @@ sap.ui.define([
                         error: jQuery.proxy(this._fnHandleErrorApprove, this)
                     });
                 }
-    
+
             },
-    
+
             _fnHandleSuccessApprove: function (oData, oResponce) {
                 this._getBusyDialog().close();
                 if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
@@ -336,11 +345,11 @@ sap.ui.define([
                     window.close()
                 }
             },
-    
+
             _fnHandleErrorApprove: function (oError) {
-    
+
             },
-    
+
             onReject: function (oEvent) {
                 MessageBox.show("Are you sure you want  to Reject this PO?", {
                     icon: MessageBox.Icon.WARNING,
@@ -349,7 +358,7 @@ sap.ui.define([
                     onClose: jQuery.proxy(this._fnHandleRejectTask, this)
                 });
             },
-    
+
             _fnHandleRejectTask: function (sAction) {
                 if (sAction === "OK") {
                     var oRemarks = this.byId("idGetText").getValue();
@@ -374,12 +383,12 @@ sap.ui.define([
                     } else {
                         this.getView().byId("idGetText").setValueStateText("Please enter comments")
                         this.getView().byId("idGetText").setValueState("Error")
-    
+
                     }
                 }
-    
+
             },
-    
+
             _fnHandleSuccessReject: function (oData, oResponce) {
                 this._getBusyDialog().close();
                 if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
@@ -391,12 +400,12 @@ sap.ui.define([
                     this.getView().byId("idGetText").setEnabled(false)
                     window.close()
                 }
-    
+
             },
-    
+
             _fnHandleErrorReject: function (oError) {
-    
-            },            
+
+            },
 
         });
     });
