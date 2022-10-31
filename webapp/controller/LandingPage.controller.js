@@ -124,7 +124,7 @@ sap.ui.define([
                     success: jQuery.proxy(this._fnHandleSuccessFileRead, this),
                     error: jQuery.proxy(this._fnHandleErrorFileRead, this)
                 });
-    
+
             },
 
             _fnHandleSuccessFileRead: function (oData, oResponce) {
@@ -179,6 +179,34 @@ sap.ui.define([
 
             _fnHandleErrorFileRead: function (oError) {
                 // this._getBusyDialog().close();
+            },
+
+            _fnb64toBlob: function (b64Data, contentType, sliceSize) {
+
+                contentType = contentType || '';
+                sliceSize = sliceSize || 512;
+
+                var byteCharacters = atob(b64Data);
+                var byteArrays = [];
+
+                for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                    var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                    var byteNumbers = new Array(slice.length);
+                    for (var i = 0; i < slice.length; i++) {
+                        byteNumbers[i] = slice.charCodeAt(i);
+                    }
+
+                    var byteArray = new Uint8Array(byteNumbers);
+
+                    byteArrays.push(byteArray);
+                }
+
+                var blob = new Blob(byteArrays, {
+                    type: contentType
+                });
+                return blob;
+
             },
 
             setBOHeader: async function (sPlant, sVCode, sPurg) {
