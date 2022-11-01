@@ -1,0 +1,24 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+    <layout:FixFlex id='idPoItemHistoryChartFixFlex' minFlexSize="250">
+        <layout:flexContent>
+            <viz:VizFrame id="idPoItemHistoryChart" vizProperties="{title: {text : 'Po Item History', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{appModel>/ItemHisData}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Date" value="{appModel>Date}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Price" value="{appModel>Price}" />
+                            <viz.data:MeasureDefinition name="Price" value="{appModel>Price}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeedLinePoItem' uid="valueAxis" type="Measure" values="Price" />
+                    <viz.feeds:FeedItem id='categoryAxisFeedLinePoItem' uid="categoryAxis" type="Dimension" values="Date" />
+                </viz:feeds>
+            </viz:VizFrame>
+        </layout:flexContent>
+    </layout:FixFlex>
+</core:FragmentDefinition>

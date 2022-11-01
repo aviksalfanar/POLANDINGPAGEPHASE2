@@ -123,7 +123,7 @@
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
-                                <!-- <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML" /> -->
+                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistoryChart" type="XML" />
                             </content>
                         </Panel>
                     </layout:contentAreas>
