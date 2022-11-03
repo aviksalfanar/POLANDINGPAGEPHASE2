@@ -20,7 +20,7 @@
                             <Text text="{appModel>/MatPriceVsOldPrice/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Link text="Non-Match" press="onMatPriceVsOldPrice" emphasized="true" textAlign="End" enabled="{= ${appModel>/MatPriceVsOldPrice/NMatch} > 0 ? true : false}" />
                             <Text text="{appModel>/MatPriceVsOldPrice/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -44,7 +44,7 @@
                             <Text text="{appModel>/MaterialUom/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Link text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/MaterialUom/NMatch} > 0 ? true : false}" />
                             <Text text="{appModel>/MaterialUom/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -68,7 +68,7 @@
                             <Text text="{appModel>/OrderCurrency/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Link text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/OrderCurrency/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/OrderCurrency/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -92,7 +92,7 @@
                             <Text text="{appModel>/POType/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Link text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/POType/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/POType/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -116,7 +116,7 @@
                             <Text text="{appModel>/PaymentTerms/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Link text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/PaymentTerms/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/PaymentTerms/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -140,7 +140,7 @@
                             <Text text="{appModel>/InventoryAnalysis/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Link text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/InventoryAnalysis/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/InventoryAnalysis/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -164,7 +164,7 @@
                             <Text text="{appModel>/OpenNcrVsVendor/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" emphasized="true" textAlign="End" />
+                            <Link text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/OpenNcrVsVendor/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/OpenNcrVsVendor/NMatch}" />
                         </FlexBox>
                     </FlexBox>

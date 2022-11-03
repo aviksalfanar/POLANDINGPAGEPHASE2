@@ -15,23 +15,27 @@
                     <layout:VerticalLayout id="_IDGenVerticalLayout1" class="sapUiMediumMarginEnd">
                         <ObjectAttribute id="_IDGenObjectAttribute1" title="{i18n>PONumber}" text="{appModel>/PoNum}" />
                         <ObjectAttribute id="_IDGenObjectAttribute2" title="{i18n>Plant}" text="{appModel>/Plant}" />
-                        <ObjectAttribute id="_IDGenObjectAttribute3" title="{i18n>CreatedBy}" text="Tobe Fixed" />
                     </layout:VerticalLayout>
 
                     <layout:VerticalLayout id="_IDGenVerticalLayout2" class="sapUiMediumMarginEnd">
+                        <ObjectAttribute id="_IDGenObjectAttribute3" title="{i18n>CreatedBy}" text="Tobe Fixed" />
                         <ObjectAttribute id="_IDGenObjectAttribute4" title="{i18n>CreationDate}" text="To be fixed" />
+                    </layout:VerticalLayout>
+
+                    <layout:VerticalLayout id="_IDGenVerticalLayout3" class="sapUiMediumMarginEnd">
                         <ObjectAttribute id="_IDGenObjectAttribute5" title="{i18n>POValue}" text="{appModel>/PoValue}" />
                         <ObjectAttribute id="_IDGenObjectAttribute6" title="{i18n>POType}" text="{appModel>/PoType}" />
                     </layout:VerticalLayout>
 
-                    <layout:VerticalLayout id="_IDGenVerticalLayout3" class="sapUiMediumMarginEnd">
+                    <layout:VerticalLayout id="_IDGenVerticalLayout4" class="sapUiMediumMarginEnd">
                         <ObjectAttribute id="_IDGenObjectAttribute8" title="{i18n>INCOTerm}" text="{appModel>/IncoTerm}" />
                         <ObjectAttribute id="_IDGenObjectAttribute7" title="{i18n>PurchasingGroup}" text="{appModel>/PurGroup}" />
+                    </layout:VerticalLayout>
+                    
+                    <layout:VerticalLayout id="_IDGenVerticalLayout5" class="sapUiMediumMarginEnd">
                         <ObjectAttribute id="_IDGenObjectAttribute9" title="{i18n>POSaving}" text="{appModel>/PoSaving}" />
-                    </layout:VerticalLayout>
-                    <layout:VerticalLayout id="_IDGenVerticalLayout4" class="sapUiMediumMarginEnd">
                         <ObjectAttribute id="_IDGenObjectAttribute10" title="{i18n>PaymentTermAndMethod}" text="{appModel>/PmtTerm}" />
-                    </layout:VerticalLayout>
+                    </layout:VerticalLayout>                    
                 </layout:HorizontalLayout>
             </f:DynamicPageHeader>
         </f:header>

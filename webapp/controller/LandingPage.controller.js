@@ -26,6 +26,11 @@ sap.ui.define([
                 // Attaching the PatternMatched Event to get called after each URL Load
                 oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
             },
+
+            onMatPriceVsOldPrice: function(oEvent){
+                
+            },
+
             onPoNumberMatched: async function (oEvent) {
                 let sPoNo, TT, WI, TI;
                 // Checking if the HostName has applicationstudio.cloud.sap that means it is running from BAS So that
