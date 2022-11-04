@@ -1,16 +1,16 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<Dialog resizable="true" title="Payment Terms" class="sapUiSizeCompact" contentHeight="40%" contentWidth="70%">
+	<Dialog resizable="true" draggable="true" title="Payment Terms" class="sapUiSizeCompact" contentHeight="40%" contentWidth="70%">
 		<content>
 			<Table id="idPaymentTerm" items="{appModel>/PaymentTerms}">
 				<columns>
 					<Column >
-						<Text text="Current Payment Term"/>
+						<Text text="{i18n>CurrentPaymentTerm}"/>
 					</Column>
 					<Column >
-						<Text text="Previous Payment Term"/>
+						<Text text="{i18n>PreviousPaymentTerm}"/>
 					</Column>
 					<Column >
-						<Text text="Payment Method"/>
+						<Text text="{i18n>PaymentMethod}"/>
 					</Column>
 				</columns>
 				<items>

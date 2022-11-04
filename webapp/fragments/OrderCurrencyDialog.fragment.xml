@@ -1,19 +1,19 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" >
-	<Dialog resizable="true" title="Order Currency" class="sapUiSizeCompact" contentHeight="40%" contentWidth="40%">
+	<Dialog resizable="true" draggable="true" title="Order Currency" class="sapUiSizeCompact" contentHeight="40%" contentWidth="40%">
 		<content>
 			<Table id="idCurrencytable" items="{appModel>/Currency}">
 				<columns>
 					<Column >
-						<Text text="Item"/>
+						<Text text="{i18n>Item}"/>
 					</Column>
 					<Column >
-						<Text text="Description"/>
+						<Text text="{i18n>Description}"/>
 					</Column>
 					<Column >
-						<Text text="Current Currency"/>
+						<Text text="{i18n>CurrentCurrency}"/>
 					</Column>
 					<Column >
-						<Text text="Last Currency"/>
+						<Text text="{i18n>LastCurrency}"/>
 					</Column>
 				</columns>
 				<items>

@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
-	<Dialog resizable="true" class="sapUiSizeCompact" contentHeight="40%" contentWidth="90%" showHeader="false">
+	<Dialog resizable="true" draggable="true" class="sapUiSizeCompact" contentHeight="40%" contentWidth="90%" showHeader="false">
 		<content>
 			<Table id="idInventorytable" items="{appModel>/InventoryAnalysis}" class="sapUiSmallMarginEnd">
 				<headerToolbar>
@@ -14,25 +14,25 @@
 				</headerToolbar>
 				<columns>
 					<Column >
-						<Text text="Item"/>
+						<Text text="{i18n>Item}"/>
 					</Column>
 					<Column >
-						<Text text="Description"/>
+						<Text text="{i18n>Description}"/>
 					</Column>
 					<Column >
-						<Text text="A=Available Stock:Unrestricted+QMLot"/>
+						<Text text="{i18n>AvailableUnrestricted}"/>
 					</Column>
 					<Column >
-						<Text text="B=Open Purchase orders Exclude Return PO+Open Purchase Requestions" wrapping="true"/>
+						<Text text="{i18n>OpenPurchaseRequestions}" wrapping="true"/>
 					</Column>
 					<Column >
-						<Text text="C=PO Qunatity in Current PO" wrapping="true"/>
+						<Text text="{i18n>POQunatityinCurrentPO}" wrapping="true"/>
 					</Column>
 					<Column >
-						<Text text="D=Open Demand" wrapping="true"/>
+						<Text text="{i18n>OpenDemand}" wrapping="true"/>
 					</Column>
 					<Column >
-						<Text text="E=Last 6 Months Consumption" wrapping="true"/>
+						<Text text="{i18n>Last6MonthsConsumption}" wrapping="true"/>
 					</Column>
 				</columns>
 				<items>

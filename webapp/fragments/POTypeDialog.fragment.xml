@@ -4,10 +4,10 @@
             <Table id="idPoType" items="{appModel>/PoTypeAnalysis}">
                 <columns>
                     <Column>
-                        <Text text="PO Type" />
+                        <Text text="{i18n>POType}" />
                     </Column>
                     <Column>
-                        <Text text="Vendor Country" />
+                        <Text text="{i18n>VendorCountry}" />
                     </Column>
                 </columns>
                 <items>

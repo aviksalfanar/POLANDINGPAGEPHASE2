@@ -6,19 +6,19 @@
 			<Table id="idOpenNcr" items="{appModel>/OpenNcr}">
 				<columns>
 					<Column >
-						<Text text="Material"/>
+						<Text text="{i18n>Material}"/>
 					</Column>
 					<Column >
-						<Text text="Material Description"/>
+						<Text text="{i18n>MaterialDescription}"/>
 					</Column>
 					<Column >
-						<Text text="Notification No"/>
+						<Text text="{i18n>NotificationNo}"/>
 					</Column>
 					<Column >
-						<Text text="Notification Desc"/>
+						<Text text="{i18n>NotificationDesc}"/>
 					</Column>
 					<Column >
-						<Text text="Plant"/>
+						<Text text="{i18n>Plant}"/>
 					</Column>
 				</columns>
 				<items>
