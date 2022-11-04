@@ -42,7 +42,7 @@ sap.ui.define([
                 })
 
                 const data = await this.getData(sPath, "", [], finalFilter);
-                this.getView().getModel("appModel").setProperty("/MatchMaterials", data?.results);
+                this.getView().getModel("appModel").setProperty("/MatchMaterials", data.results);
                 this.getView().getModel("appModel").refresh(true);
             },
 
@@ -60,7 +60,7 @@ sap.ui.define([
                 })
 
                 const data = await this.getData(sPath, "", [], finalFilter);
-                const aMaterialUOM = data?.results.map(materialUom => {
+                const aMaterialUOM = data.results.map(materialUom => {
                     return {
                         MatNum: materialUom.MatNum,
                         MatDesc: materialUom.MatDesc,
@@ -98,7 +98,7 @@ sap.ui.define([
                 })
 
                 const data = await this.getData(sPath, "", [], finalFilter);
-                const aOrderCurrencyValue = data?.results.map(order => {
+                const aOrderCurrencyValue = data.results.map(order => {
                     return {
                         MatNum: order.MatNum,
                         MatDesc: order.MatDesc,
@@ -137,7 +137,7 @@ sap.ui.define([
                 })
 
                 const data = await this.getData(sPath, "", [], finalFilter);
-                const aPoType = data?.results.map(poType => {
+                const aPoType = data.results.map(poType => {
                     return {
                         PoType: poType.MiscDat.split(";")[0],
                         VendorCountry: poType.MiscDat.split(";")[1],
@@ -174,7 +174,7 @@ sap.ui.define([
 
                 const data = await this.getData(sPath, "", [], finalFilter);
 
-                const aPaymentTerms = data?.results.map(paymentTerm => {
+                const aPaymentTerms = data.results.map(paymentTerm => {
                     return {
                         CurrentPaymentTerm: paymentTerm.MiscDat.split(";")[0].replace(/\t/g, ''),
                         PreviousPaymentTerm: paymentTerm.MiscDat.split(";")[1],
@@ -212,7 +212,7 @@ sap.ui.define([
                     and: true
                 })
                 const data = await this.getData(sPath, "", [], finalFilter);
-                let aInventoryData = data?.results.map(sData => {
+                let aInventoryData = data.results.map(sData => {
                     return {
                         Material: sData.MatNum,
 						MaterialDescription: sData.MatDesc,
@@ -254,7 +254,7 @@ sap.ui.define([
                 })
 
                 const data = await this.getData(sPath, "", [], finalFilter);
-                let aOpenNCrVsVendorData = data?.results(onvv => {
+                let aOpenNCrVsVendorData = data.results(onvv => {
                     return {
                         MatNum: onvv.MatNum,
 						MatDesc: onvv.MatDesc,
