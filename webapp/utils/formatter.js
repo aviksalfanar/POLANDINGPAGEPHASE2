@@ -42,6 +42,6 @@ sap.ui.define([
         getPercentageForMicroChart: function(sPercentage){
             const fPercentage = parseFloat(sPercentage);
             return fPercentage;                 
-        }
+        },
     }
 });

@@ -29,8 +29,8 @@ sap.ui.define([
             },
 
             onMatPriceVsOldPrice: async function (oEvent) {
-                // On click of this we will open MatPriceVsOldPriceDialog.fragment.xml fragment
-                // Get the Data from  POAnalysisMatsSet service for e.g. /POAnalysisMatsSet?$filter=PoNum eq '4200001905' and MCode eq 'P' and MStatus eq 'N'&$format=json
+                this.oMaterialUOMFragment;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.MatPriceVsOldPriceDialog";
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
                 aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
@@ -43,6 +43,40 @@ sap.ui.define([
 
                 const data = await this.getData(sPath, "", [], finalFilter);
                 this.getView().getModel("appModel").setProperty("/MatchMaterials", data.results);
+                this.getView().getModel("appModel").refresh(true);
+
+                if (!this.oMaterialUOMFragment) {
+                    this.oMaterialUOMFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                this.oMaterialUOMFragment.open();
+
+            },
+
+            onMaterialPriceVendorDialogClose: function () {
+                if (this.oMaterialUOMFragment.isOpen()) {
+                    this.oMaterialUOMFragment.close();
+                }
+            },
+
+            onMatNumberSelect: async function (oEvent) {
+                const sSelectedMaterial = oEvent.getParameter("value");
+                const aFilters = [];
+                const sPath = "/MatPriceTrendSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MatNum", FilterOperator.EQ, sSelectedMaterial));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                });
+                const data = await this.getData(sPath, "", [], finalFilter);
+                const aMatPriceChartData =  data.results.map(matPrice => {
+                    const sConvertedDate = new Date(matPrice.CreDate);
+                    return{
+                        Date: `${sConvertedDate.getDate()}-${sConvertedDate.getMonth() + 1}-${sConvertedDate.getFullYear()}`,
+                        Price: matPrice.MatPrice
+                    }                                        
+                });
+                this.getView().getModel("appModel").setProperty("/MatPriceVendorChart", aMatPriceChartData);
                 this.getView().getModel("appModel").refresh(true);
             },
 
@@ -215,12 +249,12 @@ sap.ui.define([
                 let aInventoryData = data.results.map(sData => {
                     return {
                         Material: sData.MatNum,
-						MaterialDescription: sData.MatDesc,
-						AvailableStock: sData.MiscDat.split(";")[0],
-						OpenPurchaseorders: sData.MiscDat.split(";")[1],
-						CurrentPOQty: sData.MiscDat.split(";")[2],
-						OpenDemand: sData.MiscDat.split(";")[3],
-						Last6MonthsConsumption: sData.MiscDat.split(";")[4]
+                        MaterialDescription: sData.MatDesc,
+                        AvailableStock: sData.MiscDat.split(";")[0],
+                        OpenPurchaseorders: sData.MiscDat.split(";")[1],
+                        CurrentPOQty: sData.MiscDat.split(";")[2],
+                        OpenDemand: sData.MiscDat.split(";")[3],
+                        Last6MonthsConsumption: sData.MiscDat.split(";")[4]
                     }
                 });
                 this.getView().getModel("appModel").setProperty("/InventoryAnalysis", aInventoryData);
@@ -234,8 +268,8 @@ sap.ui.define([
 
             },
 
-            onInventoryDialogClose: function(){
-                if(this.oInventoryAnalysisFragment.isOpen()){
+            onInventoryDialogClose: function () {
+                if (this.oInventoryAnalysisFragment.isOpen()) {
                     this.oInventoryAnalysisFragment.close();
                 }
             },
@@ -257,10 +291,10 @@ sap.ui.define([
                 let aOpenNCrVsVendorData = data.results.map(onvv => {
                     return {
                         MatNum: onvv.MatNum,
-						MatDesc: onvv.MatDesc,
-						NotificationNo: onvv.MiscDat.split(";")[0],
-						NotificationDesc: onvv.MiscDat.split(";")[1],
-						Plant: onvv.MiscDat.split(";")[2]
+                        MatDesc: onvv.MatDesc,
+                        NotificationNo: onvv.MiscDat.split(";")[0],
+                        NotificationDesc: onvv.MiscDat.split(";")[1],
+                        Plant: onvv.MiscDat.split(";")[2]
                     }
                 });
                 this.getView().getModel("appModel").setProperty("/OpenNcr", aOpenNCrVsVendorData);
@@ -273,8 +307,8 @@ sap.ui.define([
 
             },
 
-            onOpenNcrDialogClose: function(){
-                if(this.oOpenNcrVsVendorFragment.isOpen()){
+            onOpenNcrDialogClose: function () {
+                if (this.oOpenNcrVsVendorFragment.isOpen()) {
                     this.oOpenNcrVsVendorFragment.close();
                 }
             },
@@ -355,12 +389,11 @@ sap.ui.define([
                             MessageBox.information("This Purchase order task was already completed");
                             that.byId("idApprovButton").setEnabled(false)
                             that.byId("idRejectButton").setEnabled(false)
-                        } else if (oData.WiStat === "READY" || oData.WiStat === "STARTED"){
+                        } else if (oData.WiStat === "READY" || oData.WiStat === "STARTED") {
                             that.byId("idApprovButton").setEnabled(true)
                             that.byId("idRejectButton").setEnabled(true)
                         }
-                        else
-                        {
+                        else {
                             that.byId("idApprovButton").setEnabled(false)
                             that.byId("idRejectButton").setEnabled(false)
                         }
