@@ -1,7 +1,7 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
 	<Dialog resizable="true" class="sapUiSizeCompact" contentHeight="40%" contentWidth="90%" showHeader="false">
 		<content>
-			<Table id="idInventorytable" items="{appModel>/Inventory}" class="sapUiSmallMarginEnd">
+			<Table id="idInventorytable" items="{appModel>/InventoryAnalysis}" class="sapUiSmallMarginEnd">
 				<headerToolbar>
 					<OverflowToolbar>
 						<content>

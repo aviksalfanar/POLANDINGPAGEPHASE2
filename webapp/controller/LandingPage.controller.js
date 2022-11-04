@@ -254,7 +254,7 @@ sap.ui.define([
                 })
 
                 const data = await this.getData(sPath, "", [], finalFilter);
-                let aOpenNCrVsVendorData = data.results(onvv => {
+                let aOpenNCrVsVendorData = data.results.map(onvv => {
                     return {
                         MatNum: onvv.MatNum,
 						MatDesc: onvv.MatDesc,
