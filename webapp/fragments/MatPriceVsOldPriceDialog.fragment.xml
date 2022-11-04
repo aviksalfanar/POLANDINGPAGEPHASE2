@@ -11,7 +11,7 @@
                 </HBox>
                 <layout:FixFlex id='idMatPriceVsOldPriceFixFlex' minFlexSize="250">
                     <layout:flexContent>
-                        <viz:VizFrame id="idMatPriceVsOldPriceChart" uiConfig="{applicationSet:'fiori'}" vizType='line'>
+                        <viz:VizFrame id="idMatPriceVsOldPriceChart" vizProperties="{title: {text : 'Material Price Vs Vendor', visible : true}}" uiConfig="{applicationSet:'fiori'}" vizType='line'>
                             <viz:dataset>
                                 <viz.data:FlattenedDataset data="{appModel>/MatPriceVendorChart}">
                                     <viz.data:dimensions>
