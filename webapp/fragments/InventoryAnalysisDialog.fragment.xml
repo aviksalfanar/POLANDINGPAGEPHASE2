@@ -1,0 +1,58 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Dialog resizable="true" class="sapUiSizeCompact" contentHeight="40%" contentWidth="90%" showHeader="false">
+		<content>
+			<Table id="idInventorytable" items="{appModel>/Inventory}" class="sapUiSmallMarginEnd">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="Inventory Analysis" level="H2"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://sys-help" press="onFormulaCalculation"/>
+					
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column >
+						<Text text="Item"/>
+					</Column>
+					<Column >
+						<Text text="Description"/>
+					</Column>
+					<Column >
+						<Text text="A=Available Stock:Unrestricted+QMLot"/>
+					</Column>
+					<Column >
+						<Text text="B=Open Purchase orders Exclude Return PO+Open Purchase Requestions" wrapping="true"/>
+					</Column>
+					<Column >
+						<Text text="C=PO Qunatity in Current PO" wrapping="true"/>
+					</Column>
+					<Column >
+						<Text text="D=Open Demand" wrapping="true"/>
+					</Column>
+					<Column >
+						<Text text="E=Last 6 Months Consumption" wrapping="true"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<ObjectIdentifier text="{appModel>Material}"/>
+							<ObjectIdentifier text="{appModel>MaterialDescription}"/>
+							<ObjectIdentifier text="{appModel>AvailableStock}"/>
+							<ObjectIdentifier text="{appModel>OpenPurchaseorders}"/>
+							<ObjectIdentifier text="{appModel>CurrentPOQty}"/>
+							<ObjectIdentifier text="{appModel>OpenDemand}"/>
+							<ObjectIdentifier text="{appModel>Last6MonthsConsumption}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		
+		</content>
+		<buttons>
+			<Button press="onInventoryDialogClose" text="Close"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

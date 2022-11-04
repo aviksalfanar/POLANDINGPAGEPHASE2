@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog resizable="true" title="PO Type" class="sapUiSizeCompact" contentHeight="30%" contentWidth="30%">
+        <content>
+            <Table id="idPoType" items="{appModel>/PoTypeAnalysis}">
+                <columns>
+                    <Column>
+                        <Text text="PO Type" />
+                    </Column>
+                    <Column>
+                        <Text text="Vendor Country" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier text="{appModel>PoType}" />
+                            <ObjectIdentifier text="{appModel>VendorCountry}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <buttons>
+            <Button press="onPOTypeDialogClose" text="Close" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

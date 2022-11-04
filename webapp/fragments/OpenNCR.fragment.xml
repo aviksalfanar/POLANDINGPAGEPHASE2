@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cal="sap.suite.ui.commons" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:chart="alfanar.polandingpage.control">
+	<Dialog resizable="true" title="Open NCRs Vs. Vendor" class="sapUiSizeCompact" contentHeight="40%" contentWidth="70%">
+		<content>
+			<Table id="idOpenNcr" items="{appModel>/OpenNcr}">
+				<columns>
+					<Column >
+						<Text text="Material"/>
+					</Column>
+					<Column >
+						<Text text="Material Description"/>
+					</Column>
+					<Column >
+						<Text text="Notification No"/>
+					</Column>
+					<Column >
+						<Text text="Notification Desc"/>
+					</Column>
+					<Column >
+						<Text text="Plant"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<ObjectIdentifier text="{appModel>MatNum}"/>
+							<ObjectIdentifier text="{appModel>MatDesc}"/>
+							<ObjectIdentifier text="{appModel>NotificationNo}"/>
+							<ObjectIdentifier text="{appModel>NotificationDesc}"/>
+							<ObjectIdentifier text="{appModel>Plant}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<buttons>
+			<Button press="onOpenNcr" text="Close"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

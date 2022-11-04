@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" >
+	<Dialog resizable="true" title="Order Currency" class="sapUiSizeCompact" contentHeight="40%" contentWidth="40%">
+		<content>
+			<Table id="idCurrencytable" items="{appModel>/Currency}">
+				<columns>
+					<Column >
+						<Text text="Item"/>
+					</Column>
+					<Column >
+						<Text text="Description"/>
+					</Column>
+					<Column >
+						<Text text="Current Currency"/>
+					</Column>
+					<Column >
+						<Text text="Last Currency"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<ObjectIdentifier text="{appModel>MatNum}"/>
+							<ObjectIdentifier text="{appModel>MatDesc}"/>
+							<ObjectIdentifier text="{appModel>CurrentCurrency}"/>
+							<ObjectIdentifier text="{appModel>LastCurrency}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<buttons>
+			<Button press="onCurrencyDialogClose" text="Close"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -4,12 +4,13 @@ sap.ui.define([
     "com/alfanar/polandingpage/polandingpage/utils/formatter",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/ui/core/Fragment"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox) {
+    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox, Fragment) {
         "use strict";
 
         return Controller.extend("com.alfanar.polandingpage.polandingpage.controller.LandingPage", {
@@ -27,8 +28,255 @@ sap.ui.define([
                 oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
             },
 
-            onMatPriceVsOldPrice: function(oEvent){
-                
+            onMatPriceVsOldPrice: async function (oEvent) {
+                // On click of this we will open MatPriceVsOldPriceDialog.fragment.xml fragment
+                // Get the Data from  POAnalysisMatsSet service for e.g. /POAnalysisMatsSet?$filter=PoNum eq '4200001905' and MCode eq 'P' and MStatus eq 'N'&$format=json
+                const aFilters = [];
+                const sPath = "/POAnalysisMatsSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "P"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "M"));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                })
+
+                const data = await this.getData(sPath, "", [], finalFilter);
+                this.getView().getModel("appModel").setProperty("/MatchMaterials", data?.results);
+                this.getView().getModel("appModel").refresh(true);
+            },
+
+            onMaterialUom: async function () {
+                this.oMaterialUOMFragment;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.MaterialPriceUOMDialog";
+                const aFilters = [];
+                const sPath = "/POAnalysisMatsSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "U"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "M"));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                })
+
+                const data = await this.getData(sPath, "", [], finalFilter);
+                const aMaterialUOM = data?.results.map(materialUom => {
+                    return {
+                        MatNum: materialUom.MatNum,
+                        MatDesc: materialUom.MatDesc,
+                        CurrentUOM: materialUom.MiscDat.split(";")[0],
+                        LastUoM: materialUom.MiscDat.split(";")[1]
+
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/UoM", aMaterialUOM);
+                this.getView().getModel("appModel").refresh(true);
+
+                if (!this.oMaterialUOMFragment) {
+                    this.oMaterialUOMFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                this.oMaterialUOMFragment.open();
+
+            },
+            onMaterialUOMDialogClose: function () {
+                if (this.oMaterialUOMFragment.isOpen()) {
+                    this.oMaterialUOMFragment.close();
+                }
+            },
+
+            onOrderCurrency: async function () {
+                this.oOrderCurrencyFragment;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.OrderCurrencyDialog";
+                const aFilters = [];
+                const sPath = "/POAnalysisMatsSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "C"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "N"));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                })
+
+                const data = await this.getData(sPath, "", [], finalFilter);
+                const aOrderCurrencyValue = data?.results.map(order => {
+                    return {
+                        MatNum: order.MatNum,
+                        MatDesc: order.MatDesc,
+                        CurrentCurrency: order.MiscDat.split(";")[0],
+                        LastCurrency: order.MiscDat.split(";")[1]
+
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/Currency", aOrderCurrencyValue);
+                this.getView().getModel("appModel").refresh(true);
+
+                if (!this.oOrderCurrencyFragment) {
+                    this.oOrderCurrencyFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                this.oOrderCurrencyFragment.open();
+
+            },
+
+            onCurrencyDialogClose: function () {
+                if (this.oOrderCurrencyFragment.isOpen()) {
+                    this.oOrderCurrencyFragment.close();
+                }
+            },
+
+            onPOType: async function () {
+                this.oPOTypeFragment;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POTypeDialog"
+                const aFilters = [];
+                const sPath = "/POAnalysisMatsSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "Y"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "N"));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                })
+
+                const data = await this.getData(sPath, "", [], finalFilter);
+                const aPoType = data?.results.map(poType => {
+                    return {
+                        PoType: poType.MiscDat.split(";")[0],
+                        VendorCountry: poType.MiscDat.split(";")[1],
+
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/PoTypeAnalysis", aPoType);
+                this.getView().getModel("appModel").refresh(true);
+
+                if (!this.oPOTypeFragment) {
+                    this.oPOTypeFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                this.oPOTypeFragment.open();
+            },
+
+            onPOTypeDialogClose: function () {
+                if (this.oPOTypeFragment.isOpen()) {
+                    this.oPOTypeFragment.close();
+                }
+            },
+
+            onPaymentTerms: async function () {
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.PaymentTermDialog";
+                this.oPaymentTermsFragment;
+                const aFilters = [];
+                const sPath = "/POAnalysisMatsSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "T"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "N"));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                })
+
+                const data = await this.getData(sPath, "", [], finalFilter);
+
+                const aPaymentTerms = data?.results.map(paymentTerm => {
+                    return {
+                        CurrentPaymentTerm: paymentTerm.MiscDat.split(";")[0].replace(/\t/g, ''),
+                        PreviousPaymentTerm: paymentTerm.MiscDat.split(";")[1],
+                        PaymentMethod: paymentTerm.MiscDat.split(";")[2]
+
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/PaymentTerms", aPaymentTerms);
+                this.getView().getModel("appModel").refresh(true);
+
+                if (!this.oPaymentTermsFragment) {
+                    this.oPaymentTermsFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                this.oPaymentTermsFragment.open();
+
+            },
+            onPaymentTermDialogClose: function () {
+                if (this.oPaymentTermsFragment.isOpen()) {
+                    this.oPaymentTermsFragment.close();
+                }
+            },
+
+            onInventoryAnalysis: async function () {
+                this.oInventoryAnalysisFragment;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.InventoryAnalysisDialog";
+                const aFilters = [];
+                const sPath = "/POAnalysisMatsSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "I"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "N"));
+                const finalFilter = new Filter({
+                    filters: [
+                        ...aFilters
+                    ],
+                    and: true
+                })
+                const data = await this.getData(sPath, "", [], finalFilter);
+                let aInventoryData = data?.results.map(sData => {
+                    return {
+                        Material: sData.MatNum,
+						MaterialDescription: sData.MatDesc,
+						AvailableStock: sData.MiscDat.split(";")[0],
+						OpenPurchaseorders: sData.MiscDat.split(";")[1],
+						CurrentPOQty: sData.MiscDat.split(";")[2],
+						OpenDemand: sData.MiscDat.split(";")[3],
+						Last6MonthsConsumption: sData.MiscDat.split(";")[4]
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/InventoryAnalysis", aInventoryData);
+                this.getView().getModel("appModel").refresh(true);
+
+                console.log(aInventoryData);
+                if (!this.oInventoryAnalysisFragment) {
+                    this.oInventoryAnalysisFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                this.oInventoryAnalysisFragment.open();
+
+            },
+
+            onInventoryDialogClose: function(){
+                if(this.oInventoryAnalysisFragment.isOpen()){
+                    this.oInventoryAnalysisFragment.close();
+                }
+            },
+
+            onOpenNcrVsVendor: async function () {
+                this.oOpenNcrVsVendorFragment;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.OpenNcrVsVendorDialog"
+                const aFilters = [];
+                const sPath = "/POAnalysisMatsSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MCode", FilterOperator.EQ, "N"));
+                aFilters.push(new Filter("MStatus", FilterOperator.EQ, "N"));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                })
+
+                const data = await this.getData(sPath, "", [], finalFilter);
+                let aOpenNCrVsVendorData = data?.results(onvv => {
+                    return {
+                        MatNum: onvv.MatNum,
+						MatDesc: onvv.MatDesc,
+						NotificationNo: onvv.MiscDat.split(";")[0],
+						NotificationDesc: onvv.MiscDat.split(";")[1],
+						Plant: onvv.MiscDat.split(";")[2]
+                    }
+                });
+                this.getView().getModel("appModel").setProperty("/OpenNcr", aOpenNCrVsVendorData);
+                this.getView().getModel("appModel").refresh(true);
+
+                if (!this.oOpenNcrVsVendorFragment) {
+                    this.oOpenNcrVsVendorFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                this.oOpenNcrVsVendorFragment.open();
+
+            },
+
+            onOpenNcrDialogClose: function(){
+                if(this.oOpenNcrVsVendorFragment.isOpen()){
+                    this.oOpenNcrVsVendorFragment.close();
+                }
             },
 
             onPoNumberMatched: async function (oEvent) {
@@ -91,10 +339,35 @@ sap.ui.define([
                     await this.setBoBarMap(data.VndCode, data.PurOrg);
                     await this.setBoLineMap(data.PlantCod, data.PurOrg, data.VndCode);
                     this.getView().getModel("appModel").refresh(true);
+                    await this.setReadStatus();
+
                 } catch (error) {
                     console.log(error.responseText);
                 }
 
+            },
+            setReadStatus: function (WI) {
+                var that = this
+                var sPath = "/WFStatusSet('" + WI + "')";
+                this.getModel().read(sPath, {
+                    success: function (oData, oResponce) {
+                        if (oData.WiStat === "COMPLETED") {
+                            MessageBox.information("This Purchase order task was already completed");
+                            that.byId("idApprovButton").setEnabled(false)
+                            that.byId("idRejectButton").setEnabled(false)
+                        } else if (oData.WiStat === "READY" || oData.WiStat === "STARTED"){
+                            that.byId("idApprovButton").setEnabled(true)
+                            that.byId("idRejectButton").setEnabled(true)
+                        }
+                        else
+                        {
+                            that.byId("idApprovButton").setEnabled(false)
+                            that.byId("idRejectButton").setEnabled(false)
+                        }
+                    },
+                    error: function (oError) {
+                    }
+                });
             },
 
             addVendorAttachmentsIcons: function (aData) {
@@ -267,32 +540,32 @@ sap.ui.define([
                     if (data.MCode === "P") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
-                        this.getView().getModel("appModel").setProperty("/MatPriceVsOldPrice", data);
+                        this.getView().getModel("appModel").setProperty("/MatPriceVsOldPriceMicro", data);
                     }
                     if (data.MCode === "U") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
-                        this.getView().getModel("appModel").setProperty("/MaterialUom", data);
+                        this.getView().getModel("appModel").setProperty("/MaterialUomMicro", data);
                     }
                     if (data.MCode === "C") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
-                        this.getView().getModel("appModel").setProperty("/OrderCurrency", data);
+                        this.getView().getModel("appModel").setProperty("/OrderCurrencyMicro", data);
                     }
                     if (data.MCode === "Y") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
-                        this.getView().getModel("appModel").setProperty("/POType", data);
+                        this.getView().getModel("appModel").setProperty("/POTypeMicro", data);
                     }
                     if (data.MCode === "T") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
-                        this.getView().getModel("appModel").setProperty("/PaymentTerms", data);
+                        this.getView().getModel("appModel").setProperty("/PaymentTermsMicro", data);
                     }
                     if (data.MCode === "I") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
-                        this.getView().getModel("appModel").setProperty("/InventoryAnalysis", data);
+                        this.getView().getModel("appModel").setProperty("/InventoryAnalysisMicro", data);
                     }
                     if (data.MCode === "N") {
                         let fPercentage;
@@ -418,7 +691,7 @@ sap.ui.define([
                         urlParameters: {
                             $expand: sExpands
                         },
-                        filters: aFilters,
+                        filters: [aFilters],
                         success: function (oSuccessData) {
                             resolve(oSuccessData);
                         },
@@ -427,6 +700,22 @@ sap.ui.define([
                         }
                     })
                 })
+            },
+
+            /**
+             * Loading the Fragment Generic Function
+             * @param {*} sFragmentName : Fragment Location
+             * @param {*} oView : This.getView()
+             * @param {*} oController And the controller object
+             */
+            loadFragment: async function (sFragmentName, oView, oController) {
+                const oFragment = await Fragment.load({
+                    id: oView.getId(),
+                    name: sFragmentName,
+                    controller: oController
+                });
+                oView.addDependent(oFragment);
+                return oFragment;
             },
 
             onApprove: function (oEvent) {
@@ -533,7 +822,7 @@ sap.ui.define([
 
             _fnHandleErrorReject: function (oError) {
 
-            },
+            }
 
         });
     });

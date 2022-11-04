@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" title="Payment Terms" class="sapUiSizeCompact" contentHeight="40%" contentWidth="70%">
+		<content>
+			<Table id="idPaymentTerm" items="{appModel>/PaymentTerms}">
+				<columns>
+					<Column >
+						<Text text="Current Payment Term"/>
+					</Column>
+					<Column >
+						<Text text="Previous Payment Term"/>
+					</Column>
+					<Column >
+						<Text text="Payment Method"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<ObjectIdentifier text="{appModel>CurrentPaymentTerm}"/>
+							<ObjectIdentifier text="{appModel>PreviousPaymentTerm}"/>
+							<ObjectIdentifier text="{appModel>PaymentMethod}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<buttons>
+			<Button press="onPaymentTermDialogClose" text="Close"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
