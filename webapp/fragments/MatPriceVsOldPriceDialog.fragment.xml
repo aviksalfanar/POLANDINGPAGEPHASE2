@@ -4,7 +4,7 @@
             <VBox>
                 <Label text="{i18n>SelectMaterialText}" class="sapUiTinyMarginTopBottom sapUiLargeMarginBegin" design="Bold" />
                 <HBox>
-                    <ComboBox change="onMatNumberSelect" id="idCombo" class="sapUiLargeMarginBegin sapUiLargeMarginBottom sapUiLargeMarginEnd" showSecondaryValues="true" items="{ path: 'appModel>/MatchMaterials', sorter: { path: 'MatNum' } }">
+                    <ComboBox id="idMatpriceVsOldPriceComboBox" change="onMatNumberSelect" class="sapUiLargeMarginBegin sapUiLargeMarginBottom sapUiLargeMarginEnd" showSecondaryValues="true" items="{ path: 'appModel>/MatchMaterials', sorter: { path: 'MatNum' } }">
                         <core:ListItem key="{appModel>MatNum}" text="{appModel>MatNum}" additionalText="{appModel>MatDesc}" />
                     </ComboBox>
                     <Label class="sapUiLargeMarginBegin sapUiTinyMarginTop sapUiLargeMarginEnd" text="SAR" design="Bold" />

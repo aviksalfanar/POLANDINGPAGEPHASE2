@@ -44,11 +44,37 @@ sap.ui.define([
                 const data = await this.getData(sPath, "", [], finalFilter);
                 this.getView().getModel("appModel").setProperty("/MatchMaterials", data.results);
                 this.getView().getModel("appModel").refresh(true);
+                let sSelectedMaterial = data.results[0].MatNum;
 
                 if (!this.oMaterialUOMFragment) {
                     this.oMaterialUOMFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 this.oMaterialUOMFragment.open();
+                this.setFilterFirstTime(sSelectedMaterial);
+
+            },
+
+            setFilterFirstTime: async function(sSelectedMaterial){
+                // Set Selected Key for the first Time
+                this.getView().byId("idMatpriceVsOldPriceComboBox").setSelectedKey(sSelectedMaterial);
+                const aFilters = [];
+                const sPath = "/MatPriceTrendSet";
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("MatNum", FilterOperator.EQ, sSelectedMaterial));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                });
+                const data = await this.getData(sPath, "", [], finalFilter);
+                const aMatPriceChartData =  data.results.map(matPrice => {
+                    const sConvertedDate = new Date(matPrice.CreDate);
+                    return{
+                        Date: `${sConvertedDate.getDate()}-${sConvertedDate.getMonth() + 1}-${sConvertedDate.getFullYear()}`,
+                        Price: matPrice.MatPrice
+                    }                                        
+                });
+                this.getView().getModel("appModel").setProperty("/MatPriceVendorChart", aMatPriceChartData);
+                this.getView().getModel("appModel").refresh(true);
 
             },
 
