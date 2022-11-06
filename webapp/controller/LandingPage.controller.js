@@ -52,6 +52,10 @@ sap.ui.define([
 
             },
 
+            onMicroChartUrlClick: function(oEvent){
+                window.open("https://app.powerbi.com/groups/me/reports/70146951-ade9-4740-9dba-c62a3a3d4cf3/ReportSection9dec9b9a6583b816e546", "_blank")
+            },
+
             onMaterialPriceVendorDialogClose: function () {
                 if (this.oMaterialUOMFragment.isOpen()) {
                     this.oMaterialUOMFragment.close();
