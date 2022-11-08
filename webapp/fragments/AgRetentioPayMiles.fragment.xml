@@ -8,26 +8,20 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column width="7em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="4em">
                 <Text text="{i18n>Percentage}"></Text>
             </Column>
-            <Column >
+            <Column minScreenWidth="Phone" demandPopin="false" width="6em">
                 <Text text="{i18n>Baseline}"></Text>
             </Column>
-            <Column >
+            <Column minScreenWidth="Phone" demandPopin="false" width="8em">
                 <Text text="{i18n>Date}"></Text>
             </Column>
-            <Column>
+            <Column minScreenWidth="Phone" demandPopin="false" >
                 <Text text="{i18n>PaymentMethod}"></Text>
             </Column>
-            <Column>
-                <Text text="{i18n>Gurantee}"></Text>
-            </Column>
-            <Column>
-                <Text text="{i18n>ConditionalDocuments}"></Text>
-            </Column>
-            <Column>
-                <Text text="{i18n>Note}"></Text>
+            <Column minScreenWidth="Phone" demandPopin="false" width="4em">
+                <Text text="{i18n>More}"></Text>
             </Column>
         </columns>
         <items>
@@ -37,9 +31,7 @@
                     <Text text="{appModel>BsdtRef}"></Text>
                     <Text text="{path: 'appModel>Bsdt', formatter: '.formatter.getDateFormatted'}"></Text>
                     <Text text="{appModel>Pmthd}"></Text>
-                    <Text text="{appModel>Grnt}"></Text>
-                    <Text text="{appModel>Cdoc}"></Text>
-                    <Text text="{appModel>Note}"></Text>
+                    <Link text="More" press="onRetentionPayMilestoneTableMore"></Link>
                 </cells>
             </ColumnListItem>
         </items>

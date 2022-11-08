@@ -52,6 +52,19 @@ sap.ui.define([
                 oDeliveryPaymentMilstoneDialog.open();
             },
 
+            onRetentionPayMilestoneTableMore: async function(oEvent){
+                let oRetentionPaymentMilstoneDialog;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMilesMore";
+                const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
+                this.getView().getModel("appModel").setProperty("/RetentionPMMore", [aTableData]);
+                this.getView().getModel("appModel").refresh(true);
+                if(!oRetentionPaymentMilstoneDialog){
+                    oRetentionPaymentMilstoneDialog = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oRetentionPaymentMilstoneDialog.open();
+
+            },
+
             onDialogClose: function(oEvent){
                 oEvent.getSource().getParent().close();
             },
