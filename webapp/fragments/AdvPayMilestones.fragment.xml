@@ -1,12 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
     <Table id="idAvPM" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/AdvnPM}" class="sapUiMediumMarginBottom">
-        <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <Title text="{i18n>AdvPM}" level="H2"/>
-                </content>
-            </OverflowToolbar>
-        </headerToolbar>
         <columns>
             <Column width="3em" minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>Percentage}"></Text>

@@ -31,11 +31,11 @@
                         <ObjectAttribute id="_IDGenObjectAttribute8" title="{i18n>INCOTerm}" text="{appModel>/IncoTerm}" />
                         <ObjectAttribute id="_IDGenObjectAttribute7" title="{i18n>PurchasingGroup}" text="{appModel>/PurGroup}" />
                     </layout:VerticalLayout>
-                    
+
                     <layout:VerticalLayout id="_IDGenVerticalLayout5" class="sapUiMediumMarginEnd">
                         <ObjectAttribute id="_IDGenObjectAttribute9" title="{i18n>POSaving}" text="{appModel>/PoSaving}" />
                         <ObjectAttribute id="_IDGenObjectAttribute10" title="{i18n>PaymentTermAndMethod}" text="{appModel>/PmtTerm}" />
-                    </layout:VerticalLayout>                    
+                    </layout:VerticalLayout>
                 </layout:HorizontalLayout>
             </f:DynamicPageHeader>
         </f:header>
@@ -47,20 +47,21 @@
                         <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="30%" />
                     </layout:layoutData>
                     <layout:contentAreas>
-                        <Panel id="_IDGenPanel1" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-                            <headerToolbar>
-                                <OverflowToolbar id="_IDGenOverflowToolbar1">
-                                    <Title id="_IDGenTitle2" text="{i18n>MilestonesDataCap}" />
-                                </OverflowToolbar>
-                            </headerToolbar>
+                        <Panel id="_IDGenPanel1" width="auto" accessibleRole="Region">
                             <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStones" type="XML" />
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMiles" type="XML" />
+                                <Panel expandable="true" headerText="{i18n>AdvPM}" expanded="true">
+                                    <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
+                                </Panel>
+                                <Panel expandable="true" headerText="{i18n>DeliveryPM}">
+                                    <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStones" type="XML" />
+                                </Panel>
+                                <Panel expandable="true" headerText="{i18n>RetentionPM}">
+                                    <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMiles" type="XML" />
+                                </Panel>
                             </content>
                         </Panel>
 
-                        <Panel id="_IDGenPanel2" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                        <Panel id="_IDGenPanel2" width="auto" accessibleRole="Region">
                             <headerToolbar>
                                 <OverflowToolbar id="_IDGenOverflowToolbar2">
                                     <Title id="_IDGenTitle3" text="{i18n>VendorAnalysisCap}" />

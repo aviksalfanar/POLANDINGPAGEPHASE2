@@ -1,12 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
     <Table id="idRM" autoPopinMode="true" mode="None" contextualWidth="Auto" items="{appModel>/RetentionPM}">
-        <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <Title text="{i18n>RetentionPM}" level="H2"/>
-                </content>
-            </OverflowToolbar>
-        </headerToolbar>
         <columns>
             <Column minScreenWidth="Phone" demandPopin="false" width="4em">
                 <Text text="{i18n>Percentage}"></Text>
