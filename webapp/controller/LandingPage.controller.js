@@ -28,6 +28,34 @@ sap.ui.define([
                 oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
             },
 
+            onAdvPayMilestoneTableMore: async function(oEvent){
+                let oAdvancePaymentMilstoneDialog;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestonesMore";
+                const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
+                this.getView().getModel("appModel").setProperty("/AdvnPMMore", [aTableData]);
+                this.getView().getModel("appModel").refresh(true);
+                if(!oAdvancePaymentMilstoneDialog){
+                    oAdvancePaymentMilstoneDialog = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oAdvancePaymentMilstoneDialog.open();
+            },
+
+            onDeliveryPayMilestoneTableMore: async function(oEvent){
+                let oDeliveryPaymentMilstoneDialog;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStonesMore";
+                const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
+                this.getView().getModel("appModel").setProperty("/DeliverPMMore", [aTableData]);
+                this.getView().getModel("appModel").refresh(true);
+                if(!oDeliveryPaymentMilstoneDialog){
+                    oDeliveryPaymentMilstoneDialog = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oDeliveryPaymentMilstoneDialog.open();
+            },
+
+            onDialogClose: function(oEvent){
+                oEvent.getSource().getParent().close();
+            },
+
             onMatPriceVsOldPrice: async function (oEvent) {
                 this.oMaterialUOMFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.MatPriceVsOldPriceDialog";
