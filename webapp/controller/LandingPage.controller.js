@@ -65,6 +65,19 @@ sap.ui.define([
 
             },
 
+            onApprovalTableMoreClick: async function(oEvent){
+                let oApprovalMoreDialog;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.ApprovalMore";
+                const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
+                this.getView().getModel("appModel").setProperty("/ApprovalLevelsMore", [aTableData]);
+                this.getView().getModel("appModel").refresh(true);
+                if(!oApprovalMoreDialog){
+                    oApprovalMoreDialog = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oApprovalMoreDialog.open();
+
+            },
+
             onDialogClose: function(oEvent){
                 oEvent.getSource().getParent().close();
             },

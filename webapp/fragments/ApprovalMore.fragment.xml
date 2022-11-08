@@ -1,0 +1,31 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Dialog resizable="true" draggable="true" title="{i18n>ApprovalLevelsCap}" class="sapUiSizeCompact" contentHeight="20%" contentWidth="60%">
+        <content>
+            <Table autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/ApprovalLevelsMore}" class="sapUiMediumMarginBottom">
+                <columns>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>EmployeePosition}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>ActionDate}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>Comments}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{appModel>EmpPostn}" />
+                            <Text text="{path: 'appModel>ActDate', formatter: '.formatter.getDateFormatted'}" />
+                            <Text text="{appModel>Comments}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <buttons>
+            <Button press="onDialogClose" text="Close" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
