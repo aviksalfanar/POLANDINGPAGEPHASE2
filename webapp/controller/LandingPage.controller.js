@@ -28,57 +28,57 @@ sap.ui.define([
                 oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
             },
 
-            onAdvPayMilestoneTableMore: async function(oEvent){
+            onAdvPayMilestoneTableMore: async function (oEvent) {
                 let oAdvancePaymentMilstoneDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestonesMore";
                 const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
                 this.getView().getModel("appModel").setProperty("/AdvnPMMore", [aTableData]);
                 this.getView().getModel("appModel").refresh(true);
-                if(!oAdvancePaymentMilstoneDialog){
+                if (!oAdvancePaymentMilstoneDialog) {
                     oAdvancePaymentMilstoneDialog = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 oAdvancePaymentMilstoneDialog.open();
             },
 
-            onDeliveryPayMilestoneTableMore: async function(oEvent){
+            onDeliveryPayMilestoneTableMore: async function (oEvent) {
                 let oDeliveryPaymentMilstoneDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStonesMore";
                 const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
                 this.getView().getModel("appModel").setProperty("/DeliverPMMore", [aTableData]);
                 this.getView().getModel("appModel").refresh(true);
-                if(!oDeliveryPaymentMilstoneDialog){
+                if (!oDeliveryPaymentMilstoneDialog) {
                     oDeliveryPaymentMilstoneDialog = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 oDeliveryPaymentMilstoneDialog.open();
             },
 
-            onRetentionPayMilestoneTableMore: async function(oEvent){
+            onRetentionPayMilestoneTableMore: async function (oEvent) {
                 let oRetentionPaymentMilstoneDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMilesMore";
                 const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
                 this.getView().getModel("appModel").setProperty("/RetentionPMMore", [aTableData]);
                 this.getView().getModel("appModel").refresh(true);
-                if(!oRetentionPaymentMilstoneDialog){
+                if (!oRetentionPaymentMilstoneDialog) {
                     oRetentionPaymentMilstoneDialog = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 oRetentionPaymentMilstoneDialog.open();
 
             },
 
-            onApprovalTableMoreClick: async function(oEvent){
+            onApprovalTableMoreClick: async function (oEvent) {
                 let oApprovalMoreDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.ApprovalMore";
                 const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
                 this.getView().getModel("appModel").setProperty("/ApprovalLevelsMore", [aTableData]);
                 this.getView().getModel("appModel").refresh(true);
-                if(!oApprovalMoreDialog){
+                if (!oApprovalMoreDialog) {
                     oApprovalMoreDialog = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 oApprovalMoreDialog.open();
 
             },
 
-            onDialogClose: function(oEvent){
+            onDialogClose: function (oEvent) {
                 oEvent.getSource().getParent().close();
             },
 
@@ -108,7 +108,7 @@ sap.ui.define([
 
             },
 
-            setFilterFirstTime: async function(sSelectedMaterial){
+            setFilterFirstTime: async function (sSelectedMaterial) {
                 // Set Selected Key for the first Time
                 this.getView().byId("idMatpriceVsOldPriceComboBox").setSelectedKey(sSelectedMaterial);
                 const aFilters = [];
@@ -120,19 +120,19 @@ sap.ui.define([
                     and: true
                 });
                 const data = await this.getData(sPath, "", [], finalFilter);
-                const aMatPriceChartData =  data.results.map(matPrice => {
+                const aMatPriceChartData = data.results.map(matPrice => {
                     const sConvertedDate = new Date(matPrice.CreDate);
-                    return{
+                    return {
                         Date: `${sConvertedDate.getDate()}-${sConvertedDate.getMonth() + 1}-${sConvertedDate.getFullYear()}`,
                         Price: matPrice.MatPrice
-                    }                                        
+                    }
                 });
                 this.getView().getModel("appModel").setProperty("/MatPriceVendorChart", aMatPriceChartData);
                 this.getView().getModel("appModel").refresh(true);
 
             },
 
-            onMicroChartUrlClick: function(oEvent){
+            onMicroChartUrlClick: function (oEvent) {
                 window.open("https://app.powerbi.com/groups/me/reports/70146951-ade9-4740-9dba-c62a3a3d4cf3/ReportSection9dec9b9a6583b816e546", "_blank")
             },
 
@@ -153,12 +153,12 @@ sap.ui.define([
                     and: true
                 });
                 const data = await this.getData(sPath, "", [], finalFilter);
-                const aMatPriceChartData =  data.results.map(matPrice => {
+                const aMatPriceChartData = data.results.map(matPrice => {
                     const sConvertedDate = new Date(matPrice.CreDate);
-                    return{
+                    return {
                         Date: `${sConvertedDate.getDate()}-${sConvertedDate.getMonth() + 1}-${sConvertedDate.getFullYear()}`,
                         Price: matPrice.MatPrice
-                    }                                        
+                    }
                 });
                 this.getView().getModel("appModel").setProperty("/MatPriceVendorChart", aMatPriceChartData);
                 this.getView().getModel("appModel").refresh(true);
@@ -402,7 +402,7 @@ sap.ui.define([
                 // Checking if the HostName has applicationstudio.cloud.sap that means it is running from BAS So that
                 if (window.location.hostname.includes("applicationstudio.cloud.sap")) {
                     // This section is for Static Testing
-                    sPoNo = "4200008157" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data)
+                    sPoNo = "4200008157" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data) 4300007660
                     TT = "POR"
                     WI = "000002605618"
                     TI = "TS99000076"
@@ -451,10 +451,12 @@ sap.ui.define([
                     this.addVendorAttachmentsIcons(data.HdrToAttach.results);
                     this.setPoAnalysisModels(data.HdrToAnalysis.results);
                     console.log(this.getView().getModel("appModel").getData());
+                    this.VndCode = data.VndCode;
+                    this.PurOrg = data.PurOrg;
+
                     await this.setBOHeader(data.PlantCod, data.VndCode, data.PurOrg);
                     await this.setMaterialUom();
                     await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
-                    await this.setBoBarMap(data.VndCode, data.PurOrg);
                     await this.setBoLineMap(data.PlantCod, data.PurOrg, data.VndCode);
                     this.getView().getModel("appModel").refresh(true);
                     await this.setReadStatus();
@@ -734,6 +736,30 @@ sap.ui.define([
                     }
                 });
 
+                // let aLine = [
+                //     {
+                //         Year: "2019",
+                //         OrderValue: 100.23
+                //     },
+                //     {
+                //         Year: "2020",
+                //         OrderValue: 200.23
+                //     },
+                //     {
+                //         Year: "2021",
+                //         OrderValue: 500.23
+                //     },
+                //     {
+                //         Year: "2022",
+                //         OrderValue: 300.23
+                //     },
+                //     {
+                //         Year: "2022",
+                //         OrderValue: 800.23
+                //     }
+
+                // ];
+
                 this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },
 
@@ -744,12 +770,35 @@ sap.ui.define([
                 const data = await this.getData(sPath, sModelName, []);
                 let aBarMap = data.results?.map(data => {
                     return {
-                        Year: data.A0CALYEAR,
+                        Date: data.A0CALYEAR,
                         OrderValue: data.A00O2TO0FGB1NVFLX04ATD3CFS
                     }
                 });
 
-                this.getView().getModel("appModel").setProperty("/BoBarMap", aBarMap)
+                // let aBarMap = [
+                //     {
+                //         Date: "2019",
+                //         OrderValue: 100.23
+                //     },
+                //     {
+                //         Date: "2020",
+                //         OrderValue: 200.23
+                //     },
+                //     {
+                //         Date: "2021",
+                //         OrderValue: 500.23
+                //     },
+                //     {
+                //         Date: "2022",
+                //         OrderValue: 300.23
+                //     },
+                //     {
+                //         Date: "2022",
+                //         OrderValue: 800.23
+                //     }
+                // ];
+
+                this.getView().getModel("appModel").setProperty("/BoLineAreaMap", aBarMap)
             },
 
             setBOLineAreaMap: async function (sVCode, sPurchaseOrg) {
@@ -759,10 +808,45 @@ sap.ui.define([
                 const data = await this.getData(sPath, sModelName, []);
                 let aLineArea = data.results?.map(data => {
                     return {
-                        Month: data.A0CALMONTH,
+                        Date: data.A0CALMONTH,
                         OrderValue: data.A00O2TO0FGB1NVG5GB16Q5X4N0
                     }
                 });
+
+                // let aLineArea = [
+                //     {
+                //         Date: "Jan",
+                //         OrderValue: 100.23
+                //     },
+                //     {
+                //         Date: "Feb",
+                //         OrderValue: 200.23
+                //     },
+                //     {
+                //         Date: "Mar",
+                //         OrderValue: 500.23
+                //     },
+                //     {
+                //         Date: "Apr",
+                //         OrderValue: 300.23
+                //     },
+                //     {
+                //         Date: "May",
+                //         OrderValue: 800.23
+                //     },
+                //     {
+                //         Date: "Jun",
+                //         OrderValue: 540.23
+                //     },
+                //     {
+                //         Date: "Jul",
+                //         OrderValue: 900.23
+                //     },
+                //     {
+                //         Date: "Aug",
+                //         OrderValue: 100.23
+                //     },
+                // ]
 
                 this.getView().getModel("appModel").setProperty("/BoLineAreaMap", aLineArea)
             },
@@ -939,7 +1023,19 @@ sap.ui.define([
 
             _fnHandleErrorReject: function (oError) {
 
-            }
+            },
+            onChartTypeChaneOrderByValue: function (oEvent) {
+                const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
+                this.getView().byId("idThreeBoAreaViz").setVizType(sSelectedChartType);
+            },
+            onChartDataChangeOrderByValue: async function (oEvent) {
+                const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
+                if (sSelectedChartType === "month") {
+                    await this.setBOLineAreaMap(this.VndCode, this.PurOrg);
+                } else {
+                    await this.setBoBarMap(this.VndCode, this.PurOrg);
+                }
+            },
 
         });
     });

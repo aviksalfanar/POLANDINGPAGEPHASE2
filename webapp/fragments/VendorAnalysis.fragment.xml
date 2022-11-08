@@ -1,4 +1,4 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:cm="sap.suite.ui.commons" xmlns:f="sap.f" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
     <layout:HorizontalLayout id="idVendorDetailsHL" allowWrapping="true">
         <layout:VerticalLayout id="idVendorNameVL" class="sapUiMediumMarginEnd">
             <Label id="idVendorNameLabel" text="{i18n>VendorName}:" />
@@ -10,58 +10,56 @@
         </layout:VerticalLayout>
         <layout:VerticalLayout class="sapUiMediumMarginEnd">
             <Label text="{i18n>DMSVendorQuotationsComparison}:" />
-            <HBox justifyContent="Start" class="PoHeaderLabelOutput" id="idHBoxAttach"></HBox>
+            <HBox justifyContent="Start" class="PoHeaderLabelOutput" id="idHBoxAttach" />
         </layout:VerticalLayout>
     </layout:HorizontalLayout>
 
     <FlexBox direction="Column" alignContent="SpaceBetween" class="sapUiSmallMarginTop">
         <!-- Three Years Vendor Analysis Chart Section -->
-        <FlexBox direction="Row" justifyContent="SpaceAround">
-            <layout:FixFlex id='idThreeBoArea' minFlexSize="250">
-                <layout:flexContent>
-                    <viz:VizFrame id="idThreeBoAreaViz" vizProperties="{title: {text : 'Order Value vs Month', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='area'>
-                        <viz:dataset>
-                            <viz.data:FlattenedDataset data="{appModel>/BoLineAreaMap}">
-                                <viz.data:dimensions>
-                                    <viz.data:DimensionDefinition name="Month" value="{appModel>Month}" />
-                                </viz.data:dimensions>
-                                <viz.data:measures>
-                                    <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />
-                                    <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />
-                                </viz.data:measures>
-                            </viz.data:FlattenedDataset>
-                        </viz:dataset>
+        <layout:Splitter width="100%" height="100%">
+            <layout:contentAreas>
+                <cm:ChartContainer id="chartContainer" showFullScreen="true" showPersonalization="false" autoAdjustHeight="false" personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="{i18n>OrderValue}">
+                    <cm:content>
+                        <cm:ChartContainerContent>
+                            <cm:content>
+                                <viz:VizFrame id="idThreeBoAreaViz" vizProperties="{title: {text : 'Order Value Chart', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='area'>
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset data="{appModel>/BoLineAreaMap}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition name="Date" value="{appModel>Date}" />
+                                            </viz.data:dimensions>
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />
+                                                <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
 
-                        <viz:feeds>
-                            <viz.feeds:FeedItem id='valueAxisFeedArea' uid="valueAxis" type="Measure" values="OrderValue" />
-                            <viz.feeds:FeedItem id='categoryAxisFeedArea' uid="categoryAxis" type="Dimension" values="Month" />
-                        </viz:feeds>
-                    </viz:VizFrame>
-                </layout:flexContent>
-            </layout:FixFlex>
-            <layout:FixFlex id='idThreeBoBar' minFlexSize="250">
-                <layout:flexContent>
-                    <viz:VizFrame id="idThreeBoBarViz" vizProperties="{title: {text : 'Order Value vs Year', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='column'>
-                        <viz:dataset>
-                            <viz.data:FlattenedDataset data="{appModel>/BoBarMap}">
-                                <viz.data:dimensions>
-                                    <viz.data:DimensionDefinition name="Year" value="{appModel>Year}" />
-                                </viz.data:dimensions>
-                                <viz.data:measures>
-                                    <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />
-                                    <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />
-                                </viz.data:measures>
-                            </viz.data:FlattenedDataset>
-                        </viz:dataset>
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem id='valueAxisFeedArea' uid="valueAxis" type="Measure" values="OrderValue" />
+                                        <viz.feeds:FeedItem id='categoryAxisFeedArea' uid="categoryAxis" type="Dimension" values="Date" />
+                                    </viz:feeds>
+                                </viz:VizFrame>
+                            </cm:content>
+                        </cm:ChartContainerContent>
+                    </cm:content>
+                    <cm:dimensionSelectors>
+                        <Select change="onChartDataChangeOrderByValue">
+                            <core:Item key="month" text="{i18n>ByMonth}" />
+                            <core:Item key="year" text="{i18n>ByYear}" />
+                        </Select>
+                        <Select change="onChartTypeChaneOrderByValue">
+                            <core:Item key="area" text="{i18n>Area}" />
+                            <core:Item key="line" text="{i18n>Line}" />
+                            <core:Item key="bar" text="{i18n>Bar}" />
+                            <core:Item key="donut" text="{i18n>Donut}"/>
+                            <core:Item key="pie" text="{i18n>Pie}"/>
+                        </Select>
+                    </cm:dimensionSelectors>
+                </cm:ChartContainer>
+            </layout:contentAreas>
+        </layout:Splitter>
 
-                        <viz:feeds>
-                            <viz.feeds:FeedItem id='valueAxisFeedBar' uid="valueAxis" type="Measure" values="OrderValue" />
-                            <viz.feeds:FeedItem id='categoryAxisFeedBar' uid="categoryAxis" type="Dimension" values="Year" />
-                        </viz:feeds>
-                    </viz:VizFrame>
-                </layout:flexContent>
-            </layout:FixFlex>
-        </FlexBox>
         <!-- Vendor Evaluation Chart Section -->
         <FlexBox direction="Row" justifyContent="SpaceAround">
             <layout:FixFlex id='idVendorBoLine' minFlexSize="250">
