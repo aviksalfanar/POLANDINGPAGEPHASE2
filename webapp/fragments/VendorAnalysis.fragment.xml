@@ -103,28 +103,28 @@
             </layout:Splitter>
             <FlexBox direction="Row" justifyContent="Center">
                 <FlexBox direction="Column" justifyContent="Center" class="sapUiSmallMarginEnd">
-                    <GenericTag text="{i18n>Quality}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Warning" emphasized="true" number="{appModel>/BOQUALITY}" unit="%"/>
+                    <GenericTag text="{i18n>Quality}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
+                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOQUALITY}" unit="%"/>
                     </GenericTag>
-                    <GenericTag text="{i18n>Price}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Warning" emphasized="true" number="{appModel>/BOPRICE}" unit="%"/>
+                    <GenericTag text="{i18n>Price}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
+                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPRICE}" unit="%"/>
                     </GenericTag>
-                    <GenericTag text="{i18n>Delivery}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Warning" emphasized="true" number="{appModel>/BODELIVERY}" unit="%"/>
+                    <GenericTag text="{i18n>Delivery}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
+                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BODELIVERY}" unit="%"/>
                     </GenericTag>
-                    <GenericTag text="{i18n>Grade}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Warning" emphasized="true" number="{appModel>/BOGRADE}" unit="%"/>
+                    <GenericTag text="{i18n>Grade}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
+                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOGRADE}" unit="%"/>
                     </GenericTag>
                 </FlexBox>
                 <FlexBox direction="Column" justifyContent="Center">
-                    <GenericTag text="{i18n>PurchaseOrder}" design="StatusIconHidden" status="Success" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Success" emphasized="true" number="{appModel>/BOPURCHASEORDER}" unit="#"/>
+                    <GenericTag text="{i18n>PurchaseOrder}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
+                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPURCHASEORDER}" unit="#"/>
                     </GenericTag>
-                    <GenericTag text="{i18n>Plants}" design="StatusIconHidden" status="Success" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Success" emphasized="true" number="{appModel>/BOPLANT}" unit="#"/>
+                    <GenericTag text="{i18n>Plants}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
+                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPLANT}" unit="#"/>
                     </GenericTag>
-                    <GenericTag text="{i18n>SuppliedMaterials}" design="StatusIconHidden" status="Success" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Success" emphasized="true" number="{appModel>/BOSUPLLIEDMATERIALS}"  unit="#"/>
+                    <GenericTag text="{i18n>SuppliedMaterials}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
+                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOSUPLLIEDMATERIALS}"  unit="#"/>
                     </GenericTag>
                 </FlexBox>
             </FlexBox>
