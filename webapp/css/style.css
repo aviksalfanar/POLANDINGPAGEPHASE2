@@ -7,9 +7,12 @@
 
 .borderRight{
     border-right: 0.0625rem solid #a8b3bd;
-    padding: 10px;
+    padding: 5px;
 }
 
 .padding{
-    padding: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-right: 2px;
 }
