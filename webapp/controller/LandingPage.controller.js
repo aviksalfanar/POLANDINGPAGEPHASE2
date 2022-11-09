@@ -493,12 +493,20 @@ sap.ui.define([
                 const oHBox = this.getView().byId("idHBoxAttach");
                 if (aData.length) {
                     aData.forEach((data, index) => {
+                        const oTooltip = new sap.ui.core.TooltipBase("tooltip" + index, {
+                            text: data.FilName,
+                            visible: true
+                        });
                         const oIcon = new sap.ui.core.Icon("icon" + index, {
                             src: "sap-icon://attachment",
+                            useIconTooltip: true,
                             press: [this.onVendorAttchmentIconPress, this],
                             customData: {
                                 Type: "sap.ui.core.CustomData",
                                 key: this.getView().getModel("appModel").getData().POAttach[index].LogDoc
+                            },
+                            tooltip:{
+                                oTooltip
                             }
 
                         });
