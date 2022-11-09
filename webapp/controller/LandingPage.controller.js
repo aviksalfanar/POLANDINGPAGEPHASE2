@@ -1028,6 +1028,10 @@ sap.ui.define([
                 const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
                 this.getView().byId("idThreeBoAreaViz").setVizType(sSelectedChartType);
             },
+            onChartTypeChaneLineMap: function(oEvent){
+                const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
+                this.getView().byId("idThreeBoLineViz").setVizType(sSelectedChartType);
+            },
             onChartDataChangeOrderByValue: async function (oEvent) {
                 const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
                 if (sSelectedChartType === "month") {
