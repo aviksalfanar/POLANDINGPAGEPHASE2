@@ -4,25 +4,25 @@
         <f:title>
             <f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
                 <f:heading>
-                    <FlexBox direction="Row" justifyContent="SpaceAround" wrap="Wrap" width="100%" class="border">
+                    <FlexBox direction="Row" justifyContent="SpaceAround" wrap="Wrap" class="border">
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
-                            <Label text="{i18n>PONumber}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
-                            <Text text="{appModel>/PoNum}"></Text>
+                            <Label text="{i18n>PONumber}:" design="Bold" class="sapUiTinyMarginEnd" />
+                            <Text text="{appModel>/PoNum}" />
                         </layout:HorizontalLayout>
 
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
-                            <Label text="{i18n>Plant}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
-                            <Text text="{appModel>/Plant}"></Text>
+                            <Label text="{i18n>Plant}:" design="Bold" class="sapUiTinyMarginEnd" />
+                            <Text text="{appModel>/Plant}" />
                         </layout:HorizontalLayout>
 
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
-                            <Label text="{i18n>CreatedBy}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
-                            <Text text="Tobe Fixed"></Text>
+                            <Label text="{i18n>CreatedBy}:" design="Bold" class="sapUiTinyMarginEnd" />
+                            <Text text="Tobe Fixed" />
                         </layout:HorizontalLayout>
 
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
-                            <Label text="{i18n>CreationDate}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
-                            <Text text="Tobe Fixed"></Text>
+                            <Label text="{i18n>CreationDate}:" design="Bold" class="sapUiTinyMarginEnd" />
+                            <Text text="Tobe Fixed" />
                         </layout:HorizontalLayout>
                     </FlexBox>
                 </f:heading>
@@ -31,22 +31,23 @@
         <!-- DynamicPage Header -->
         <f:header>
             <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
-                <layout:HorizontalLayout allowWrapping="true">
-                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
-                        <ObjectAttribute title="{i18n>POValue}" text="{appModel>/PoValue}" />
-                        <ObjectAttribute title="{i18n>POType}" text="{appModel>/PoType}" />
-                    </layout:VerticalLayout>
-
-                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
-                        <ObjectAttribute title="{i18n>INCOTerm}" text="{appModel>/IncoTerm}" />
-                        <ObjectAttribute title="{i18n>PurchasingGroup}" text="{appModel>/PurGroup}" />
-                    </layout:VerticalLayout>
-
-                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
-                        <ObjectAttribute title="{i18n>POSaving}" text="{appModel>/PoSaving}" />
-                        <ObjectAttribute title="{i18n>PaymentTermAndMethod}" text="{appModel>/PmtTerm}" />
-                    </layout:VerticalLayout>
-                </layout:HorizontalLayout>
+                <FlexBox direction="Row" justifyContent="Start" wrap="Wrap">
+                    <GenericTag text="{i18n>POValue}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                        <ObjectNumber state="Warning" number="{appModel>/PoValue}" />
+                    </GenericTag>
+                    <GenericTag text="{i18n>POType}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                        <ObjectNumber state="Warning" number="{appModel>/PoType}" />
+                    </GenericTag>
+                    <GenericTag text="{i18n>INCOTerm}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                        <ObjectNumber state="Warning" number="{appModel>/IncoTerm}" />
+                    </GenericTag>
+                    <GenericTag text="{i18n>PurchasingGroup}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                        <ObjectNumber state="Warning" number="{appModel>/PurGroup}" />
+                    </GenericTag>
+                    <GenericTag text="{i18n>POSaving}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                        <ObjectNumber state="Warning" number="{appModel>/PoSaving}" />
+                    </GenericTag>
+                </FlexBox>
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
