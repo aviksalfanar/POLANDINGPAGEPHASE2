@@ -60,6 +60,11 @@
                     <layout:contentAreas>
                         <Panel id="_IDGenPanel1" width="auto" accessibleRole="Region">
                             <content>
+                                <layout:HorizontalLayout class="sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop subheaderborder">
+                                    <Label text="{i18n>PaymentTermAndMethod}: {appModel>/PmtTermAdvance}" class="sapUiSmallMarginEnd borderRight"></Label>
+                                    <Label text="{appModel>/PmtTermDelivery}" class="sapUiSmallMarginEnd borderRight"></Label>
+                                    <Label text="{appModel>/PmtTermRetention}" class="sapUiSmallMarginEnd padding"></Label>
+                                </layout:HorizontalLayout>
                                 <Panel expandable="true" headerText="{i18n>AdvPM}" expanded="true">
                                     <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
                                 </Panel>

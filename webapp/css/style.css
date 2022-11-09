@@ -1,2 +1,15 @@
 .border{
 }
+
+.subheaderborder{
+    border: 0.0625rem solid #a8b3bd;
+}
+
+.borderRight{
+    border-right: 0.0625rem solid #a8b3bd;
+    padding: 10px;
+}
+
+.padding{
+    padding: 10px;
+}

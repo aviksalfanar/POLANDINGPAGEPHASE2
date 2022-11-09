@@ -439,8 +439,24 @@ sap.ui.define([
                     const sPath = `/POHeaderSet('${sPoNo}')`;
                     // Get the Data for PO Read .
                     const data = await this.getData(sPath, null, aExpands);
+
                     // Setting the Data in the APPModel 
                     this.getView().getModel("appModel").setData(data)
+
+                    // Payment Term Segrigation
+                    if (data.PmtTerm) {
+                        let aPmtTerm = data.PmtTerm.split("||");
+                        aPmtTerm.forEach(data => {
+                            if (data.includes("Advance")) {
+                                this.getView().getModel("appModel").setProperty("/PmtTermAdvance", data);
+                            } else if (data.includes("Delivery")) {
+                                this.getView().getModel("appModel").setProperty("/PmtTermDelivery", data);
+                            } else if (data.includes("Retention")) {
+                                this.getView().getModel("appModel").setProperty("/PmtTermRetention", data);
+                            }
+                        })
+                    }
+
                     // Getting the Mile Stone Data processed
                     this.setHDRToMstones(data.HdrToMStones.results)
                     // Setting the PO Items Data
@@ -505,7 +521,7 @@ sap.ui.define([
                                 Type: "sap.ui.core.CustomData",
                                 key: this.getView().getModel("appModel").getData().POAttach[index].LogDoc
                             },
-                            tooltip:{
+                            tooltip: {
                                 oTooltip
                             }
 
@@ -1036,7 +1052,7 @@ sap.ui.define([
                 const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
                 this.getView().byId("idThreeBoAreaViz").setVizType(sSelectedChartType);
             },
-            onChartTypeChaneLineMap: function(oEvent){
+            onChartTypeChaneLineMap: function (oEvent) {
                 const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
                 this.getView().byId("idThreeBoLineViz").setVizType(sSelectedChartType);
             },
