@@ -4,37 +4,47 @@
         <f:title>
             <f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
                 <f:heading>
-                    <Title id="_IDGenTitle1" text="PO Landing Page" />
+                    <FlexBox direction="Row" justifyContent="SpaceAround" wrap="Wrap" width="100%" class="border">
+                        <layout:HorizontalLayout class="sapUiMediumMarginEnd">
+                            <Label text="{i18n>PONumber}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
+                            <Text text="{appModel>/PoNum}"></Text>
+                        </layout:HorizontalLayout>
+
+                        <layout:HorizontalLayout class="sapUiMediumMarginEnd">
+                            <Label text="{i18n>Plant}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
+                            <Text text="{appModel>/Plant}"></Text>
+                        </layout:HorizontalLayout>
+
+                        <layout:HorizontalLayout class="sapUiMediumMarginEnd">
+                            <Label text="{i18n>CreatedBy}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
+                            <Text text="Tobe Fixed"></Text>
+                        </layout:HorizontalLayout>
+
+                        <layout:HorizontalLayout class="sapUiMediumMarginEnd">
+                            <Label text="{i18n>CreationDate}:" design="Bold" class="sapUiTinyMarginEnd"></Label>
+                            <Text text="Tobe Fixed"></Text>
+                        </layout:HorizontalLayout>
+                    </FlexBox>
                 </f:heading>
             </f:DynamicPageTitle>
         </f:title>
         <!-- DynamicPage Header -->
         <f:header>
             <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
-                <layout:HorizontalLayout id="_IDGenHorizontalLayout1" allowWrapping="true">
-                    <layout:VerticalLayout id="_IDGenVerticalLayout1" class="sapUiMediumMarginEnd">
-                        <ObjectAttribute id="_IDGenObjectAttribute1" title="{i18n>PONumber}" text="{appModel>/PoNum}" />
-                        <ObjectAttribute id="_IDGenObjectAttribute2" title="{i18n>Plant}" text="{appModel>/Plant}" />
+                <layout:HorizontalLayout allowWrapping="true">
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectAttribute title="{i18n>POValue}" text="{appModel>/PoValue}" />
+                        <ObjectAttribute title="{i18n>POType}" text="{appModel>/PoType}" />
                     </layout:VerticalLayout>
 
-                    <layout:VerticalLayout id="_IDGenVerticalLayout2" class="sapUiMediumMarginEnd">
-                        <ObjectAttribute id="_IDGenObjectAttribute3" title="{i18n>CreatedBy}" text="Tobe Fixed" />
-                        <ObjectAttribute id="_IDGenObjectAttribute4" title="{i18n>CreationDate}" text="To be fixed" />
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectAttribute title="{i18n>INCOTerm}" text="{appModel>/IncoTerm}" />
+                        <ObjectAttribute title="{i18n>PurchasingGroup}" text="{appModel>/PurGroup}" />
                     </layout:VerticalLayout>
 
-                    <layout:VerticalLayout id="_IDGenVerticalLayout3" class="sapUiMediumMarginEnd">
-                        <ObjectAttribute id="_IDGenObjectAttribute5" title="{i18n>POValue}" text="{appModel>/PoValue}" />
-                        <ObjectAttribute id="_IDGenObjectAttribute6" title="{i18n>POType}" text="{appModel>/PoType}" />
-                    </layout:VerticalLayout>
-
-                    <layout:VerticalLayout id="_IDGenVerticalLayout4" class="sapUiMediumMarginEnd">
-                        <ObjectAttribute id="_IDGenObjectAttribute8" title="{i18n>INCOTerm}" text="{appModel>/IncoTerm}" />
-                        <ObjectAttribute id="_IDGenObjectAttribute7" title="{i18n>PurchasingGroup}" text="{appModel>/PurGroup}" />
-                    </layout:VerticalLayout>
-
-                    <layout:VerticalLayout id="_IDGenVerticalLayout5" class="sapUiMediumMarginEnd">
-                        <ObjectAttribute id="_IDGenObjectAttribute9" title="{i18n>POSaving}" text="{appModel>/PoSaving}" />
-                        <ObjectAttribute id="_IDGenObjectAttribute10" title="{i18n>PaymentTermAndMethod}" text="{appModel>/PmtTerm}" />
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectAttribute title="{i18n>POSaving}" text="{appModel>/PoSaving}" />
+                        <ObjectAttribute title="{i18n>PaymentTermAndMethod}" text="{appModel>/PmtTerm}" />
                     </layout:VerticalLayout>
                 </layout:HorizontalLayout>
             </f:DynamicPageHeader>
