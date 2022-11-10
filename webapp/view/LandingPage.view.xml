@@ -112,7 +112,7 @@
                 <!-- Splitter 3 PO Item and PO Item History -->
                 <layout:Splitter id="_IDGenSplitter3">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="25%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="18%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">

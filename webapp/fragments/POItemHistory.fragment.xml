@@ -15,30 +15,22 @@
                 <Text text="{i18n>OrderPo}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>VendorName}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>CreationDate}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>MaterialPrice}" />
-            </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Currency}" />
-            </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>OrderQuantity}" />
-            </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>VendorName}" />
+            <Column minScreenWidth="Phone" demandPopin="false" width="4em">
+                <Text text="{i18n>More}" />
             </Column>
         </columns>
         <items>
             <ColumnListItem>
                 <cells>
                     <Text text="{appModel>PoNum}" />
-                    <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}" />
-                    <Text text="{appModel>MatPrice}" />
-                    <Text text="{appModel>Currency}" />
-                    <Text text="{appModel>OrdQty}" />
                     <Text text="{appModel>VndName}" />
+                    <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}" />
+                    <Link text="More" press="onPOItemHistoryTableMore" />
                 </cells>
             </ColumnListItem>
         </items>

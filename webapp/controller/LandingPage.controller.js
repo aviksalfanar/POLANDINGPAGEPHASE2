@@ -40,6 +40,19 @@ sap.ui.define([
                 oAdvancePaymentMilstoneDialog.open();
             },
 
+            onPOItemHistoryTableMore: async function(oEvent){
+                let oPOItemHistoryMoreDialog;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POItemHistoryMoreDialog";
+                const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
+                this.getView().getModel("appModel").setProperty("/POItemHistoryMore", [aTableData]);
+                this.getView().getModel("appModel").refresh(true);
+                if (!oPOItemHistoryMoreDialog) {
+                    oPOItemHistoryMoreDialog = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oPOItemHistoryMoreDialog.open();
+
+            },
+
             onDeliveryPayMilestoneTableMore: async function (oEvent) {
                 let oDeliveryPaymentMilstoneDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStonesMore";
@@ -767,31 +780,7 @@ sap.ui.define([
                     }
                 });
 
-                // let aLine = [
-                //     {
-                //         Year: "2019",
-                //         OrderValue: 100.23
-                //     },
-                //     {
-                //         Year: "2020",
-                //         OrderValue: 200.23
-                //     },
-                //     {
-                //         Year: "2021",
-                //         OrderValue: 500.23
-                //     },
-                //     {
-                //         Year: "2022",
-                //         OrderValue: 300.23
-                //     },
-                //     {
-                //         Year: "2022",
-                //         OrderValue: 800.23
-                //     }
-
-                // ];
-
-                this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
+                 this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },
 
             setBoBarMap: async function (sVCode, sPurchaseOrg) {
@@ -805,29 +794,6 @@ sap.ui.define([
                         OrderValue: data.A00O2TO0FGB1NVFLX04ATD3CFS
                     }
                 });
-
-                // let aBarMap = [
-                //     {
-                //         Date: "2019",
-                //         OrderValue: 100.23
-                //     },
-                //     {
-                //         Date: "2020",
-                //         OrderValue: 200.23
-                //     },
-                //     {
-                //         Date: "2021",
-                //         OrderValue: 500.23
-                //     },
-                //     {
-                //         Date: "2022",
-                //         OrderValue: 300.23
-                //     },
-                //     {
-                //         Date: "2022",
-                //         OrderValue: 800.23
-                //     }
-                // ];
 
                 this.getView().getModel("appModel").setProperty("/BoLineAreaMap", aBarMap)
             },
@@ -843,41 +809,6 @@ sap.ui.define([
                         OrderValue: data.A00O2TO0FGB1NVG5GB16Q5X4N0
                     }
                 });
-
-                // let aLineArea = [
-                //     {
-                //         Date: "Jan",
-                //         OrderValue: 100.23
-                //     },
-                //     {
-                //         Date: "Feb",
-                //         OrderValue: 200.23
-                //     },
-                //     {
-                //         Date: "Mar",
-                //         OrderValue: 500.23
-                //     },
-                //     {
-                //         Date: "Apr",
-                //         OrderValue: 300.23
-                //     },
-                //     {
-                //         Date: "May",
-                //         OrderValue: 800.23
-                //     },
-                //     {
-                //         Date: "Jun",
-                //         OrderValue: 540.23
-                //     },
-                //     {
-                //         Date: "Jul",
-                //         OrderValue: 900.23
-                //     },
-                //     {
-                //         Date: "Aug",
-                //         OrderValue: 100.23
-                //     },
-                // ]
 
                 this.getView().getModel("appModel").setProperty("/BoLineAreaMap", aLineArea)
             },
