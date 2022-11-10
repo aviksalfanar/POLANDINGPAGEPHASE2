@@ -125,28 +125,6 @@
                                 <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItems" type="XML" />
                             </content>
                         </Panel>
-
-                        <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <Title text="{i18n>POItemsHistCap}" />
-                                </OverflowToolbar>
-                            </headerToolbar>
-                            <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML" />
-                            </content>
-                        </Panel>
-
-                        <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <Title text="PO Item History Chart" />
-                                </OverflowToolbar>
-                            </headerToolbar>
-                            <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistoryChart" type="XML" />
-                            </content>
-                        </Panel>
                     </layout:contentAreas>
                 </layout:Splitter>
 

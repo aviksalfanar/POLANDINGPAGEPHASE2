@@ -723,10 +723,17 @@ sap.ui.define([
                 });
             },
 
-            onItemSelect: async function () {
+            onPOItemSelect: async function () {
+                let oPoitemHistoryDialog;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POItemHistoryDialog";
                 let sMatNo = this.getView().byId("idPoItemsTable").getSelectedItem().getBindingContext("appModel").getObject().MatNum;
                 let sPoNum = this.getView().getModel("appModel").getData().PoNum;
                 await this.setItemHistory(sPoNum, sMatNo);
+
+                if (!oPoitemHistoryDialog) {
+                    oPoitemHistoryDialog = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oPoitemHistoryDialog.open();
 
             },
 
