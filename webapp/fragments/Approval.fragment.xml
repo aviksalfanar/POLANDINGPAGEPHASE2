@@ -1,33 +1,30 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Table id="idApprovalDecision" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/ApprovalLevels}" class="sapUiMediumMarginBottom">
         <columns>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Level}"></Text>
+                <Text text="{i18n>Level}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Name}"></Text>
+                <Text text="{i18n>Name}" />
             </Column>
 
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Status}"></Text>
+                <Text text="{i18n>Status}" />
             </Column>
-            <!-- <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Comments}"></Text>
-            </Column> -->
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>More}"></Text>
+                <Text text="{i18n>More}" />
             </Column>
         </columns>
+        <dependents>
+            <plugins:ColumnResizer />
+        </dependents>
         <items>
-            <ColumnListItem >
+            <ColumnListItem>
                 <cells>
-                    <Text text="{appModel>ApLevel}"></Text>
-                    <Text text="{appModel>EmpName}"></Text>
-                    <!-- <Text text="{appModel>EmpPostn}"></Text>
-                    <Text text="{path: 'appModel>ActDate', formatter: '.formatter.getDateFormatted'}"></Text> -->
-                    <Text text="{appModel>Status}"></Text>
-                    <!-- <Text text="{appModel>Comments}"></Text> -->
-                    <Link text="More" press="onApprovalTableMoreClick"></Link>
+                    <Text text="{appModel>ApLevel}" />
+                    <Text text="{appModel>EmpName}" />
+                    <Text text="{appModel>Status}" />
+                    <Link text="More" press="onApprovalTableMoreClick" />
                 </cells>
             </ColumnListItem>
         </items>

@@ -1,35 +1,38 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" >
-	<Dialog resizable="true" draggable="true" title="Material UOM" class="sapUiSizeCompact" contentHeight="40%" contentWidth="40%">
-		<content>
-			<Table id="idUoMTable" items="{appModel>/UoM}">
-				<columns>
-					<Column >
-						<Text text="{i18n>Item}"/>
-					</Column>
-					<Column >
-						<Text text="{i18n>Description}"/>
-					</Column>
-					<Column >
-						<Text text="{i18n>CurrentUOM}"/>
-					</Column>
-					<Column >
-						<Text text="{i18n>LastUOM}"/>
-					</Column>
-				</columns>
-				<items>
-					<ColumnListItem >
-						<cells>
-							<ObjectIdentifier text="{appModel>MatNum}"/>
-							<ObjectIdentifier text="{appModel>MatDesc}"/>
-							<ObjectIdentifier text="{appModel>CurrentUOM}"/>
-							<ObjectIdentifier text="{appModel>LastUoM}"/>
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
-		</content>
-		<buttons>
-			<Button press="onMaterialUOMDialogClose" text="Close"/>
-		</buttons>
-	</Dialog>
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:plugins="sap.m.plugins">
+    <Dialog resizable="true" draggable="true" title="Material UOM" class="sapUiSizeCompact" contentHeight="40%" contentWidth="40%">
+        <content>
+            <Table id="idUoMTable" items="{appModel>/UoM}">
+                <dependents>
+                    <plugins:ColumnResizer />
+                </dependents>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>Item}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>Description}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>CurrentUOM}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>LastUOM}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier text="{appModel>MatNum}" />
+                            <ObjectIdentifier text="{appModel>MatDesc}" />
+                            <ObjectIdentifier text="{appModel>CurrentUOM}" />
+                            <ObjectIdentifier text="{appModel>LastUoM}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <buttons>
+            <Button press="onMaterialUOMDialogClose" text="Close" />
+        </buttons>
+    </Dialog>
 </core:FragmentDefinition>

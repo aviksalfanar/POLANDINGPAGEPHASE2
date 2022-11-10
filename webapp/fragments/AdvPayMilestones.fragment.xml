@@ -1,30 +1,33 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Table id="idAvPM" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/AdvnPM}" class="sapUiMediumMarginBottom">
+        <dependents>
+            <plugins:ColumnResizer />
+        </dependents>
         <columns>
-            <Column width="3em" minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Percentage}"></Text>
+            <Column width="5em" minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Percentage}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Baseline}"></Text>
+            <Column minScreenWidth="Phone" demandPopin="false" width="12em">
+                <Text text="{i18n>Baseline}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="8em">
-                <Text text="{i18n>Date}"></Text>
+                <Text text="{i18n>Date}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="6em">
-                <Text text="{i18n>PaymentMethod}"></Text>
+                <Text text="{i18n>PaymentMethod}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="4em">
-                <Text text="{i18n>More}"></Text>
+                <Text text="{i18n>More}" />
             </Column>
         </columns>
         <items>
-            <ColumnListItem >
+            <ColumnListItem>
                 <cells>
-                    <Text text="{appModel>Perc}"></Text>
-                    <Text text="{appModel>BsdtRef}"></Text>
-                    <Text text="{path: 'appModel>Bsdt', formatter: '.formatter.getDateFormatted'}"></Text>
-                    <Text text="{appModel>Pmthd}"></Text>
-                    <Link text="More" press="onAdvPayMilestoneTableMore"></Link>
+                    <Text text="{appModel>Perc}" />
+                    <Text text="{appModel>BsdtRef}" />
+                    <Text text="{path: 'appModel>Bsdt', formatter: '.formatter.getDateFormatted'}" />
+                    <Text text="{appModel>Pmthd}" />
+                    <Link text="More" press="onAdvPayMilestoneTableMore" />
                 </cells>
             </ColumnListItem>
         </items>

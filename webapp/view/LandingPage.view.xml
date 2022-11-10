@@ -61,9 +61,9 @@
                         <Panel id="_IDGenPanel1" width="auto" accessibleRole="Region">
                             <content>
                                 <layout:HorizontalLayout class="sapUiTinyMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop subheaderborder">
-                                    <Label text="{i18n>PaymentTermAndMethod}: {appModel>/PmtTermAdvance}" class="sapUiSmallMarginEnd borderRight"></Label>
-                                    <Label text="{appModel>/PmtTermDelivery}" class="sapUiTinyMarginEnd borderRight"></Label>
-                                    <Label text="{appModel>/PmtTermRetention}" class="sapUiTinyMarginEnd padding"></Label>
+                                    <Label text="{i18n>PaymentTermAndMethod}: {appModel>/PmtTermAdvance}" class="sapUiSmallMarginEnd borderRight" />
+                                    <Label text="{appModel>/PmtTermDelivery}" class="sapUiTinyMarginEnd borderRight" />
+                                    <Label text="{appModel>/PmtTermRetention}" class="sapUiTinyMarginEnd padding" />
                                 </layout:HorizontalLayout>
                                 <Panel expandable="true" headerText="{i18n>AdvPM}" expanded="true">
                                     <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
@@ -143,6 +143,9 @@
                             <content>
                                 <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.Approval" type="XML" />
                             </content>
+                            <layoutData>
+                                <layout:SplitterLayoutData size="65%" />
+                            </layoutData>
                         </Panel>
 
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">

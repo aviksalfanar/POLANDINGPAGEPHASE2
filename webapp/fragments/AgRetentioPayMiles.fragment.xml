@@ -1,30 +1,33 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Table id="idRM" autoPopinMode="true" mode="None" contextualWidth="Auto" items="{appModel>/RetentionPM}">
+        <dependents>
+            <plugins:ColumnResizer />
+        </dependents>
         <columns>
             <Column minScreenWidth="Phone" demandPopin="false" width="4em">
-                <Text text="{i18n>Percentage}"></Text>
+                <Text text="{i18n>Percentage}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="6em">
-                <Text text="{i18n>Baseline}"></Text>
+                <Text text="{i18n>Baseline}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="8em">
-                <Text text="{i18n>Date}"></Text>
+                <Text text="{i18n>Date}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" >
-                <Text text="{i18n>PaymentMethod}"></Text>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>PaymentMethod}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="4em">
-                <Text text="{i18n>More}"></Text>
+                <Text text="{i18n>More}" />
             </Column>
         </columns>
         <items>
-            <ColumnListItem >
+            <ColumnListItem>
                 <cells>
-                    <Text text="{appModel>Perc}"></Text>
-                    <Text text="{appModel>BsdtRef}"></Text>
-                    <Text text="{path: 'appModel>Bsdt', formatter: '.formatter.getDateFormatted'}"></Text>
-                    <Text text="{appModel>Pmthd}"></Text>
-                    <Link text="More" press="onRetentionPayMilestoneTableMore"></Link>
+                    <Text text="{appModel>Perc}" />
+                    <Text text="{appModel>BsdtRef}" />
+                    <Text text="{path: 'appModel>Bsdt', formatter: '.formatter.getDateFormatted'}" />
+                    <Text text="{appModel>Pmthd}" />
+                    <Link text="More" press="onRetentionPayMilestoneTableMore" />
                 </cells>
             </ColumnListItem>
         </items>

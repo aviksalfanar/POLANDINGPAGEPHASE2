@@ -1,41 +1,44 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Table id="idPoItemsHistTable" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{appModel>/ItemHistorySet}" class="sapUiMediumMarginBottom">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="{i18n>POItemsHist}" level="H2"/>
+                    <Title text="{i18n>POItemsHist}" level="H2" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
+        <dependents>
+            <plugins:ColumnResizer />
+        </dependents>
         <columns>
             <Column width="7em" minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>OrderPo}"></Text>
+                <Text text="{i18n>OrderPo}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>CreationDate}"></Text>
+                <Text text="{i18n>CreationDate}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>MaterialPrice}"></Text>
+                <Text text="{i18n>MaterialPrice}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Currency}"></Text>
+                <Text text="{i18n>Currency}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>OrderQuantity}"></Text>
+                <Text text="{i18n>OrderQuantity}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>VendorName}"></Text>
+                <Text text="{i18n>VendorName}" />
             </Column>
         </columns>
         <items>
-            <ColumnListItem >
+            <ColumnListItem>
                 <cells>
-                    <Text text="{appModel>PoNum}"></Text>
-                    <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}"></Text>
-                    <Text text="{appModel>MatPrice}"></Text>
-                    <Text text="{appModel>Currency}"></Text>
-                    <Text text="{appModel>OrdQty}"></Text>
-                    <Text text="{appModel>VndName}"></Text>
+                    <Text text="{appModel>PoNum}" />
+                    <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}" />
+                    <Text text="{appModel>MatPrice}" />
+                    <Text text="{appModel>Currency}" />
+                    <Text text="{appModel>OrdQty}" />
+                    <Text text="{appModel>VndName}" />
                 </cells>
             </ColumnListItem>
         </items>

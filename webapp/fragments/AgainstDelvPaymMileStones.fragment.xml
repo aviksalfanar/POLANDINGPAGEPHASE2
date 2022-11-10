@@ -1,5 +1,8 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Table id="idDPM" autoPopinMode="true" contextualWidth="Auto" mode="None" items="{appModel>/DeliverPM}" class="sapUiMediumMarginBottom">
+        <dependents>
+            <plugins:ColumnResizer />
+        </dependents>
         <columns>
             <Column width="3em" minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>Percentage}" />
@@ -24,7 +27,7 @@
                     <Text text="{appModel>BsdtRef}" />
                     <Text text="{path: 'appModel>Bsdt', formatter: '.formatter.getDateFormatted'}" />
                     <Text text="{appModel>Pmthd}" />
-                    <Link text="More" press="onDeliveryPayMilestoneTableMore"></Link>
+                    <Link text="More" press="onDeliveryPayMilestoneTableMore" />
                 </cells>
             </ColumnListItem>
         </items>

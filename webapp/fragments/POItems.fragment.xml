@@ -1,48 +1,51 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Table id="idPoItemsTable" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{appModel>/PoDataItems}" itemPress="onPOItemSelect" class="sapUiMediumMarginBottom">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="{i18n>POItems}" level="H2"/>
+                    <Title text="{i18n>POItems}" level="H2" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
+        <dependents>
+            <plugins:ColumnResizer />
+        </dependents>
         <columns>
             <Column width="7em" minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>ItemNo}"></Text>
+                <Text text="{i18n>ItemNo}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Material}"></Text>
+                <Text text="{i18n>Material}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>MaterialDescription}"></Text>
+                <Text text="{i18n>MaterialDescription}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>MaterialPrice}"></Text>
+                <Text text="{i18n>MaterialPrice}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Currency}"></Text>
+                <Text text="{i18n>Currency}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Per}"></Text>
+                <Text text="{i18n>Per}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>OrderQuantity}"></Text>
+                <Text text="{i18n>OrderQuantity}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Unit}"></Text>
+                <Text text="{i18n>Unit}" />
             </Column>
         </columns>
         <items>
             <ColumnListItem type="Navigation">
                 <cells>
-                    <Text text="{appModel>Item}"></Text>
-                    <Text text="{appModel>MatNum}"></Text>
-                    <Text text="{appModel>MatDesc}"></Text>
-                    <Text text="{appModel>MatPrice}"></Text>
-                    <Text text="{appModel>Currency}"></Text>
-                    <Text text="{appModel>OrdQty}"></Text>
-                    <Text text="{appModel>Unit}"></Text>
+                    <Text text="{appModel>Item}" />
+                    <Text text="{appModel>MatNum}" />
+                    <Text text="{appModel>MatDesc}" />
+                    <Text text="{appModel>MatPrice}" />
+                    <Text text="{appModel>Currency}" />
+                    <Text text="{appModel>OrdQty}" />
+                    <Text text="{appModel>Unit}" />
                 </cells>
             </ColumnListItem>
         </items>
