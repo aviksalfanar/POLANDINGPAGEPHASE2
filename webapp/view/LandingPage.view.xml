@@ -2,7 +2,7 @@
     <f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
         <!-- DynamicPage Title -->
         <f:title>
-            <f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+            <f:DynamicPageTitle id="_IDGenDynamicPageTitle1" class="bgcolor">
                 <f:heading>
                     <FlexBox direction="Row" justifyContent="SpaceAround" wrap="Wrap" class="border">
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
