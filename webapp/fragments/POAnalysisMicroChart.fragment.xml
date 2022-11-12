@@ -1,26 +1,26 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mc="sap.suite.ui.microchart" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:card="sap.f.cards">
-    <FlexBox justifyContent="Start" wrap="Wrap">
+    <FlexBox justifyContent="SpaceAround" wrap="Wrap" alignContent="SpaceAround">
         <!-- Material Price Vs Old Price Card -->
-        <VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
-        <f:Card width="100%" height="100%">
+        <VBox class="sapUiSmallMarginBottom">
+        <f:Card height="100%">
             <f:header>
                 <card:Header title="{i18n>MatPriceVsOldPrice}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
                     <mc:RadialMicroChart
-                        size="M"
+                        size="S"
                         percentage="{path: 'appModel>/MatPriceVsOldPriceMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}"
                         alignContent="Center"
                         valueColor="{path: 'appModel>/MatPriceVsOldPriceMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}"
                     />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="Match" />
+                            <Text text="{i18n>Match}" />
                             <Text text="{appModel>/MatPriceVsOldPriceMicro/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" press="onMatPriceVsOldPrice" emphasized="true" textAlign="End" enabled="{= ${appModel>/MatPriceVsOldPriceMicro/NMatch} > 0 ? true : false}" />
+                            <Link text="{i18n>NonMatch}" press="onMatPriceVsOldPrice" emphasized="true" textAlign="End" enabled="{= ${appModel>/MatPriceVsOldPriceMicro/NMatch} > 0 ? true : false}" />
                             <Text text="{appModel>/MatPriceVsOldPriceMicro/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -30,21 +30,21 @@
         </VBox>
 
         <!-- Materials UOM -->
-        <VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
-        <f:Card width="110%" height="100%">
+        <VBox class="sapUiSmallMarginBottom">
+        <f:Card height="100%">
             <f:header>
                 <card:Header title="{i18n>MaterialsUom}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="Match" />
+                            <Text text="{i18n>Match}" />
                             <Text text="{appModel>/MaterialUomMicro/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" press="onMaterialUom" emphasized="true" textAlign="End" enabled="{= ${appModel>/MaterialUomMicro/NMatch} > 0 ? true : false}" />
+                            <Link text="{i18n>NonMatch}" press="onMaterialUom" emphasized="true" textAlign="End" enabled="{= ${appModel>/MaterialUomMicro/NMatch} > 0 ? true : false}" />
                             <Text text="{appModel>/MaterialUomMicro/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -54,21 +54,21 @@
         </VBox>
 
         <!-- Order Currency -->
-        <VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
-        <f:Card width="110%" height="100%">
+        <VBox class=" sapUiSmallMarginBottom">
+        <f:Card height="100%">
             <f:header>
                 <card:Header title="{i18n>OrderCurrency}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="Match" />
+                            <Text text="{i18n>Match}" />
                             <Text text="{appModel>/OrderCurrencyMicro/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link text="Non-Match" press="onOrderCurrency" emphasized="true" textAlign="End" enabled="{= ${appModel>/OrderCurrencyMicro/NMatch} > 0 ? true : false}"/>
+                            <Link text="{i18n>NonMatch}" press="onOrderCurrency" emphasized="true" textAlign="End" enabled="{= ${appModel>/OrderCurrencyMicro/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/OrderCurrencyMicro/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -78,21 +78,21 @@
         </VBox>
 
         <!-- PO Type -->
-        <VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
-        <f:Card width="110%" height="100%">
+        <VBox class=" sapUiSmallMarginBottom">
+        <f:Card height="100%">
             <f:header>
                 <card:Header title="{i18n>POType}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="Match" />
+                            <Text text="{i18n>Match}" />
                             <Text text="{appModel>/POTypeMicro/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link press="onPOType" text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/POTypeMicro/NMatch} > 0 ? true : false}"/>
+                            <Link press="onPOType" text="{i18n>NonMatch}" emphasized="true" textAlign="End" enabled="{= ${appModel>/POTypeMicro/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/POTypeMicro/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -102,21 +102,21 @@
         </VBox>
 
         <!-- Payment Terms -->
-        <VBox class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
-        <f:Card width="113%" height="100%">
+        <VBox class=" sapUiSmallMarginBottom">
+        <f:Card height="100%">
             <f:header>
                 <card:Header title="{i18n>PaymentTerms}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="Match" />
+                            <Text text="{i18n>Match}" />
                             <Text text="{appModel>/PaymentTermsMicro/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link press="onPaymentTerms" text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/PaymentTermsMicro/NMatch} > 0 ? true : false}"/>
+                            <Link press="onPaymentTerms" text="{i18n>NonMatch}" emphasized="true" textAlign="End" enabled="{= ${appModel>/PaymentTermsMicro/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/PaymentTermsMicro/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -126,21 +126,21 @@
         </VBox>
 
         <!-- Inventory Analysis -->
-        <VBox class="sapUiMediumMarginEnd">
-        <f:Card width="113%" height="100%">
+        <VBox class="">
+        <f:Card height="100%">
             <f:header>
                 <card:Header title="{i18n>InventoryAnalysis}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="Match" />
+                            <Text text="{i18n>Match}" />
                             <Text text="{appModel>/InventoryAnalysisMicro/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link press="onInventoryAnalysis" text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/InventoryAnalysisMicro/NMatch} > 0 ? true : false}"/>
+                            <Link press="onInventoryAnalysis" text="{i18n>NonMatch}" emphasized="true" textAlign="End" enabled="{= ${appModel>/InventoryAnalysisMicro/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/InventoryAnalysisMicro/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -150,21 +150,21 @@
         </VBox>
 
         <!-- Open NCR VS Vendor -->
-        <VBox class="sapUiMediumMarginEnd">
-        <f:Card width="105%" height="100%">
+        <VBox class="">
+        <f:Card height="100%">
             <f:header>
                 <card:Header title="{i18n>OpenNCRVsVendor}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="Match" />
+                            <Text text="{i18n>Match}" />
                             <Text text="{appModel>/OpenNcrVsVendor/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link press="onOpenNcrVsVendor" text="Non-Match" emphasized="true" textAlign="End" enabled="{= ${appModel>/OpenNcrVsVendor/NMatch} > 0 ? true : false}"/>
+                            <Link press="onOpenNcrVsVendor" text="{i18n>NonMatch}" emphasized="true" textAlign="End" enabled="{= ${appModel>/OpenNcrVsVendor/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/OpenNcrVsVendor/NMatch}" />
                         </FlexBox>
                     </FlexBox>
@@ -173,8 +173,8 @@
         </f:Card>
         </VBox>
         <!-- URl -->
-        <VBox class="sapUiMediumMarginEnd">
-        <f:Card width="200%" height="190%">
+        <!-- <VBox class="">
+        <f:Card height="190%">
             <f:header>
                 <card:Header title="URL Link" />
             </f:header>
@@ -186,6 +186,6 @@
                 </FlexBox>
             </f:content>
         </f:Card>
-        </VBox>        
+        </VBox>         -->
     </FlexBox>
 </core:FragmentDefinition>

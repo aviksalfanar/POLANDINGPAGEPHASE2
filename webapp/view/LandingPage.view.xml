@@ -93,13 +93,15 @@
                 <!-- Splitter 2 PO Analysis -->
                 <layout:Splitter id="_IDGenSplitter2">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="18%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="24%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanelPOANalysis" width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
                             <headerToolbar>
                                 <OverflowToolbar id="_IDGenOverflowToolbar">
                                     <Title text="{i18n>POAnalysisCap}" />
+                                    <ToolbarSpacer />
+                                    <Link press="onMicroChartUrlClick" text="URL" emphasized="true" textAlign="End" />
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
@@ -112,7 +114,7 @@
                 <!-- Splitter 3 PO Item and PO Item History -->
                 <layout:Splitter id="_IDGenSplitter3">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="18%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="23%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
