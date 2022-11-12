@@ -55,7 +55,7 @@
                 <!-- Splitter 1 Vendor History and Milestone Data-->
                 <layout:Splitter id="_IDGenSplitter1">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="30%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="32%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanel1" width="auto" accessibleRole="Region">
