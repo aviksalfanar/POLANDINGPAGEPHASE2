@@ -53,6 +53,14 @@ sap.ui.define([
 
             },
 
+            onChartTypeChanePOItemHistory: function(oEvent){
+                debugger;
+                const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
+                const oChart = oEvent.getSource().getParent().getParent().getContent()[0].getContent();
+                oChart.setVizType(sSelectedChartType);
+
+            },
+
             onDeliveryPayMilestoneTableMore: async function (oEvent) {
                 let oDeliveryPaymentMilstoneDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStonesMore";

@@ -1,7 +1,47 @@
-<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
-    <layout:FixFlex id='idPoItemHistoryChartFixFlex' minFlexSize="250">
+<core:FragmentDefinition height="100%" xmlns:cm="sap.suite.ui.commons" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+    <layout:Splitter width="100%" height="100%">
+        <layout:contentAreas>
+            <cm:ChartContainer showFullScreen="true" showPersonalization="false" autoAdjustHeight="false" personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="{i18n>OrderValue}">
+                <cm:content>
+                    <cm:ChartContainerContent>
+                        <cm:content>
+                            <viz:VizFrame vizProperties="{title: {text : 'Po Item History', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
+                                <viz:dataset>
+                                    <viz.data:FlattenedDataset data="{appModel>/ItemHisData}">
+                                        <viz.data:dimensions>
+                                            <viz.data:DimensionDefinition name="Date" value="{appModel>Date}" />
+                                        </viz.data:dimensions>
+                                        <viz.data:measures>
+                                            <viz.data:MeasureDefinition name="Price" value="{appModel>Price}" />
+                                            <viz.data:MeasureDefinition name="Price" value="{appModel>Price}" />
+                                        </viz.data:measures>
+                                    </viz.data:FlattenedDataset>
+                                </viz:dataset>
+
+                                <viz:feeds>
+                                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Price" />
+                                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Date" />
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </cm:content>
+                    </cm:ChartContainerContent>
+                </cm:content>
+                <cm:dimensionSelectors>
+                    <Select change="onChartTypeChanePOItemHistory">
+                        <core:Item key="line" text="{i18n>Line}" />
+                        <core:Item key="area" text="{i18n>Area}" />
+                        <core:Item key="bar" text="{i18n>Bar}" />
+                        <core:Item key="donut" text="{i18n>Donut}" />
+                        <core:Item key="pie" text="{i18n>Pie}" />
+                    </Select>
+                </cm:dimensionSelectors>
+            </cm:ChartContainer>
+        </layout:contentAreas>
+    </layout:Splitter>
+
+    <!-- <layout:FixFlex minFlexSize="250">
         <layout:flexContent>
-            <viz:VizFrame id="idPoItemHistoryChart" vizProperties="{title: {text : 'Po Item History', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
+            <viz:VizFrame vizProperties="{title: {text : 'Po Item History', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
                 <viz:dataset>
                     <viz.data:FlattenedDataset data="{appModel>/ItemHisData}">
                         <viz.data:dimensions>
@@ -15,10 +55,10 @@
                 </viz:dataset>
 
                 <viz:feeds>
-                    <viz.feeds:FeedItem id='valueAxisFeedLinePoItem' uid="valueAxis" type="Measure" values="Price" />
-                    <viz.feeds:FeedItem id='categoryAxisFeedLinePoItem' uid="categoryAxis" type="Dimension" values="Date" />
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Price" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Date" />
                 </viz:feeds>
             </viz:VizFrame>
         </layout:flexContent>
-    </layout:FixFlex>
+    </layout:FixFlex> -->
 </core:FragmentDefinition>

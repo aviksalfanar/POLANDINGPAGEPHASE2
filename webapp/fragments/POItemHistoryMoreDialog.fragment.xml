@@ -1,7 +1,7 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Dialog resizable="true" draggable="true" title="{i18n>RetentionPM}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="90%">
         <content>
-            <Table id="idPoItemsHistMoreTable" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{appModel>/POItemHistoryMore}" class="sapUiMediumMarginBottom">
+            <Table autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{appModel>/POItemHistoryMore}" class="sapUiMediumMarginBottom">
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>
