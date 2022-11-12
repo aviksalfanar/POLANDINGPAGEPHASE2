@@ -4,7 +4,7 @@
             <plugins:ColumnResizer />
         </dependents>
         <columns>
-            <Column minScreenWidth="Phone" demandPopin="false" width="4em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>Percentage}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="6em">
@@ -13,7 +13,7 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="8em">
                 <Text text="{i18n>Date}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="12.1em">
                 <Text text="{i18n>PaymentMethod}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="4em">

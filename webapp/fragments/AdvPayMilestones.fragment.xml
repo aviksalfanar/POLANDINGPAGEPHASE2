@@ -7,7 +7,7 @@
             <Column width="5em" minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>Percentage}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="12em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="12.1em">
                 <Text text="{i18n>Baseline}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="8em">
