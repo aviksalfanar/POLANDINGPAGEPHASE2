@@ -2,9 +2,9 @@
     <FlexBox justifyContent="SpaceAround" wrap="Wrap" alignContent="SpaceAround">
         <!-- Material Price Vs Old Price Card -->
         <VBox class="sapUiSmallMarginBottom">
-        <f:Card height="100%">
+        <f:Card id="idMatVsOldCard" height="100%">
             <f:header>
-                <card:Header title="{i18n>MatPriceVsOldPrice}" />
+                <card:Header id="idMatVsOldCardHeader" title="{i18n>MatPriceVsOldPrice}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
@@ -31,9 +31,9 @@
 
         <!-- Materials UOM -->
         <VBox class="sapUiSmallMarginBottom">
-        <f:Card height="100%">
+        <f:Card height="100%" id="idMatUomCard">
             <f:header>
-                <card:Header title="{i18n>MaterialsUom}" />
+                <card:Header id="idMatUomCardHeader" title="{i18n>MaterialsUom}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
@@ -55,9 +55,9 @@
 
         <!-- Order Currency -->
         <VBox class=" sapUiSmallMarginBottom">
-        <f:Card height="100%">
+        <f:Card height="100%" id="idOrderCurrCard">
             <f:header>
-                <card:Header title="{i18n>OrderCurrency}" />
+                <card:Header id="idOrderCurrCardHeader" title="{i18n>OrderCurrency}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
@@ -79,9 +79,9 @@
 
         <!-- PO Type -->
         <VBox class=" sapUiSmallMarginBottom">
-        <f:Card height="100%">
+        <f:Card id="idPoTypeCard" height="100%">
             <f:header>
-                <card:Header title="{i18n>POType}" />
+                <card:Header id="idPoTypeCardHeader" title="{i18n>POType}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
@@ -103,9 +103,9 @@
 
         <!-- Payment Terms -->
         <VBox class=" sapUiSmallMarginBottom">
-        <f:Card height="100%">
+        <f:Card id="idPymntTermCard" height="100%" >
             <f:header>
-                <card:Header title="{i18n>PaymentTerms}" />
+                <card:Header id="idPymntTermCardHeader" title="{i18n>PaymentTerms}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
@@ -127,9 +127,9 @@
 
         <!-- Inventory Analysis -->
         <VBox class="">
-        <f:Card height="100%">
+        <f:Card id="idInvntAnlCard" height="100%">
             <f:header>
-                <card:Header title="{i18n>InventoryAnalysis}" />
+                <card:Header id="idInvntAnlCardHeader" title="{i18n>InventoryAnalysis}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
@@ -151,9 +151,9 @@
 
         <!-- Open NCR VS Vendor -->
         <VBox class="">
-        <f:Card height="100%">
+        <f:Card id="idOpnVndrCard" height="100%">
             <f:header>
-                <card:Header title="{i18n>OpenNCRVsVendor}" />
+                <card:Header id="idOpnVndrCardHeader" title="{i18n>OpenNCRVsVendor}" />
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
