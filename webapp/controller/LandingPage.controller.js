@@ -54,7 +54,6 @@ sap.ui.define([
             },
 
             onChartTypeChanePOItemHistory: function(oEvent){
-                debugger;
                 const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
                 const oChart = oEvent.getSource().getParent().getParent().getContent()[0].getContent();
                 oChart.setVizType(sSelectedChartType);
@@ -700,6 +699,7 @@ sap.ui.define([
             },
 
             setPoAnalysisModels: function (oData) {
+                //TODO To be handle the dynamic CSS for Red and Green Color
                 oData.forEach(data => {
                     if (data.MCode === "P") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
