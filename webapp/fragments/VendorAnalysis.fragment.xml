@@ -10,7 +10,7 @@
         </layout:VerticalLayout>
         <layout:VerticalLayout class="sapUiMediumMarginEnd">
             <Label text="{i18n>DMSVendorQuotationsComparison}:" />
-            <HBox justifyContent="Start" class="PoHeaderLabelOutput" id="idHBoxAttach" />
+            <HBox justifyContent="Start" id="idHBoxAttach" />
         </layout:VerticalLayout>
     </layout:HorizontalLayout>
 
