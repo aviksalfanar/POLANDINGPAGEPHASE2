@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover title="Inventory Analysis Formula Calculations" 
+	 placement="Left" >
+		<VBox justifyContent="Center">
+			<ObjectIdentifier title="Red Extra Stock:Y=(A+B+C-D)" class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
+			<ObjectIdentifier title="At Risks:Y>6 Months Consumption(E)" class="sapUiSmallMarginBottom sapUiSmallMarginBegin"/>
+			<ObjectIdentifier text="A=Available Stock:Unrestricted+QMLot" class="sapUiSmallMarginBottom sapUiSmallMarginBegin"/>
+			<ObjectIdentifier class="sapUiSmallMarginBottom sapUiSmallMarginBegin" text="B=Open Purchase orders Exclude Return PO+Open Purchase Requestions"/>
+			<ObjectIdentifier  class="sapUiSmallMarginBottom sapUiSmallMarginBegin" text="C=PO Qunatity in Current PO"/>
+			<ObjectIdentifier class="sapUiSmallMarginBottom sapUiSmallMarginBegin" text="D=Open Demand"/>
+			<ObjectIdentifier class="sapUiSmallMarginBottom sapUiSmallMarginBegin"  text="E=Last 6 Months Consumption"/>
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>

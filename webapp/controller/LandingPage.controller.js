@@ -1060,5 +1060,17 @@ sap.ui.define([
                 }
             },
 
+            onFormulaCalculation: async function(oEvent){
+                debugger;
+                const oBtn = oEvent.getSource();
+                let oPopOverInventoryAnalysis;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.InventoryAnalysisPopOver";
+                if (!oPopOverInventoryAnalysis) {
+                    oPopOverInventoryAnalysis = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oPopOverInventoryAnalysis.openBy(oBtn);
+
+            }
+
         });
     });
