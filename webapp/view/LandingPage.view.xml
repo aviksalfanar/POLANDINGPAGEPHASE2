@@ -17,12 +17,12 @@
 
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
                             <Label text="{i18n>CreatedBy}:" design="Bold" class="sapUiTinyMarginEnd" />
-                            <Text text="Tobe Fixed" />
+                            <Text text="{appModel>/CreBy}" />
                         </layout:HorizontalLayout>
 
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
                             <Label text="{i18n>CreationDate}:" design="Bold" class="sapUiTinyMarginEnd" />
-                            <Text text="Tobe Fixed" />
+                            <Text text="{path:'appModel>/CreDate' ,type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" />
                         </layout:HorizontalLayout>
                     </FlexBox>
                 </f:heading>
