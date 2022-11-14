@@ -40,7 +40,7 @@ sap.ui.define([
                 oAdvancePaymentMilstoneDialog.open();
             },
 
-            onPOItemHistoryTableMore: async function(oEvent){
+            onPOItemHistoryTableMore: async function (oEvent) {
                 let oPOItemHistoryMoreDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POItemHistoryMoreDialog";
                 const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
@@ -53,7 +53,7 @@ sap.ui.define([
 
             },
 
-            onChartTypeChanePOItemHistory: function(oEvent){
+            onChartTypeChanePOItemHistory: function (oEvent) {
                 const sSelectedChartType = oEvent.getSource().getSelectedItem().getKey();
                 const oChart = oEvent.getSource().getParent().getParent().getContent()[0].getContent();
                 oChart.setVizType(sSelectedChartType);
@@ -698,6 +698,12 @@ sap.ui.define([
 
             },
 
+            addCssClassDynamically: function (aId, sClass) {
+                aId.forEach(id => {
+                    this.getView().byId(id).addStyleClass(sClass);
+                })
+            },
+
             setPoAnalysisModels: function (oData) {
                 //TODO To be handle the dynamic CSS for Red and Green Color
                 oData.forEach(data => {
@@ -705,31 +711,65 @@ sap.ui.define([
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/MatPriceVsOldPriceMicro", data);
+                        if (fPercentage > 99) {
+                            this.addCssClassDynamically(["idMatVsOldCard", "idMatVsOldCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idMatVsOldCard", "idMatVsOldCardHeader"], "backGroundRed")
+                        }
                     }
                     if (data.MCode === "U") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/MaterialUomMicro", data);
+                        if (fPercentage > 99) {
+                            this.addCssClassDynamically(["idMatUomCard", "idMatUomCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idMatUomCard", "idMatUomCardHeader"], "backGroundRed")
+                        }
+
                     }
                     if (data.MCode === "C") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/OrderCurrencyMicro", data);
+                        if (fPercentage > 99) {
+                            this.addCssClassDynamically(["idOrderCurrCard", "idOrderCurrCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idOrderCurrCard", "idOrderCurrCardHeader"], "backGroundRed")
+                        }
+
                     }
                     if (data.MCode === "Y") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/POTypeMicro", data);
+                        if (fPercentage > 99) {
+                            this.addCssClassDynamically(["idPoTypeCard", "idPoTypeCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idPoTypeCard", "idPoTypeCardHeader"], "backGroundRed")
+                        }
+
                     }
                     if (data.MCode === "T") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/PaymentTermsMicro", data);
+                        if (fPercentage > 99) {
+                            this.addCssClassDynamically(["idPymntTermCard", "idPymntTermCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idPymntTermCard", "idPymntTermCardHeader"], "backGroundRed")
+                        }
+
                     }
                     if (data.MCode === "I") {
                         const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/InventoryAnalysisMicro", data);
+                        if (fPercentage > 99) {
+                            this.addCssClassDynamically(["idInvntAnlCard", "idInvntAnlCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idInvntAnlCard", "idInvntAnlCardHeader"], "backGroundRed")
+                        }
                     }
                     if (data.MCode === "N") {
                         let fPercentage;
@@ -740,6 +780,12 @@ sap.ui.define([
                         }
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/OpenNcrVsVendor", data);
+                        if (fPercentage > 99) {
+                            this.addCssClassDynamically(["idOpnVndrCard", "idOpnVndrCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idOpnVndrCard", "idOpnVndrCardHeader"], "backGroundRed")
+                        }
+
                     }
                 });
             },
@@ -788,7 +834,7 @@ sap.ui.define([
                     }
                 });
 
-                 this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
+                this.getView().getModel("appModel").setProperty("/BoLineMap", aLine)
             },
 
             setBoBarMap: async function (sVCode, sPurchaseOrg) {
