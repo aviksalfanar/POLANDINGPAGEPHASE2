@@ -101,7 +101,7 @@
                                 <OverflowToolbar id="_IDGenOverflowToolbar">
                                     <Title text="{i18n>POAnalysisCap}" />
                                     <ToolbarSpacer />
-                                    <Link press="onMicroChartUrlClick" text="URL" emphasized="true" textAlign="End" />
+                                    <Link press="onMicroChartUrlClick" text="Power BI URL" emphasized="true" textAlign="End" />
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>
