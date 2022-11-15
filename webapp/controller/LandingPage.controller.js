@@ -6,13 +6,12 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/m/MessageBox",
     "sap/ui/core/Fragment",
-    "sap/ui/core/TooltipBase",
     "sap/ui/core/Icon"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox, Fragment, TooltipBase, Icon) {
+    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox, Fragment, Icon) {
         "use strict";
 
         return Controller.extend("com.alfanar.polandingpage.polandingpage.controller.LandingPage", {
@@ -531,10 +530,6 @@ sap.ui.define([
                 const oHBox = this.getView().byId("idHBoxAttach");
                 if (aData.length) {
                     aData.forEach((data, index) => {
-                        // const oTooltip = new sap.ui.core.TooltipBase(`tooltip${index}`, {
-                        //     text: data.FilName,
-                        //     visible: true
-                        // });
                         const oIcon = new Icon(`icon${index}`, {
                             src: "sap-icon://attachment",
                             useIconTooltip: true,
@@ -543,10 +538,7 @@ sap.ui.define([
                                 Type: "sap.ui.core.CustomData",
                                 key: this.getView().getModel("appModel").getData().POAttach[index].LogDoc
                             },
-                            tooltip: new TooltipBase(`tooltip${index}`, {
-                                text: data.FilName,
-                                visible: true
-                            })
+                            tooltip: data.FilName
                         });
                         oIcon.addStyleClass("margin");
                         oHBox.addItem(oIcon);
