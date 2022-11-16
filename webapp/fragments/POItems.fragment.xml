@@ -27,13 +27,13 @@
                 <Text text="{i18n>Currency}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Per}" />
-            </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>OrderQuantity}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>Unit}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>More}" />
             </Column>
         </columns>
         <items>
@@ -46,6 +46,7 @@
                     <Text text="{appModel>Currency}" />
                     <Text text="{appModel>OrdQty}" />
                     <Text text="{appModel>Unit}" />
+                    <Link text="More" press="onPOItemTableMore" />
                 </cells>
             </ColumnListItem>
         </items>

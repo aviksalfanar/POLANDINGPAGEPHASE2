@@ -41,6 +41,19 @@ sap.ui.define([
                 oAdvancePaymentMilstoneDialog.open();
             },
 
+            onPOItemTableMore: async function(oEvent){
+                let oPoItemTableMoreDialog;
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POItemTableMore";
+                const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
+                this.getView().getModel("appModel").setProperty("/PoDataItemsMore", [aTableData]);
+                this.getView().getModel("appModel").refresh(true);
+                if (!oPoItemTableMoreDialog) {
+                    oPoItemTableMoreDialog = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oPoItemTableMoreDialog.open();
+
+            },
+
             onPOItemHistoryTableMore: async function (oEvent) {
                 let oPOItemHistoryMoreDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POItemHistoryMoreDialog";

@@ -1,0 +1,58 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
+    <Dialog resizable="true" draggable="true" title="{i18n>MoreDetails}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="98%">
+        <content>
+            <Table autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/PoDataItemsMore}" class="sapUiMediumMarginBottom">
+                <dependents>
+                    <plugins:ColumnResizer />
+                </dependents>
+                <columns>
+                    <Column width="7em" minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>AverageStock}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>Consume}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>DelDate}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>NetVal}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>ODemand}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>PlnCost}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>PriceUn}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>ReordPt}" />
+                    </Column>
+                    <Column minScreenWidth="Phone" demandPopin="false">
+                        <Text text="{i18n>OpenPo}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{appModel>AvStock}" />
+                            <Text text="{appModel>Consm6m}" />
+                            <Text text="{path: 'appModel>DelDate', formatter: '.formatter.getDateFormatted'}" />
+                            <Text text="{appModel>NetVal}" />
+                            <Text text="{appModel>ODemand}" />
+                            <Text text="{appModel>PlnCost}" />
+                            <Text text="{appModel>PriceUn}" />
+                            <Text text="{appModel>ReordPt}" />
+                            <Text text="{appModel>OpenPo}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <buttons>
+            <Button press="onDialogClose" text="Close" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
