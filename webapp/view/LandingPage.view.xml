@@ -101,6 +101,7 @@
                                 <OverflowToolbar id="_IDGenOverflowToolbar">
                                     <Title text="{i18n>POAnalysisCap}" />
                                     <ToolbarSpacer />
+                                    <ObjectAttribute title="{i18n>Grade}" text="{path: 'appModel>/BOGRADE', formatter: '.formatter.getGradeFormatted'}" />
                                     <Link press="onMicroChartUrlClick" text="Power BI URL" emphasized="true" textAlign="End" />
                                 </OverflowToolbar>
                             </headerToolbar>
