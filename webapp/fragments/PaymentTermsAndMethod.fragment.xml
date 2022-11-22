@@ -1,0 +1,27 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
+    <Table autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" class="sapUiMediumMarginBottom">
+        <dependents>
+            <plugins:ColumnResizer />
+        </dependents>
+        <columns>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Advance}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Delivery}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Retention}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{appModel>/PmtTermAdvance}" />
+                    <Text text="{appModel>/PmtTermDelivery}" />
+                    <Text text="{appModel>/PmtTermRetention}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>

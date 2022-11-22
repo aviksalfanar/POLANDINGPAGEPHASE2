@@ -4,7 +4,7 @@
         <f:title>
             <f:DynamicPageTitle id="_IDGenDynamicPageTitle1" class="bgcolor">
                 <f:heading>
-                    <FlexBox direction="Row" justifyContent="SpaceAround" wrap="Wrap" class="border">
+                    <FlexBox direction="Row" justifyContent="SpaceAround" wrap="Wrap" class="border" width="100vw">
                         <layout:HorizontalLayout class="sapUiMediumMarginEnd">
                             <Label text="{i18n>PONumber}:" design="Bold" class="sapUiTinyMarginEnd" />
                             <Text text="{appModel>/PoNum}" />
@@ -58,14 +58,13 @@
                         <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="32%" />
                     </layout:layoutData>
                     <layout:contentAreas>
-                        <Panel id="_IDGenPanel1" width="auto" accessibleRole="Region">
+                        <Panel id="_IDGenPanel1" headerText="{i18n>POHeader}" width="auto" accessibleRole="Region">
                             <content>
-                                <layout:HorizontalLayout class="sapUiTinyMarginBegin sapUiSmallMarginBottom sapUiSmallMarginTop subheaderborder">
-                                    <Label text="{i18n>PaymentTermAndMethod}: {appModel>/PmtTermAdvance}" class="sapUiSmallMarginEnd borderRight" />
-                                    <Label text="{appModel>/PmtTermDelivery}" class="sapUiTinyMarginEnd borderRight" />
-                                    <Label text="{appModel>/PmtTermRetention}" class="sapUiTinyMarginEnd padding" />
-                                </layout:HorizontalLayout>
-                                <Panel expandable="true" headerText="{i18n>AdvPM}" expanded="true">
+                                <Panel expandable="true" headerText="{i18n>PaymentTermAndMethod}" expanded="true">
+                                    <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.PaymentTermsAndMethod" type="XML" />
+                                </Panel>
+
+                                <Panel expandable="true" headerText="{i18n>AdvPM}">
                                     <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
                                 </Panel>
                                 <Panel expandable="true" headerText="{i18n>DeliveryPM}">
