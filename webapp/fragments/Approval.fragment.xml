@@ -1,14 +1,19 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Table id="idApprovalDecision" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/ApprovalLevels}" class="sapUiMediumMarginBottom">
         <columns>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>Level}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>Name}" />
             </Column>
-
             <Column minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>EmployeePosition}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="8em">
+                <Text text="{i18n>ActionDate}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="8em"> 
                 <Text text="{i18n>Status}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
@@ -23,6 +28,8 @@
                 <cells>
                     <Text text="{appModel>ApLevel}" />
                     <Text text="{appModel>EmpName}" />
+                    <Text text="{appModel>EmpPostn}" />
+                    <Text text="{path: 'appModel>ActDate', formatter: '.formatter.getDateFormatted'}" />
                     <Text text="{appModel>Status}" />
                     <Link text="More" press="onApprovalTableMoreClick" />
                 </cells>

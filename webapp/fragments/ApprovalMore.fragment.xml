@@ -7,20 +7,12 @@
                 </dependents>
                 <columns>
                     <Column minScreenWidth="Phone" demandPopin="false">
-                        <Text text="{i18n>EmployeePosition}" />
-                    </Column>
-                    <Column minScreenWidth="Phone" demandPopin="false">
-                        <Text text="{i18n>ActionDate}" />
-                    </Column>
-                    <Column minScreenWidth="Phone" demandPopin="false">
                         <Text text="{i18n>Comments}" />
                     </Column>
                 </columns>
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{appModel>EmpPostn}" />
-                            <Text text="{path: 'appModel>ActDate', formatter: '.formatter.getDateFormatted'}" />
                             <Text text="{appModel>Comments}" />
                         </cells>
                     </ColumnListItem>

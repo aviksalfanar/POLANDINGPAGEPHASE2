@@ -9,7 +9,7 @@
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
                     <mc:RadialMicroChart
-                        size="S"
+                        size="M"
                         percentage="{path: 'appModel>/MatPriceVsOldPriceMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}"
                         alignContent="Center"
                         valueColor="{path: 'appModel>/MatPriceVsOldPriceMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}"
@@ -37,7 +37,7 @@
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/MaterialUomMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
                             <Text text="{i18n>Match}" />
@@ -61,7 +61,7 @@
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OrderCurrencyMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
                             <Text text="{i18n>Match}" />
@@ -85,7 +85,7 @@
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/POTypeMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
                             <Text text="{i18n>Match}" />
@@ -109,7 +109,7 @@
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/PaymentTermsMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
                             <Text text="{i18n>Match}" />
@@ -133,7 +133,7 @@
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/InventoryAnalysisMicro/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
                             <Text text="{i18n>Match}" />
@@ -157,14 +157,14 @@
             </f:header>
             <f:content>
                 <FlexBox direction="Column" alignItems="Start">
-                    <mc:RadialMicroChart size="S" percentage="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
+                    <mc:RadialMicroChart size="M" percentage="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="{i18n>Match}" />
+                            <Text text="{i18n>Open}" />
                             <Text text="{appModel>/OpenNcrVsVendor/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link press="onOpenNcrVsVendor" text="{i18n>NonMatch}" emphasized="true" textAlign="End" enabled="{= ${appModel>/OpenNcrVsVendor/NMatch} > 0 ? true : false}"/>
+                            <Link press="onOpenNcrVsVendor" text="{i18n>Close}" emphasized="true" textAlign="End" enabled="{= ${appModel>/OpenNcrVsVendor/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/OpenNcrVsVendor/NMatch}" />
                         </FlexBox>
                     </FlexBox>
