@@ -11,26 +11,44 @@
             <plugins:ColumnResizer />
         </dependents>
         <columns>
-            <Column width="7em" minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>ItemNo}" />
+            <Column width="5em" minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>Item}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
                 <Text text="{i18n>Material}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="15em">
                 <Text text="{i18n>MaterialDescription}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>MaterialPrice}" />
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+                <Text text="{i18n>Price}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>Currency}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>OrderQuantity}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>Unit}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+                <Text text="{i18n>DelDate}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+                <Text text="{i18n>NetVal}" />
+            </Column>
+            <Column width="7em" minScreenWidth="Phone" demandPopin="false">
+                <Text text="{i18n>AverageStock}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+                <Text text="{i18n>Consume}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="9em">
+                <Text text="{i18n>ODemand}" />
+            </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="9em">
+                <Text text="{i18n>PlnCost}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>More}" />
@@ -46,6 +64,12 @@
                     <Text text="{appModel>Currency}" />
                     <Text text="{appModel>OrdQty}" />
                     <Text text="{appModel>Unit}" />
+                    <Text text="{path: 'appModel>DelDate', formatter: '.formatter.getDateFormatted'}" />
+                    <Text text="{appModel>NetVal}" />
+                    <Text text="{appModel>AvStock}" />
+                    <Text text="{appModel>Consm6m}" />
+                    <Text text="{appModel>ODemand}" />
+                    <Text text="{appModel>PlnCost}" />
                     <Link text="More" press="onPOItemTableMore" />
                 </cells>
             </ColumnListItem>
