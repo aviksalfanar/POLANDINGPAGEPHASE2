@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Table id="idPoItemsTable" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{path: 'appModel>/PoDataItems', sorter: { path: 'Item' }}" itemPress="onPOItemSelect" class="sapUiMediumMarginBottom">
+    <Table sticky="ColumnHeaders" id="idPoItemsTable" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{path: 'appModel>/PoDataItems', sorter: { path: 'Item' }}" itemPress="onPOItemSelect" class="sapUiMediumMarginBottom">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -50,9 +50,13 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="9em">
                 <Text text="{i18n>PlnCost}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+                                <Column minScreenWidth="Phone" demandPopin="false" width="9em">
+                        <Text text="{i18n>PriceUn}" />
+                    </Column>
+
+            <!-- <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>More}" />
-            </Column>
+            </Column> -->
         </columns>
         <items>
             <ColumnListItem type="Navigation">
@@ -70,7 +74,8 @@
                     <Text text="{appModel>Consm6m}" />
                     <Text text="{appModel>ODemand}" />
                     <Text text="{appModel>PlnCost}" />
-                    <Link text="More" press="onPOItemTableMore" />
+                    <!-- <Link text="More" press="onPOItemTableMore" /> -->
+                    <Text text="{appModel>PriceUn}" />
                 </cells>
             </ColumnListItem>
         </items>

@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:plugins="sap.m.plugins">
     <Dialog resizable="true" draggable="true" title="Order Currency" class="sapUiSizeCompact" contentHeight="40%" contentWidth="40%">
         <content>
-            <Table id="idCurrencytable" items="{appModel>/Currency}">
+            <Table sticky="ColumnHeaders" id="idCurrencytable" items="{appModel>/Currency}">
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>

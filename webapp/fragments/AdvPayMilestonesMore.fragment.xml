@@ -1,7 +1,7 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Dialog resizable="true" draggable="true" title="{i18n>AdvPM}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="90%">
+    <Dialog resizable="true" draggable="true"  title="{i18n>AdvPM}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="90%">
         <content>
-            <Table autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/AdvnPMMore}" class="sapUiMediumMarginBottom">
+            <Table autoPopinMode="true" sticky="ColumnHeaders" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/AdvnPMMore}" class="sapUiMediumMarginBottom">
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>

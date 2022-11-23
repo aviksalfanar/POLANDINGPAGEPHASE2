@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Table id="idApprovalDecision" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/ApprovalLevels}" class="sapUiMediumMarginBottom">
+    <Table id="idApprovalDecision" sticky="ColumnHeaders" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/ApprovalLevels}" class="sapUiMediumMarginBottom">
         <columns>
             <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>Level}" />

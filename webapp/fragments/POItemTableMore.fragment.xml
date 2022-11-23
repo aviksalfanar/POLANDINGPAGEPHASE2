@@ -1,7 +1,7 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
     <Dialog resizable="true" draggable="true" title="{i18n>MoreDetails}" class="sapUiSizeCompact" contentHeight="20%" contentWidth="25%">
         <content>
-            <Table autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/PoDataItemsMore}" class="sapUiMediumMarginBottom">
+            <Table sticky="ColumnHeaders" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/PoDataItemsMore}" class="sapUiMediumMarginBottom">
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>

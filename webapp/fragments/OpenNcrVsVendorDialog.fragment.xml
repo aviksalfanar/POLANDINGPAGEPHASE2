@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:plugins="sap.m.plugins">
     <Dialog resizable="true" draggable="true" title="Open NCRs Vs. Vendor" class="sapUiSizeCompact" contentHeight="40%" contentWidth="70%">
         <content>
-            <Table id="idOpenNcr" items="{appModel>/OpenNcr}">
+            <Table id="idOpenNcr" sticky="ColumnHeaders" items="{appModel>/OpenNcr}">
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>
