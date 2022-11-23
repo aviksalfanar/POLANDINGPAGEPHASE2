@@ -50,7 +50,7 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="9em">
                 <Text text="{i18n>PlnCost}" />
             </Column>
-                                <Column minScreenWidth="Phone" demandPopin="false" width="9em">
+                                <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>PriceUn}" />
                     </Column>
 

@@ -12,16 +12,12 @@
                     <Column minScreenWidth="Phone" demandPopin="false" width="9em">
                         <Text text="{i18n>OpenPo}" />
                     </Column>
-                    <Column minScreenWidth="Phone" demandPopin="false" width="9em">
-                        <Text text="{i18n>PriceUn}" />
-                    </Column>
                 </columns>
                 <items>
                     <ColumnListItem>
                         <cells>
                             <Text text="{appModel>ReordPt}" />
                             <Text text="{appModel>OpenPo}" />
-                            <Text text="{appModel>PriceUn}" />
                         </cells>
                     </ColumnListItem>
                 </items>
