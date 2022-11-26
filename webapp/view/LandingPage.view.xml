@@ -117,16 +117,7 @@
                         <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="23%" />
                     </layout:layoutData>
                     <layout:contentAreas>
-                        <Panel width="auto" accessibleRole="Region">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <Title text="{i18n>POItemsCap}" />
-                                </OverflowToolbar>
-                            </headerToolbar>
-                            <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItems" type="XML" />
-                            </content>
-                        </Panel>
+                        <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItems" type="XML" />
                     </layout:contentAreas>
                 </layout:Splitter>
 
@@ -136,20 +127,7 @@
                         <layout:SplitterLayoutData size="26%" />
                     </layout:layoutData>
                     <layout:contentAreas>
-                        <Panel width="auto" accessibleRole="Region">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <Title text="{i18n>ApprovalDecision}" />
-                                </OverflowToolbar>
-                            </headerToolbar>
-                            <content>
-                                <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.Approval" type="XML" />
-                            </content>
-                            <layoutData>
-                                <layout:SplitterLayoutData size="65%" />
-                            </layoutData>
-                        </Panel>
-
+                        <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.Approval" type="XML" />
                         <Panel width="auto" accessibleRole="Region">
                             <headerToolbar>
                                 <OverflowToolbar>
