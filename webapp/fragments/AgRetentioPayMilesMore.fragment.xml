@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Dialog resizable="true" draggable="true" title="{i18n>RetentionPM}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="90%">
+    <Dialog resizable="true" draggable="true" title="{i18n>RetentionPM}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="40%">
         <content>
             <Table autoPopinMode="true" sticky="ColumnHeaders" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/RetentionPMMore}" class="sapUiMediumMarginBottom">
                 <dependents>
@@ -22,12 +22,6 @@
                     <Column minScreenWidth="Phone" demandPopin="false">
                         <Text text="{i18n>Gurantee}" />
                     </Column>
-                    <Column minScreenWidth="Phone" demandPopin="false">
-                        <Text text="{i18n>Type}" />
-                    </Column>
-                    <Column minScreenWidth="Phone" demandPopin="false">
-                        <Text text="{i18n>SeqNo}" />
-                    </Column>
                 </columns>
                 <items>
                     <ColumnListItem>
@@ -35,8 +29,6 @@
                             <Text text="{appModel>PoNum}" />
                             <Text text="{appModel>Cdoc}" />
                             <Text text="{appModel>Grnt}" />
-                            <Text text="{appModel>Mtyp}" />
-                            <Text text="{appModel>SeqNo}" />
                         </cells>
                     </ColumnListItem>
                 </items>

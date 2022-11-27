@@ -14,7 +14,19 @@
         </layout:VerticalLayout>
     </layout:HorizontalLayout>
 
-    <FlexBox direction="Column" alignContent="SpaceBetween" class="sapUiSmallMarginTop">
+    <FlexBox direction="Column" alignContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
+        <FlexBox direction="Row" justifyContent="Start" wrap="Wrap">
+            <GenericTag text="{i18n>PurchaseOrder}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
+                <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPURCHASEORDER}" unit="#" />
+            </GenericTag>
+            <GenericTag text="{i18n>Plants}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
+                <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPLANT}" unit="#" />
+            </GenericTag>
+            <GenericTag text="{i18n>SuppliedMaterials}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
+                <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOSUPLLIEDMATERIALS}" unit="#" />
+            </GenericTag>
+        </FlexBox>
+
         <!-- Three Years Vendor Analysis Chart Section -->
         <layout:Splitter width="100%" height="100%">
             <layout:contentAreas>
@@ -60,8 +72,22 @@
             </layout:contentAreas>
         </layout:Splitter>
 
+        <FlexBox direction="Row" alignContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
+            <GenericTag text="{i18n>Quality}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
+                <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOQUALITY}" unit="%" />
+            </GenericTag>
+            <GenericTag text="{i18n>Price}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
+                <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPRICE}" unit="%" />
+            </GenericTag>
+            <GenericTag text="{i18n>Delivery}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
+                <ObjectNumber state="Information" emphasized="true" number="{appModel>/BODELIVERY}" unit="%" />
+            </GenericTag>
+            <GenericTag text="{i18n>Grade}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
+                <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOGRADE}" unit="%" />
+            </GenericTag>
+        </FlexBox>
+
         <!-- Vendor Evaluation Chart Section -->
-        <FlexBox direction="Row" justifyContent="SpaceAround">
             <layout:Splitter width="100%" height="100%">
                 <layout:contentAreas>
                     <cm:ChartContainer showFullScreen="true" showPersonalization="false" autoAdjustHeight="false" personalizationPress="attachPersonalizationPress" contentChange="attachContentChange" title="{i18n>OrderValue}">
@@ -101,33 +127,5 @@
                     </cm:ChartContainer>
                 </layout:contentAreas>
             </layout:Splitter>
-            <FlexBox direction="Row" justifyContent="Center">
-                <FlexBox direction="Column" justifyContent="Center" class="sapUiSmallMarginEnd">
-                    <GenericTag text="{i18n>Quality}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOQUALITY}" unit="%"/>
-                    </GenericTag>
-                    <GenericTag text="{i18n>Price}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPRICE}" unit="%"/>
-                    </GenericTag>
-                    <GenericTag text="{i18n>Delivery}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BODELIVERY}" unit="%"/>
-                    </GenericTag>
-                    <GenericTag text="{i18n>Grade}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOGRADE}" unit="%"/>
-                    </GenericTag>
-                </FlexBox>
-                <FlexBox direction="Column" justifyContent="Center">
-                    <GenericTag text="{i18n>PurchaseOrder}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPURCHASEORDER}" unit="#"/>
-                    </GenericTag>
-                    <GenericTag text="{i18n>Plants}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOPLANT}" unit="#"/>
-                    </GenericTag>
-                    <GenericTag text="{i18n>SuppliedMaterials}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginBottom">
-                        <ObjectNumber state="Information" emphasized="true" number="{appModel>/BOSUPLLIEDMATERIALS}"  unit="#"/>
-                    </GenericTag>
-                </FlexBox>
-            </FlexBox>
-        </FlexBox>
     </FlexBox>
 </core:FragmentDefinition>

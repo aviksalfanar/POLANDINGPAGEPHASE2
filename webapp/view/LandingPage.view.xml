@@ -30,25 +30,7 @@
         </f:title>
         <!-- DynamicPage Header -->
         <f:header>
-            <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
-                <FlexBox direction="Row" justifyContent="Start" wrap="Wrap">
-                    <GenericTag text="{i18n>POValue}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                        <ObjectNumber state="Warning" number="{appModel>/PoValue}" />
-                    </GenericTag>
-                    <GenericTag text="{i18n>POType}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                        <ObjectNumber state="Warning" number="{appModel>/PoType}" />
-                    </GenericTag>
-                    <GenericTag text="{i18n>INCOTerm}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                        <ObjectNumber state="Warning" number="{appModel>/IncoTerm}" />
-                    </GenericTag>
-                    <GenericTag text="{i18n>PurchasingGroup}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                        <ObjectNumber state="Warning" number="{appModel>/PurGroup}" />
-                    </GenericTag>
-                    <GenericTag text="{i18n>POSaving}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                        <ObjectNumber state="Warning" number="{appModel>/PoSaving}" />
-                    </GenericTag>
-                </FlexBox>
-            </f:DynamicPageHeader>
+            <f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true" />
         </f:header>
         <f:content>
             <layout:Splitter id="idSplitterLayoutMain" height="200vh" orientation="Vertical">
@@ -59,19 +41,35 @@
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanel1" headerText="{i18n>POHeader}" width="auto" accessibleRole="Region">
-                            <content>
+                            <content> 
+                                <FlexBox direction="Row" justifyContent="Start" wrap="Wrap" class="sapUiMediumMarginBegin sapUiSmallMarginBottom">
+                                    <GenericTag text="{i18n>POValue}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                                        <ObjectNumber state="Warning" number="{appModel>/PoValue}" />
+                                    </GenericTag>
+                                    <GenericTag text="{i18n>POType}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                                        <ObjectNumber state="Warning" number="{appModel>/PoType}" />
+                                    </GenericTag>
+                                    <GenericTag text="{i18n>INCOTerm}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                                        <ObjectNumber state="Warning" number="{appModel>/IncoTerm}" />
+                                    </GenericTag>
+                                    <GenericTag text="{i18n>PurchasingGroup}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                                        <ObjectNumber state="Warning" number="{appModel>/PurGroup}" />
+                                    </GenericTag>
+                                    <GenericTag text="{i18n>POSaving}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
+                                        <ObjectNumber state="Warning" number="{appModel>/PoSaving}" />
+                                    </GenericTag>
+                                </FlexBox>
                                 <Panel expandable="true" headerText="{i18n>PaymentTermAndMethod}" expanded="true">
                                     <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.PaymentTermsAndMethod" type="XML" />
-                                </Panel>
-
-                                <Panel expandable="true" headerText="{i18n>AdvPM}">
-                                    <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
-                                </Panel>
-                                <Panel expandable="true" headerText="{i18n>DeliveryPM}">
-                                    <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStones" type="XML" />
-                                </Panel>
-                                <Panel expandable="true" headerText="{i18n>RetentionPM}">
-                                    <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMiles" type="XML" />
+                                    <Panel expandable="true" headerText="{i18n>AdvPM}">
+                                        <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AdvPayMilestones" type="XML" />
+                                    </Panel>
+                                    <Panel expandable="true" headerText="{i18n>DeliveryPM}">
+                                        <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgainstDelvPaymMileStones" type="XML" />
+                                    </Panel>
+                                    <Panel expandable="true" headerText="{i18n>RetentionPM}">
+                                        <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.AgRetentioPayMiles" type="XML" />
+                                    </Panel>
                                 </Panel>
                             </content>
                         </Panel>

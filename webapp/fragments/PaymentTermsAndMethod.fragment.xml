@@ -4,13 +4,13 @@
             <plugins:ColumnResizer />
         </dependents>
         <columns>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" hAlign="Center">
                 <Text text="{i18n>Advance}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" hAlign="Center">
                 <Text text="{i18n>Delivery}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" hAlign="Center">
                 <Text text="{i18n>Retention}" />
             </Column>
         </columns>

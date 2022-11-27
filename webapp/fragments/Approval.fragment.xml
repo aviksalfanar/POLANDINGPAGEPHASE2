@@ -27,7 +27,7 @@
                 <Text text="{i18n>Status}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>More}" />
+                <Text text="{i18n>Comments}" />
             </Column>
         </columns>
         <dependents>
@@ -41,7 +41,7 @@
                     <Text text="{appModel>EmpPostn}" />
                     <Text text="{path: 'appModel>ActDate', formatter: '.formatter.getDateFormatted'}" />
                     <Text text="{appModel>Status}" />
-                    <Link text="More" press="onApprovalTableMoreClick" />
+                    <Link text="{i18n>Comments}" press="onApprovalTableMoreClick" />
                 </cells>
             </ColumnListItem>
         </items>
