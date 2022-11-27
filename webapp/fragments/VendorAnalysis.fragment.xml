@@ -94,7 +94,7 @@
                         <cm:content>
                             <cm:ChartContainerContent>
                                 <cm:content>
-                                    <viz:VizFrame id="idThreeBoLineViz" vizProperties="{title: {text : 'Vndr evl vs year', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
+                                    <viz:VizFrame id="idThreeBoLineViz" vizProperties="{title: {text : 'Vendor evaluation Vs year', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
                                         <viz:dataset>
                                             <viz.data:FlattenedDataset data="{appModel>/BoLineMap}">
                                                 <viz.data:dimensions>
