@@ -27,7 +27,7 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="7em">
                 <Text text="{i18n>Material}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="15em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="22em">
                 <Text text="{i18n>MaterialDescription}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="7em">
@@ -60,7 +60,7 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="9em">
                 <Text text="{i18n>PlnCost}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false">
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
                 <Text text="{i18n>PriceUn}" />
             </Column>
 
