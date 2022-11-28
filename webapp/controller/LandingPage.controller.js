@@ -712,11 +712,27 @@ sap.ui.define([
                 })
             },
 
+            calculateThePercentage: function(NMatch, yMatch){
+                const nonMatch = parseFloat(NMatch);
+                const iMatch = parseFloat(yMatch);
+                let fPercentage = 0;
+
+                if(nonMatch === 0 && iMatch > 0){
+                    fPercentage = 100;    
+                }else if(iMatch > 0 && nonMatch > 0){
+                    fPercentage = (nonMatch / iMatch).toFixed(1); 
+                }else if(iMatch === 0 && nonMatch > 0){
+                    fPercentage = 0;
+                }
+
+                return fPercentage;
+            },
+            
             setPoAnalysisModels: function (oData) {
                 //TODO To be handle the dynamic CSS for Red and Green Color
                 oData.forEach(data => {
                     if (data.MCode === "P") {
-                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        const fPercentage = this.calculateThePercentage(data.NMatch, data.YMatch);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/MatPriceVsOldPriceMicro", data);
                         if (fPercentage > 99) {
@@ -726,7 +742,7 @@ sap.ui.define([
                         }
                     }
                     if (data.MCode === "U") {
-                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        const fPercentage = this.calculateThePercentage(data.NMatch, data.YMatch);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/MaterialUomMicro", data);
                         if (fPercentage > 99) {
@@ -737,7 +753,7 @@ sap.ui.define([
 
                     }
                     if (data.MCode === "C") {
-                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        const fPercentage = this.calculateThePercentage(data.NMatch, data.YMatch);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/OrderCurrencyMicro", data);
                         if (fPercentage > 99) {
@@ -748,7 +764,7 @@ sap.ui.define([
 
                     }
                     if (data.MCode === "Y") {
-                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        const fPercentage = this.calculateThePercentage(data.NMatch, data.YMatch);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/POTypeMicro", data);
                         if (fPercentage > 99) {
@@ -759,7 +775,7 @@ sap.ui.define([
 
                     }
                     if (data.MCode === "T") {
-                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        const fPercentage = this.calculateThePercentage(data.NMatch, data.YMatch);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/PaymentTermsMicro", data);
                         if (fPercentage > 99) {
@@ -770,7 +786,7 @@ sap.ui.define([
 
                     }
                     if (data.MCode === "I") {
-                        const fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                        const fPercentage = this.calculateThePercentage(data.NMatch, data.YMatch);
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/InventoryAnalysisMicro", data);
                         if (fPercentage > 99) {
@@ -784,7 +800,7 @@ sap.ui.define([
                         if (parseFloat(data.YMatch) === 0) {
                             fPercentage = 0;
                         } else {
-                            fPercentage = (data.NMatch / data.YMatch).toFixed(1);
+                            fPercentage = this.calculateThePercentage(data.NMatch, data.YMatch);
                         }
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/OpenNcrVsVendor", data);
