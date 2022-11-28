@@ -90,7 +90,7 @@
                 <!-- Splitter 2 PO Analysis -->
                 <layout:Splitter id="_IDGenSplitter2">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="24%" />
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="20%" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanelPOANalysis" width="auto" accessibleRole="Region">
