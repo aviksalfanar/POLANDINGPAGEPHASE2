@@ -736,9 +736,9 @@ sap.ui.define([
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/MatPriceVsOldPriceMicro", data);
                         if (fPercentage > 99) {
-                            this.addCssClassDynamically(["idMatVsOldCard", "idMatVsOldCardHeader"], "backGroundRed")
-                        } else {
                             this.addCssClassDynamically(["idMatVsOldCard", "idMatVsOldCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idMatVsOldCard", "idMatVsOldCardHeader"], "backGroundRed")
                         }
                     }
                     if (data.MCode === "U") {
@@ -746,9 +746,9 @@ sap.ui.define([
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/MaterialUomMicro", data);
                         if (fPercentage > 99) {
-                            this.addCssClassDynamically(["idMatUomCard", "idMatUomCardHeader"], "backGroundRed")
-                        } else {
                             this.addCssClassDynamically(["idMatUomCard", "idMatUomCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idMatUomCard", "idMatUomCardHeader"], "backGroundRed")
                         }
 
                     }
@@ -757,9 +757,9 @@ sap.ui.define([
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/OrderCurrencyMicro", data);
                         if (fPercentage > 99) {
-                            this.addCssClassDynamically(["idOrderCurrCard", "idOrderCurrCardHeader"], "backGroundRed")
-                        } else {
                             this.addCssClassDynamically(["idOrderCurrCard", "idOrderCurrCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idOrderCurrCard", "idOrderCurrCardHeader"], "backGroundRed")
                         }
 
                     }
@@ -768,9 +768,9 @@ sap.ui.define([
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/POTypeMicro", data);
                         if (fPercentage > 99) {
-                            this.addCssClassDynamically(["idPoTypeCard", "idPoTypeCardHeader"], "backGroundRed")
-                        } else {
                             this.addCssClassDynamically(["idPoTypeCard", "idPoTypeCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idPoTypeCard", "idPoTypeCardHeader"], "backGroundRed")
                         }
 
                     }
@@ -779,9 +779,9 @@ sap.ui.define([
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/PaymentTermsMicro", data);
                         if (fPercentage > 99) {
-                            this.addCssClassDynamically(["idPymntTermCard", "idPymntTermCardHeader"], "backGroundRed")
-                        } else {
                             this.addCssClassDynamically(["idPymntTermCard", "idPymntTermCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idPymntTermCard", "idPymntTermCardHeader"], "backGroundRed")
                         }
 
                     }
@@ -790,9 +790,9 @@ sap.ui.define([
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/InventoryAnalysisMicro", data);
                         if (fPercentage > 99) {
-                            this.addCssClassDynamically(["idInvntAnlCard", "idInvntAnlCardHeader"], "backGroundRed")
-                        } else {
                             this.addCssClassDynamically(["idInvntAnlCard", "idInvntAnlCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idInvntAnlCard", "idInvntAnlCardHeader"], "backGroundRed")
                         }
                     }
                     if (data.MCode === "N") {
@@ -805,9 +805,9 @@ sap.ui.define([
                         data.Percentage = fPercentage;
                         this.getView().getModel("appModel").setProperty("/OpenNcrVsVendor", data);
                         if (fPercentage > 99) {
-                            this.addCssClassDynamically(["idOpnVndrCard", "idOpnVndrCardHeader"], "backGroundRed")
-                        } else {
                             this.addCssClassDynamically(["idOpnVndrCard", "idOpnVndrCardHeader"], "backGroundGreen")
+                        } else {
+                            this.addCssClassDynamically(["idOpnVndrCard", "idOpnVndrCardHeader"], "backGroundRed")
                         }
 
                     }
