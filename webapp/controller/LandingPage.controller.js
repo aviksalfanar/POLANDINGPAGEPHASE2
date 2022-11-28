@@ -412,7 +412,7 @@ sap.ui.define([
                         MatDesc: onvv.MatDesc,
                         NotificationNo: onvv.MiscDat.split(";")[0],
                         NotificationDesc: onvv.MiscDat.split(";")[1],
-                        Plant: onvv.MiscDat.split(";")[2]
+                        Plant: onvv.MiscDat.split(";")[3]
                     }
                 });
                 this.getView().getModel("appModel").setProperty("/OpenNcr", aOpenNCrVsVendorData);
