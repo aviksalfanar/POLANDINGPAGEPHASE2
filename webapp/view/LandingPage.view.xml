@@ -44,7 +44,7 @@
                             <content> 
                                 <FlexBox direction="Row" justifyContent="Start" wrap="Wrap" class="sapUiMediumMarginBegin sapUiSmallMarginBottom">
                                     <GenericTag text="{i18n>POValue}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                                        <ObjectNumber state="Warning" number="{appModel>/PoValue}" />
+                                        <ObjectNumber state="Warning" number="{appModel>/PoValue}" unit="{appModel>/PovCur}"/>
                                     </GenericTag>
                                     <GenericTag text="{i18n>POType}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
                                         <ObjectNumber state="Warning" number="{appModel>/PoType}" />
