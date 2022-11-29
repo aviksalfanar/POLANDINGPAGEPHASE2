@@ -21,46 +21,46 @@
             <plugins:ColumnResizer />
         </dependents>
         <columns>
-            <Column width="5em" minScreenWidth="Phone" demandPopin="false">
+            <Column width="5em" minScreenWidth="Phone" demandPopin="false" hAlign="Center">
                 <Text text="{i18n>Item}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em" hAlign="Center">
                 <Text text="{i18n>Material}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="22em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="22em" hAlign="Center">
                 <Text text="{i18n>MaterialDescription}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em" hAlign="Center">
                 <Text text="{i18n>Price}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em" hAlign="Center">
                 <Text text="{i18n>Currency}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em" hAlign="Center">
                 <Text text="{i18n>OrderQuantity}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em" hAlign="Center">
                 <Text text="{i18n>Unit}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em" hAlign="Center">
                 <Text text="{i18n>DelDate}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em" hAlign="Center">
                 <Text text="{i18n>NetVal}" />
             </Column>
-            <Column width="7em" minScreenWidth="Phone" demandPopin="false">
+            <Column width="7em" minScreenWidth="Phone" demandPopin="false" hAlign="Center">
                 <Text text="{i18n>AverageStock}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em" hAlign="Center">
                 <Text text="{i18n>Consume}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="9em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="9em" hAlign="Center">
                 <Text text="{i18n>ODemand}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="9em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="9em" hAlign="Center">
                 <Text text="{i18n>PlnCost}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+            <Column minScreenWidth="Phone" demandPopin="false" hAlign="Center">
                 <Text text="{i18n>PriceUn}" />
             </Column>
 
