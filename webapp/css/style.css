@@ -41,3 +41,13 @@
 .sapMGenericTagWrap{
     pointer-events:none;
 }
+
+.alternategenerictag{
+    background-color: #3498db;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.whiteText{
+    color: white !important;
+}
