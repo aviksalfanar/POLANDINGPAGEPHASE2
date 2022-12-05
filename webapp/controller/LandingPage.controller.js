@@ -692,7 +692,7 @@ sap.ui.define([
                 if(nonMatch === 0 && iMatch > 0){
                     fPercentage = 100;    
                 }else if(iMatch > 0 && nonMatch > 0){
-                    fPercentage = (nonMatch / iMatch).toFixed(1); 
+                    fPercentage = (nonMatch / (iMatch + nonMatch)).toFixed(1); 
                 }else if(iMatch === 0 && nonMatch > 0){
                     fPercentage = 0;
                 }
