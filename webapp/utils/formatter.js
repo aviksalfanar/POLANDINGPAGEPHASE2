@@ -28,6 +28,16 @@ sap.ui.define([
 
         },
 
+        getMonthYearFormatter: function (sDate) {
+            if (sDate && sDate.length === 6) {
+                return `${sDate.substring(4)}.${sDate.substring(0, 4)}`;
+            }else if(sDate && sDate.length === 5){
+                return `0${sDate.substring(4)}.${sDate.substring(0, 4)}`;
+            }else{
+                return sDate;
+            }
+        },
+
         getMicroChartValueColor: function (sPercentage) {
             const fPercentage = parseFloat(sPercentage);
             let sValueColor;
