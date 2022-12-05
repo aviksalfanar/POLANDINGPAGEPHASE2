@@ -795,7 +795,9 @@ sap.ui.define([
             onPOItemSelect: async function () {
                 let oPoitemHistoryDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POItemHistoryDialog";
-                let sMatNo = this.getView().byId("idPoItemsTable").getSelectedItem().getBindingContext("appModel").getObject().MatNum;
+                const oSelectedData = this.getView().byId("idPoItemsTable").getSelectedItem().getBindingContext("appModel").getObject();
+                this.getView().getModel("appModel").setProperty("/SelectedPoItem", oSelectedData);
+                let sMatNo = oSelectedData.MatNum;
                 let sPoNum = this.getView().getModel("appModel").getData().PoNum;
                 await this.setItemHistory(sPoNum, sMatNo);
 
