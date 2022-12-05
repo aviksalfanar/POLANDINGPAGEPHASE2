@@ -43,11 +43,16 @@
 }
 
 .alternategenerictag{
-    background-color: #3498db;
+    background-color: #e1f4ff;
     padding: 10px;
     border-radius: 5px;
 }
 
-.whiteText{
-    color: white !important;
+.blackText{
+    color: #1d2d3e !important;
+    text-shadow: 0 0 0.125rem #fff !important;
+}
+
+.blueText{
+    color: #0070f2;
 }

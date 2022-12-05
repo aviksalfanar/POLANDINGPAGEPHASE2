@@ -6,17 +6,20 @@ sap.ui.define([
     "sap/ui/model/FilterOperator",
     "sap/m/MessageBox",
     "sap/ui/core/Fragment",
-    "sap/ui/core/Icon"
+    "sap/ui/core/Icon",
+    'sap/viz/ui5/format/ChartFormatter',
+    'sap/viz/ui5/api/env/Format',
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox, Fragment, Icon) {
+    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox, Fragment, Icon, ChartFormatter, Format) {
         "use strict";
 
         return Controller.extend("com.alfanar.polandingpage.polandingpage.controller.LandingPage", {
             formatter: formatter,
             onInit: function () {
+
                 // Getting the Component Object
                 const oComponent = this.getOwnerComponent();
                 // Fetching the Routing Object from the Component Object
@@ -27,6 +30,14 @@ sap.ui.define([
                 this.screenWidth = oComponent.getModel("device").getData().resize.width;
                 // Attaching the PatternMatched Event to get called after each URL Load
                 oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
+            },
+
+            setChartPopOver: function(objPopOver, objVizframe){
+                Format.numericFormatter(ChartFormatter.getInstance());
+                const oVizFrame = objVizframe;
+                const oPopOver = objPopOver;
+                oPopOver.connect(oVizFrame.getVizUid());
+                oPopOver.setFormatString(ChartFormatter.DefaultPattern.STANDARDFLOAT);
             },
 
             onAdvPayMilestoneTableMore: async function (oEvent) {
@@ -786,6 +797,8 @@ sap.ui.define([
                     oPoitemHistoryDialog = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 oPoitemHistoryDialog.open();
+
+                // this.setChartPopOver("idPopOverPoItemHistoryChart", "idVizframePoItemHistChart");
 
             },
 

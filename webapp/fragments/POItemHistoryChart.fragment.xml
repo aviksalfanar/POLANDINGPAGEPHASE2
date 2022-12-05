@@ -5,7 +5,7 @@
                 <cm:content>
                     <cm:ChartContainerContent>
                         <cm:content>
-                            <viz:VizFrame vizProperties="{title: {text : 'Po Item History', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
+                            <viz:VizFrame  vizProperties="{title: {text : 'Po Item History', visible : true}}" uiConfig="{applicationSet:'fiori'}" width="20em" height="20em" vizType='line'>
                                 <viz:dataset>
                                     <viz.data:FlattenedDataset data="{appModel>/ItemHisData}">
                                         <viz.data:dimensions>
