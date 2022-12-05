@@ -9,11 +9,12 @@ sap.ui.define([
     "sap/ui/core/Icon",
     'sap/viz/ui5/format/ChartFormatter',
     'sap/viz/ui5/api/env/Format',
+    "sap/viz/ui5/controls/Popover"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox, Fragment, Icon, ChartFormatter, Format) {
+    function (Controller, JSONModel, formatter, Filter, FilterOperator, MessageBox, Fragment, Icon, ChartFormatter, Format, Popover) {
         "use strict";
 
         return Controller.extend("com.alfanar.polandingpage.polandingpage.controller.LandingPage", {
@@ -32,10 +33,10 @@ sap.ui.define([
                 oRouter.getRoute("RouteLandingPage").attachPatternMatched(this.onPoNumberMatched, this);
             },
 
-            setChartPopOver: function(objPopOver, objVizframe){
+            setChartPopOver: function (objVizframe) {
                 Format.numericFormatter(ChartFormatter.getInstance());
                 const oVizFrame = objVizframe;
-                const oPopOver = objPopOver;
+                const oPopOver = new Popover();
                 oPopOver.connect(oVizFrame.getVizUid());
                 oPopOver.setFormatString(ChartFormatter.DefaultPattern.STANDARDFLOAT);
             },
@@ -52,7 +53,7 @@ sap.ui.define([
                 oAdvancePaymentMilstoneDialog.open();
             },
 
-            onPOItemTableMore: async function(oEvent){
+            onPOItemTableMore: async function (oEvent) {
                 let oPoItemTableMoreDialog;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POItemTableMore";
                 const aTableData = oEvent.getSource().getBindingContext("appModel").getObject();
@@ -128,7 +129,7 @@ sap.ui.define([
             },
 
             onMatPriceVsOldPrice: async function (oEvent) {
-                this.oMaterialUOMFragment;
+                let oMaterialPriceVsOldFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.MatPriceVsOldPriceDialog";
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
@@ -145,10 +146,11 @@ sap.ui.define([
                 this.getView().getModel("appModel").refresh(true);
                 let sSelectedMaterial = data.results[0].MatNum;
 
-                if (!this.oMaterialUOMFragment) {
-                    this.oMaterialUOMFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                if (!oMaterialPriceVsOldFragment) {
+                    oMaterialPriceVsOldFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
-                this.oMaterialUOMFragment.open();
+                oMaterialPriceVsOldFragment.open();
+                this.setChartPopOver(this.getView().byId("idMatPriceVsOldPriceChart"));
                 this.setFilterFirstTime(sSelectedMaterial);
 
             },
@@ -410,7 +412,7 @@ sap.ui.define([
                 // Checking if the HostName has applicationstudio.cloud.sap that means it is running from BAS So that
                 if (window.location.hostname.includes("applicationstudio.cloud.sap")) {
                     // This section is for Static Testing
-                    sPoNo = "4200008157" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data) 4300007660
+                    sPoNo = "4200001905" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data) 4300007660
                     TT = "POR"
                     WI = "000002605618"
                     TI = "TS99000076"
@@ -478,12 +480,16 @@ sap.ui.define([
                     this.VndCode = data.VndCode;
                     this.PurOrg = data.PurOrg;
 
+                    this.setChartPopOver(this.getView().byId("idThreeBoAreaViz"));
+                    this.setChartPopOver(this.getView().byId("idThreeBoLineViz"));
+
                     await this.setBOHeader(data.PlantCod, data.VndCode, data.PurOrg);
                     await this.setMaterialUom();
                     await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
                     await this.setBoLineMap(data.PlantCod, data.PurOrg, data.VndCode);
                     this.getView().getModel("appModel").refresh(true);
                     await this.setReadStatus();
+
 
                 } catch (error) {
                     console.log(error.responseText);
@@ -684,22 +690,22 @@ sap.ui.define([
                 })
             },
 
-            calculateThePercentage: function(NMatch, yMatch){
+            calculateThePercentage: function (NMatch, yMatch) {
                 const nonMatch = parseFloat(NMatch);
                 const iMatch = parseFloat(yMatch);
                 let fPercentage = 0;
 
-                if(nonMatch === 0 && iMatch > 0){
-                    fPercentage = 100;    
-                }else if(iMatch > 0 && nonMatch > 0){
-                    fPercentage = (nonMatch / (iMatch + nonMatch)).toFixed(1); 
-                }else if(iMatch === 0 && nonMatch > 0){
+                if (nonMatch === 0 && iMatch > 0) {
+                    fPercentage = 100;
+                } else if (iMatch > 0 && nonMatch > 0) {
+                    fPercentage = (nonMatch / (iMatch + nonMatch)).toFixed(1);
+                } else if (iMatch === 0 && nonMatch > 0) {
                     fPercentage = 0;
                 }
 
                 return fPercentage;
             },
-            
+
             setPoAnalysisModels: function (oData) {
                 //TODO To be handle the dynamic CSS for Red and Green Color
                 oData.forEach(data => {
@@ -797,8 +803,8 @@ sap.ui.define([
                     oPoitemHistoryDialog = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 oPoitemHistoryDialog.open();
-
-                // this.setChartPopOver("idPopOverPoItemHistoryChart", "idVizframePoItemHistChart");
+                const oVizFrame = oPoitemHistoryDialog.getContent()[0].getContentAreas()[1].getContent()[0].getContentAreas()[0].getContent()[0].getContent();
+                this.setChartPopOver(oVizFrame);
 
             },
 
@@ -1049,7 +1055,7 @@ sap.ui.define([
                 }
             },
 
-            onFormulaCalculation: async function(oEvent){
+            onFormulaCalculation: async function (oEvent) {
                 const oBtn = oEvent.getSource();
                 let oPopOverInventoryAnalysis;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.InventoryAnalysisPopOver";
