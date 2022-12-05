@@ -24,7 +24,7 @@
             </Table>
         </content>
         <buttons>
-            <Button press="onPOTypeDialogClose" text="Close" />
+            <Button press="onDialogClose" text="Close" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

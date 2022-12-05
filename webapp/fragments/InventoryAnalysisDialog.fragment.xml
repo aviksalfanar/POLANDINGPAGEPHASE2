@@ -53,7 +53,7 @@
             </Table>
         </content>
         <buttons>
-            <Button press="onInventoryDialogClose" text="Close" />
+            <Button press="onDialogClose" text="Close" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

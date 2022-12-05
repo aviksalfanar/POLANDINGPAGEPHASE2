@@ -34,7 +34,7 @@
             </VBox>
         </content>
         <buttons>
-            <Button press="onMaterialPriceVendorDialogClose" text="Close" />
+            <Button press="onDialogClose" text="Close" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

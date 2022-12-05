@@ -28,7 +28,7 @@
             </Table>
         </content>
         <buttons>
-            <Button press="onPaymentTermDialogClose" text="Close" />
+            <Button press="onDialogClose" text="Close" />
         </buttons>
     </Dialog>
 </core:FragmentDefinition>

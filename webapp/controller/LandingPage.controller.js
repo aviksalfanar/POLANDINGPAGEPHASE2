@@ -113,7 +113,7 @@ sap.ui.define([
             },
 
             onDialogClose: function (oEvent) {
-                oEvent.getSource().getParent().close();
+                oEvent.getSource().getParent().destroy(true);
             },
 
             onMatPriceVsOldPrice: async function (oEvent) {
@@ -170,12 +170,6 @@ sap.ui.define([
                 window.open("https://app.powerbi.com/groups/me/reports/70146951-ade9-4740-9dba-c62a3a3d4cf3/ReportSection9dec9b9a6583b816e546", "_blank")
             },
 
-            onMaterialPriceVendorDialogClose: function () {
-                if (this.oMaterialUOMFragment.isOpen()) {
-                    this.oMaterialUOMFragment.close();
-                }
-            },
-
             onMatNumberSelect: async function (oEvent) {
                 const sSelectedMaterial = oEvent.getParameter("value");
                 const aFilters = [];
@@ -230,11 +224,6 @@ sap.ui.define([
                 this.oMaterialUOMFragment.open();
 
             },
-            onMaterialUOMDialogClose: function () {
-                if (this.oMaterialUOMFragment.isOpen()) {
-                    this.oMaterialUOMFragment.close();
-                }
-            },
 
             onOrderCurrency: async function () {
                 this.oOrderCurrencyFragment;
@@ -269,12 +258,6 @@ sap.ui.define([
 
             },
 
-            onCurrencyDialogClose: function () {
-                if (this.oOrderCurrencyFragment.isOpen()) {
-                    this.oOrderCurrencyFragment.close();
-                }
-            },
-
             onPOType: async function () {
                 this.oPOTypeFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POTypeDialog"
@@ -305,11 +288,6 @@ sap.ui.define([
                 this.oPOTypeFragment.open();
             },
 
-            onPOTypeDialogClose: function () {
-                if (this.oPOTypeFragment.isOpen()) {
-                    this.oPOTypeFragment.close();
-                }
-            },
 
             onPaymentTerms: async function () {
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.PaymentTermDialog";
@@ -342,11 +320,6 @@ sap.ui.define([
                 }
                 this.oPaymentTermsFragment.open();
 
-            },
-            onPaymentTermDialogClose: function () {
-                if (this.oPaymentTermsFragment.isOpen()) {
-                    this.oPaymentTermsFragment.close();
-                }
             },
 
             onInventoryAnalysis: async function () {
@@ -386,11 +359,6 @@ sap.ui.define([
 
             },
 
-            onInventoryDialogClose: function () {
-                if (this.oInventoryAnalysisFragment.isOpen()) {
-                    this.oInventoryAnalysisFragment.close();
-                }
-            },
 
             onOpenNcrVsVendor: async function () {
                 this.oOpenNcrVsVendorFragment;
@@ -425,11 +393,6 @@ sap.ui.define([
 
             },
 
-            onOpenNcrDialogClose: function () {
-                if (this.oOpenNcrVsVendorFragment.isOpen()) {
-                    this.oOpenNcrVsVendorFragment.close();
-                }
-            },
 
             onPoNumberMatched: async function (oEvent) {
                 let sPoNo, TT, WI, TI;
@@ -623,11 +586,9 @@ sap.ui.define([
                 document.body.appendChild(a)
                 a.click()
                 document.body.removeChild(a)
-                // this._getBusyDialog().close();
             },
 
             _fnHandleErrorFileRead: function (oError) {
-                // this._getBusyDialog().close();
             },
 
             _fnb64toBlob: function (b64Data, contentType, sliceSize) {
@@ -981,8 +942,6 @@ sap.ui.define([
                             "Remarks": oRemarks
                         }]
                     }
-                    // this._getBusyDialog().setText("Purchase Order is Approved ");
-                    // this._getBusyDialog().open();
                     this.getView().getModel("INBOX").create("/ApprovalHeaderSet", oApprovepayload, {
                         success: jQuery.proxy(this._fnHandleSuccessApprove, this),
                         error: jQuery.proxy(this._fnHandleErrorApprove, this)
@@ -992,7 +951,6 @@ sap.ui.define([
             },
 
             _fnHandleSuccessApprove: function (oData, oResponce) {
-                // this._getBusyDialog().close();
                 if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
                     MessageBox.error("Purchase Order :" + "" + this.PONumber + " " + "is Not Approved, Please contact Admin");
                 } else {
@@ -1032,8 +990,6 @@ sap.ui.define([
                                 "Remarks": oRemarks
                             }]
                         }
-                        // this._getBusyDialog().setText("Purchase Order is Rejected");
-                        // this._getBusyDialog().open();
                         this.getModel("INBOX").create("/ApprovalHeaderSet", oApprovepayload, {
                             success: jQuery.proxy(this._fnHandleSuccessReject, this),
                             error: jQuery.proxy(this._fnHandleErrorReject, this)
@@ -1048,7 +1004,6 @@ sap.ui.define([
             },
 
             _fnHandleSuccessReject: function (oData, oResponce) {
-                // this._getBusyDialog().close();
                 if (oResponce.statusCode <= "200" || oResponce.statusCode.statusCode >= "299") {
                     MessageBox.error("Purchase Order :" + "" + this.PONumber + " " + "is Not Rejected, Please contact Admin");
                 } else {
