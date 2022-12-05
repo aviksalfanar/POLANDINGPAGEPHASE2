@@ -6,23 +6,23 @@ sap.ui.define([
             let sCalculatedDate;
             const oDate = new Date(sDate);
             const oDates = {
-                0: "Jan",
-                1: "Feb",
-                2: "Mar",
-                3: "Apr",
-                4: "May",
-                5: "Jun",
-                6: "Jul",
-                7: "Aug",
-                8: "Sep",
-                9: "Oct",
-                10: "Nov",
-                11: "Dec"
+                0: "01",
+                1: "02",
+                2: "03",
+                3: "04",
+                4: "05",
+                5: "06",
+                6: "07",
+                7: "08",
+                8: "09",
+                9: "10",
+                10: "11",
+                11: "12"
             }
             const sMonth = oDates[oDate.getMonth()];
             const sRetrDate = oDate.getUTCDate().toLocaleString().length === 1 ? `0${oDate.getUTCDate()}` : oDate.getUTCDate();
-            const sYear = oDate.getFullYear();
-            sCalculatedDate = `${sMonth} ${sRetrDate}, ${sYear}`
+            const sYear = oDate.getFullYear().toString().substring(2);
+            sCalculatedDate = `${sRetrDate}.${sMonth}.${sYear}`
 
             return sCalculatedDate;
 
