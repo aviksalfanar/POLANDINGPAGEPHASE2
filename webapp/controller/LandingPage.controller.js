@@ -412,7 +412,7 @@ sap.ui.define([
                 // Checking if the HostName has applicationstudio.cloud.sap that means it is running from BAS So that
                 if (window.location.hostname.includes("applicationstudio.cloud.sap")) {
                     // This section is for Static Testing
-                    sPoNo = "4200008157" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data) 4300007660
+                    sPoNo = "4200001905" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data) 4300007660
                     TT = "POR"
                     WI = "000002605618"
                     TI = "TS99000076"

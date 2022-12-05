@@ -39,7 +39,7 @@
                                     <viz:dataset>
                                         <viz.data:FlattenedDataset data="{appModel>/BoLineAreaMap}">
                                             <viz.data:dimensions>
-                                                <viz.data:DimensionDefinition name="Date" value="{appModel>Date}" />
+                                                <viz.data:DimensionDefinition name="Date" value="{path: 'appModel>Date', formatter: '.formatter.getDateFormatted'}" />
                                             </viz.data:dimensions>
                                             <viz.data:measures>
                                                 <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />
@@ -100,7 +100,7 @@
                                     <viz:dataset>
                                         <viz.data:FlattenedDataset data="{appModel>/BoLineMap}">
                                             <viz.data:dimensions>
-                                                <viz.data:DimensionDefinition name="Year" value="{appModel>Year}" />
+                                                <viz.data:DimensionDefinition name="Year" value="{path: 'appModel>Year', formatter: '.formatter.getDateFormatted'}" />
                                             </viz.data:dimensions>
                                             <viz.data:measures>
                                                 <viz.data:MeasureDefinition name="OrderValue" value="{appModel>OrderValue}" />

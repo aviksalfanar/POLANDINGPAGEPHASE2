@@ -9,7 +9,7 @@
                                 <viz:dataset>
                                     <viz.data:FlattenedDataset data="{appModel>/ItemHisData}">
                                         <viz.data:dimensions>
-                                            <viz.data:DimensionDefinition name="Date" value="{appModel>Date}" />
+                                            <viz.data:DimensionDefinition name="Date" value="{path: 'appModel>Date', formatter: '.formatter.getDateFormatted'}" />
                                         </viz.data:dimensions>
                                         <viz.data:measures>
                                             <viz.data:MeasureDefinition name="Price" value="{appModel>Price}" />
