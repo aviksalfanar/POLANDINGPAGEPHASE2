@@ -160,11 +160,11 @@
                     <mc:RadialMicroChart size="L" percentage="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getPercentageForMicroChart'}" alignContent="Center" valueColor="{path: 'appModel>/OpenNcrVsVendor/Percentage', formatter: '.formatter.getMicroChartValueColor'}" />
                     <FlexBox direction="Row" width="100%" justifyContent="SpaceBetween" class="sapUiContentPadding">
                         <FlexBox direction="Column" alignItems="Center">
-                            <Text text="{i18n>Open}" />
+                            <Text text="{i18n>Close}" />
                             <Text text="{appModel>/OpenNcrVsVendor/YMatch}" />
                         </FlexBox>
                         <FlexBox direction="Column" alignItems="Center">
-                            <Link press="onOpenNcrVsVendor" text="{i18n>Close}" emphasized="true" textAlign="End" enabled="{= ${appModel>/OpenNcrVsVendor/NMatch} > 0 ? true : false}"/>
+                            <Link press="onOpenNcrVsVendor" text="{i18n>Open}" emphasized="true" textAlign="End" enabled="{= ${appModel>/OpenNcrVsVendor/NMatch} > 0 ? true : false}"/>
                             <Text text="{appModel>/OpenNcrVsVendor/NMatch}" />
                         </FlexBox>
                     </FlexBox>
