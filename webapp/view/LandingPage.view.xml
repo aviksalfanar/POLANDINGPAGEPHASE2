@@ -58,27 +58,26 @@
                                     <GenericTag text="{i18n>POSaving}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
                                         <ObjectNumber state="Warning" number="{appModel>/PoSaving}" />
                                     </GenericTag> -->
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag" >
-                                        <Label text="{i18n>POValue}" textAlign="Center" design="Bold" class="blackText"/>
-                                        <Label text="{appModel>/PoValue} {appModel>/PovCur}" design="Bold" textAlign="Center" class="blueText"/>
+                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                        <Label text="{i18n>POValue}" textAlign="Center" design="Bold" class="blackText" />
+                                        <Label text="{appModel>/PoValue} {appModel>/PovCur}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag" >
-                                        <Label text="{i18n>POType}" textAlign="Center" design="Bold" class="blackText"/>
-                                        <Label text="{appModel>/PoType}" design="Bold" textAlign="Center" class="blueText"/>
+                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                        <Label text="{i18n>POType}" textAlign="Center" design="Bold" class="blackText" />
+                                        <Label text="{appModel>/PoType}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag" >
-                                        <Label text="{i18n>INCOTerm}" textAlign="Center" design="Bold" class="blackText"/>
-                                        <Label text="{appModel>/IncoTerm}" design="Bold" textAlign="Center" class="blueText"/>
+                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                        <Label text="{i18n>INCOTerm}" textAlign="Center" design="Bold" class="blackText" />
+                                        <Label text="{appModel>/IncoTerm}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag" >
-                                        <Label text="{i18n>PurchasingGroup}" textAlign="Center" design="Bold" class="blackText"/>
-                                        <Label text="{appModel>/PurGroup}" design="Bold" textAlign="Center" class="blueText"/>
+                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                        <Label text="{i18n>PurchasingGroup}" textAlign="Center" design="Bold" class="blackText" />
+                                        <Label text="{appModel>/PurGroup}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag" >
-                                        <Label text="{i18n>POSaving}" textAlign="Center" design="Bold" class="blackText"/>
-                                        <Label text="{appModel>/PoSaving}" design="Bold" textAlign="Center" class="blueText"/>
+                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                        <Label text="{i18n>POSaving}" textAlign="Center" design="Bold" class="blackText" />
+                                        <Label text="{appModel>/PoSaving}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-
                                 </FlexBox>
                                 <Panel expandable="true" headerText="{i18n>PaymentTermAndMethod}" expanded="true">
                                     <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.PaymentTermsAndMethod" type="XML" />
@@ -120,7 +119,11 @@
                                     <Title text="{i18n>POAnalysisCap}" />
                                     <ToolbarSpacer />
                                     <ObjectAttribute title="{i18n>Grade}" text="{path: 'appModel>/BOGRADE', formatter: '.formatter.getGradeFormatted'}" />
-                                    <Link press="onMicroChartUrlClick" text="Power BI URL" emphasized="true" textAlign="End" />
+                                    <ObjectAttribute title="{i18n>MoreDetails}" class="boldText">
+                                        <customContent>
+                                            <Link press="onMicroChartUrlClick" text="{i18n>PowerBi}" emphasized="true" textAlign="End" />
+                                        </customContent>
+                                    </ObjectAttribute>
                                 </OverflowToolbar>
                             </headerToolbar>
                             <content>

@@ -56,3 +56,9 @@
 .blueText{
     color: #0070f2;
 }
+
+.boldText .sapMObjectAttributeTitle{
+    font-size: .875rem;
+    color: #1d2d3e;
+    font-weight: bold;
+}
