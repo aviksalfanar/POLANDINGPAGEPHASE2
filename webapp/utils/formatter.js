@@ -4,6 +4,10 @@ sap.ui.define([
     return {
         getDateFormatted: function (sDate) {
             let sCalculatedDate;
+            if(sDate && typeof sDate === 'string' && sDate.includes("-")){
+                const sSplittedDate = sDate.split("-");
+                sDate = `${sSplittedDate[1]}.${sSplittedDate[0]}.${sSplittedDate[2]}`;
+            }
             const oDate = new Date(sDate);
             const oDates = {
                 0: "01",
