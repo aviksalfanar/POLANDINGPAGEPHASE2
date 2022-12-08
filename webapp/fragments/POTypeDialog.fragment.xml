@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:plugins="sap.m.plugins">
     <Dialog resizable="true" title="PO Type" class="sapUiSizeCompact" contentHeight="30%" contentWidth="30%">
         <content>
-            <Table sticky="ColumnHeaders" id="idPoType" items="{appModel>/PoTypeAnalysis}">
+            <Table sticky="ColumnHeaders" items="{appModel>/PoTypeAnalysis}">
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>

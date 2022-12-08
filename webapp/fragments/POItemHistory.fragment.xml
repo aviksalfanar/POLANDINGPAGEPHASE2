@@ -39,7 +39,7 @@
                     <Text text="{appModel>PoNum}" />
                     <Text text="{appModel>VndName}" />
                     <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}" />
-                    <Text text="{appModel>MatPrice}" />
+                    <Text text="{appModel>MatPriceLcl}" />
                     <Text text="{appModel>Currency}" />
                     <Text text="{appModel>OrdQty}" />
 

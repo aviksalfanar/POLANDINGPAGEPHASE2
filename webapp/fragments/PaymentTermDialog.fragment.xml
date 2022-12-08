@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:plugins="sap.m.plugins">
     <Dialog resizable="true" draggable="true" title="Payment Terms" class="sapUiSizeCompact" contentHeight="40%" contentWidth="70%">
         <content>
-            <Table sticky="ColumnHeaders" id="idPaymentTerm" items="{appModel>/PaymentTerms}">
+            <Table sticky="ColumnHeaders" items="{appModel>/PaymentTerms}">
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>

@@ -207,7 +207,7 @@ sap.ui.define([
             },
 
             onMaterialUom: async function () {
-                this.oMaterialUOMFragment;
+                oMaterialUOMFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.MaterialPriceUOMDialog";
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
@@ -232,15 +232,15 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/UoM", aMaterialUOM);
                 this.getView().getModel("appModel").refresh(true);
 
-                if (!this.oMaterialUOMFragment) {
-                    this.oMaterialUOMFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                if (!oMaterialUOMFragment) {
+                    oMaterialUOMFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
-                this.oMaterialUOMFragment.open();
+                oMaterialUOMFragment.open();
 
             },
 
             onOrderCurrency: async function () {
-                this.oOrderCurrencyFragment;
+                let oOrderCurrencyFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.OrderCurrencyDialog";
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
@@ -265,15 +265,15 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/Currency", aOrderCurrencyValue);
                 this.getView().getModel("appModel").refresh(true);
 
-                if (!this.oOrderCurrencyFragment) {
-                    this.oOrderCurrencyFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                if (!oOrderCurrencyFragment) {
+                    oOrderCurrencyFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
-                this.oOrderCurrencyFragment.open();
+                oOrderCurrencyFragment.open();
 
             },
 
             onPOType: async function () {
-                this.oPOTypeFragment;
+                let oPOTypeFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.POTypeDialog"
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
@@ -296,16 +296,16 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/PoTypeAnalysis", aPoType);
                 this.getView().getModel("appModel").refresh(true);
 
-                if (!this.oPOTypeFragment) {
-                    this.oPOTypeFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                if (!oPOTypeFragment) {
+                    oPOTypeFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
-                this.oPOTypeFragment.open();
+                oPOTypeFragment.open();
             },
 
 
             onPaymentTerms: async function () {
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.PaymentTermDialog";
-                this.oPaymentTermsFragment;
+                let oPaymentTermsFragment;
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
                 aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
@@ -329,15 +329,15 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/PaymentTerms", aPaymentTerms);
                 this.getView().getModel("appModel").refresh(true);
 
-                if (!this.oPaymentTermsFragment) {
-                    this.oPaymentTermsFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                if (!oPaymentTermsFragment) {
+                    oPaymentTermsFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
-                this.oPaymentTermsFragment.open();
+                oPaymentTermsFragment.open();
 
             },
 
             onInventoryAnalysis: async function () {
-                this.oInventoryAnalysisFragment;
+                let oInventoryAnalysisFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.InventoryAnalysisDialog";
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
@@ -365,17 +365,16 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/InventoryAnalysis", aInventoryData);
                 this.getView().getModel("appModel").refresh(true);
 
-                console.log(aInventoryData);
-                if (!this.oInventoryAnalysisFragment) {
-                    this.oInventoryAnalysisFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                if (!oInventoryAnalysisFragment) {
+                    oInventoryAnalysisFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
-                this.oInventoryAnalysisFragment.open();
+                oInventoryAnalysisFragment.open();
 
             },
 
 
             onOpenNcrVsVendor: async function () {
-                this.oOpenNcrVsVendorFragment;
+                let oOpenNcrVsVendorFragment;
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.OpenNcrVsVendorDialog"
                 const aFilters = [];
                 const sPath = "/POAnalysisMatsSet";
@@ -400,10 +399,10 @@ sap.ui.define([
                 this.getView().getModel("appModel").setProperty("/OpenNcr", aOpenNCrVsVendorData);
                 this.getView().getModel("appModel").refresh(true);
 
-                if (!this.oOpenNcrVsVendorFragment) {
-                    this.oOpenNcrVsVendorFragment = await this.loadFragment(sFragmentName, this.getView(), this);
+                if (!oOpenNcrVsVendorFragment) {
+                    oOpenNcrVsVendorFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
-                this.oOpenNcrVsVendorFragment.open();
+                oOpenNcrVsVendorFragment.open();
 
             },
 
@@ -822,11 +821,13 @@ sap.ui.define([
                 let aItemHistory = data.results.map(oData => {
                     return {
                         Date: oData.CreDate.toLocaleDateString(),
-                        Price: oData.MatPrice
+                        Price: oData.MatPriceLcl
                     }
                 });
                 this.getView().getModel("appModel").setProperty("/ItemHistorySet", data.results);
                 this.getView().getModel("appModel").setProperty("/ItemHisData", aItemHistory);
+                console.log(data.results);
+                console.log(aItemHistory);
             },
 
             setBoLineMap: async function (sPlant, sPurchaseOrg, sVCode) {
