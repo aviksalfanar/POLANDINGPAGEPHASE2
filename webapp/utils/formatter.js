@@ -24,7 +24,7 @@ sap.ui.define([
                 11: "12"
             }
             const sMonth = oDates[oDate.getMonth()];
-            const sRetrDate = oDate.getUTCDate().toLocaleString().length === 1 ? `0${oDate.getUTCDate()}` : oDate.getUTCDate();
+            const sRetrDate = oDate.getDate().toString().length === 1 ? `0${oDate.getDate()}` : oDate.getDate();
             const sYear = oDate.getFullYear(); // oDate.getFullYear().toString().substring(2)
             sCalculatedDate = `${sRetrDate}.${sMonth}.${sYear}`
 

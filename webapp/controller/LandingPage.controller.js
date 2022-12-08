@@ -455,7 +455,7 @@ sap.ui.define([
 
                     // Payment Term Segrigation
                     if (data.PmtTerm) {
-                        let aPmtTerm = data.PmtTerm.split("||");
+                        let aPmtTerm = data.PmtTerm.split(";");
                         aPmtTerm.forEach(data => {
                             if (data.includes("Advance")) {
                                 this.getView().getModel("appModel").setProperty("/PmtTermAdvance", data);
@@ -698,7 +698,7 @@ sap.ui.define([
                 if (nonMatch === 0 && iMatch > 0) {
                     fPercentage = 100;
                 } else if (iMatch > 0 && nonMatch > 0) {
-                    fPercentage = (nonMatch / (iMatch + nonMatch)).toFixed(1);
+                    fPercentage = ((nonMatch / (iMatch + nonMatch)) * 100).toFixed(1);
                 } else if (iMatch === 0 && nonMatch > 0) {
                     fPercentage = 0;
                 }

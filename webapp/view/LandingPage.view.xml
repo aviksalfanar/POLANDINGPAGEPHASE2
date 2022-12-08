@@ -58,23 +58,23 @@
                                     <GenericTag text="{i18n>POSaving}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
                                         <ObjectNumber state="Warning" number="{appModel>/PoSaving}" />
                                     </GenericTag> -->
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                    <layout:VerticalLayout class="sapUiTinyMarginEnd sapUiTinyMarginBottom alternategenerictag">
                                         <Label text="{i18n>POValue}" textAlign="Center" design="Bold" class="blackText" />
                                         <Label text="{appModel>/PoValue} {appModel>/PovCur}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                    <layout:VerticalLayout class="sapUiTinyMarginEnd sapUiTinyMarginBottom alternategenerictag">
                                         <Label text="{i18n>POType}" textAlign="Center" design="Bold" class="blackText" />
                                         <Label text="{appModel>/PoType}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                    <layout:VerticalLayout class="sapUiTinyMarginEnd sapUiTinyMarginBottom alternategenerictag">
                                         <Label text="{i18n>INCOTerm}" textAlign="Center" design="Bold" class="blackText" />
                                         <Label text="{appModel>/IncoTerm}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                    <layout:VerticalLayout class="sapUiTinyMarginEnd sapUiTinyMarginBottom alternategenerictag">
                                         <Label text="{i18n>PurchasingGroup}" textAlign="Center" design="Bold" class="blackText" />
                                         <Label text="{appModel>/PurGroup}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
-                                    <layout:VerticalLayout class="sapUiMediumMarginEnd sapUiSmallMarginBottom alternategenerictag">
+                                    <layout:VerticalLayout class="sapUiTinyMarginEnd sapUiTinyMarginBottom alternategenerictag">
                                         <Label text="{i18n>POSaving}" textAlign="Center" design="Bold" class="blackText" />
                                         <Label text="{appModel>/PoSaving}" design="Bold" textAlign="Center" class="blueText" />
                                     </layout:VerticalLayout>
