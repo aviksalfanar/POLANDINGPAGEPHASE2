@@ -1,7 +1,7 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m">
     <Dialog resizable="true" draggable="true" class="sapUiSizeCompact" contentHeight="40%" contentWidth="90%" showHeader="false" xmlns:plugins="sap.m.plugins">
         <content>
-            <Table id="idInventorytable" sticky="ColumnHeaders" items="{appModel>/InventoryAnalysis}" class="sapUiSmallMarginEnd">
+            <Table id="idInventorytable" popinLayout="GridSmall" sticky="ColumnHeaders" items="{appModel>/InventoryAnalysis}" class="sapUiSmallMarginEnd">
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>

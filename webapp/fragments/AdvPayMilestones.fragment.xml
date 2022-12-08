@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Table id="idAvPM" autoPopinMode="true" contextualWidth="Auto" sticky="ColumnHeaders" mode="None" alternateRowColors="true" items="{appModel>/AdvnPM}" class="sapUiMediumMarginBottom">
+    <Table id="idAvPM" autoPopinMode="true" popinLayout="GridSmall" contextualWidth="Auto" sticky="ColumnHeaders" mode="None" alternateRowColors="true" items="{appModel>/AdvnPM}" class="sapUiMediumMarginBottom">
         <dependents>
             <plugins:ColumnResizer />
         </dependents>

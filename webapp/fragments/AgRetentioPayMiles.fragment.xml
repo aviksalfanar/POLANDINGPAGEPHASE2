@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Table id="idRM" sticky="ColumnHeaders" autoPopinMode="true" mode="None" contextualWidth="Auto" items="{appModel>/RetentionPM}">
+    <Table id="idRM" popinLayout="GridSmall" sticky="ColumnHeaders" autoPopinMode="true" mode="None" contextualWidth="Auto" items="{appModel>/RetentionPM}">
         <dependents>
             <plugins:ColumnResizer />
         </dependents>

@@ -9,6 +9,7 @@
         items="{path: 'appModel>/PoDataItems', sorter: { path: 'Item' }}"
         itemPress="onPOItemSelect"
         class="sapUiMediumMarginBottom"
+        popinLayout="GridSmall"
     >
         <headerToolbar>
             <OverflowToolbar>
