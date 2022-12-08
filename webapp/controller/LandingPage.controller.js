@@ -150,14 +150,15 @@ sap.ui.define([
                     oMaterialPriceVsOldFragment = await this.loadFragment(sFragmentName, this.getView(), this);
                 }
                 oMaterialPriceVsOldFragment.open();
-                this.setChartPopOver(this.getView().byId("idMatPriceVsOldPriceChart"));
-                this.setFilterFirstTime(sSelectedMaterial);
+                this.setChartPopOver(oMaterialPriceVsOldFragment.getContent()[0].getItems()[2].getFlexContent());
+                const oComboBox = oMaterialPriceVsOldFragment.getContent()[0].getItems()[1].getItems()[0];    
+                this.setFilterFirstTime(sSelectedMaterial, oComboBox);
 
             },
 
-            setFilterFirstTime: async function (sSelectedMaterial) {
+            setFilterFirstTime: async function (sSelectedMaterial, oComboBox) {
                 // Set Selected Key for the first Time
-                this.getView().byId("idMatpriceVsOldPriceComboBox").setSelectedKey(sSelectedMaterial);
+                oComboBox.setSelectedKey(sSelectedMaterial);
                 const aFilters = [];
                 const sPath = "/MatPriceTrendSet";
                 aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
@@ -412,7 +413,7 @@ sap.ui.define([
                 // Checking if the HostName has applicationstudio.cloud.sap that means it is running from BAS So that
                 if (window.location.hostname.includes("applicationstudio.cloud.sap")) {
                     // This section is for Static Testing
-                    sPoNo = "4200008157" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data) 4300007660
+                    sPoNo = "4200001905" // 4200008157 (For Milestone Data) 4200001905 (Without Mile stone Data) 4300007660
                     TT = "POR"
                     WI = "000002605618"
                     TI = "TS99000076"

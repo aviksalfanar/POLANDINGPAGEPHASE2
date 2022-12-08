@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
-    <Dialog id="idMatPriceVsOldPriceDialog" title="{i18n>MaterialPriceNotMatchingTitle}" class="sapUiSizeCompact" contentHeight="70%" contentWidth="40%" resizable="true" draggable="true">
+    <Dialog title="{i18n>MaterialPriceNotMatchingTitle}" class="sapUiSizeCompact" contentHeight="70%" contentWidth="40%" resizable="true" draggable="true">
         <content>
             <VBox>
                 <Label text="{i18n>SelectMaterialText}" class="sapUiTinyMarginTopBottom sapUiLargeMarginBegin" design="Bold" />
@@ -9,9 +9,9 @@
                     </ComboBox>
                     <Label class="sapUiLargeMarginBegin sapUiTinyMarginTop sapUiLargeMarginEnd" text="SAR" design="Bold" />
                 </HBox>
-                <layout:FixFlex id='idMatPriceVsOldPriceFixFlex' minFlexSize="250">
+                <layout:FixFlex minFlexSize="250">
                     <layout:flexContent>
-                        <viz:VizFrame id="idMatPriceVsOldPriceChart" vizProperties="{title: {text : 'Material Price Vs Vendor', visible : true}}" uiConfig="{applicationSet:'fiori'}" vizType='line'>
+                        <viz:VizFrame vizProperties="{title: {text : 'Material Price Vs Vendor', visible : true}}" uiConfig="{applicationSet:'fiori'}" vizType='line'>
                             <viz:dataset>
                                 <viz.data:FlattenedDataset data="{appModel>/MatPriceVendorChart}">
                                     <viz.data:dimensions>
