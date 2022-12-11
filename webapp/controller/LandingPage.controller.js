@@ -258,7 +258,8 @@ sap.ui.define([
                         MatNum: order.MatNum,
                         MatDesc: order.MatDesc,
                         CurrentCurrency: order.MiscDat.split(";")[0],
-                        LastCurrency: order.MiscDat.split(";")[1]
+                        LastCurrency: order.MiscDat.split(";")[1],
+                        LastPoNumber: order.MiscDat.split(";")[2]
 
                     }
                 });

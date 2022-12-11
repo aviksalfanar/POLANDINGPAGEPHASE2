@@ -7,6 +7,9 @@
                 </dependents>
                 <columns>
                     <Column>
+                        <Text text="{i18n>LastPoNumber}" />
+                    </Column>
+                    <Column>
                         <Text text="{i18n>CurrentCurrency}" />
                     </Column>
                     <Column>
@@ -16,6 +19,7 @@
                 <items>
                     <ColumnListItem>
                         <cells>
+                            <ObjectIdentifier text="{appModel>LastPoNumber}" />
                             <ObjectIdentifier text="{appModel>CurrentCurrency}" />
                             <ObjectIdentifier text="{appModel>LastCurrency}" />
                         </cells>
