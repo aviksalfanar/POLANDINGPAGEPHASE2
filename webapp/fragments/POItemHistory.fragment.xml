@@ -23,6 +23,9 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="7em">
                 <Text text="{i18n>Price}" />
             </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+                <Text text="{i18n>PriceSAR}" />
+            </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>Currency}" />
             </Column>
@@ -39,6 +42,7 @@
                     <Text text="{appModel>PoNum}" />
                     <Text text="{appModel>VndName}" />
                     <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}" />
+                    <Text text="{appModel>MatPrice}" />
                     <Text text="{appModel>MatPriceLcl}" />
                     <Text text="{appModel>Currency}" />
                     <Text text="{appModel>OrdQty}" />
