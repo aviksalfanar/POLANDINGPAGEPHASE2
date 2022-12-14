@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m">
-    <Dialog resizable="true" draggable="true" title="{i18n>POItemsCap} (Item: {appModel>/SelectedPoItem/Item} Material: {appModel>/SelectedPoItem/MatNum})" class="sapUiSizeCompact" contentHeight="70%" contentWidth="90%">
+    <Dialog resizable="true" draggable="true" title="{i18n>POItemsCap} (Item: {appModel>/SelectedPoItem/Item} - Material: {appModel>/SelectedPoItem/MatNum} - Material Description: {appModel>/SelectedPoItem/MatDesc})" class="sapUiSizeCompact" contentHeight="70%" contentWidth="100%">
         <content>
             <layout:Splitter>
                 <layout:layoutData>
@@ -11,7 +11,7 @@
                             <core:Fragment fragmentName="com.alfanar.polandingpage.polandingpage.fragments.POItemHistory" type="XML" />
                         </content>
                         <layoutData>
-                            <layout:SplitterLayoutData size="65%" />
+                            <layout:SplitterLayoutData size="70%" />
                         </layoutData>
                     </Panel>
 

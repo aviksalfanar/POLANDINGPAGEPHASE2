@@ -1069,6 +1069,47 @@ sap.ui.define([
                 }
                 oPopOverInventoryAnalysis.openBy(oBtn);
 
+            },
+            onHeaderClick: async function(oEvent){
+                const oSourceObj = oEvent.getSource();
+                const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.HeaderPopOver";
+                let sFilterCriteria, sHeaderTitle;
+                let bHeaderText = false;
+                let oHeaderDetailsPopOver;
+                if(oSourceObj.getText().includes("Header Text")){
+                    sFilterCriteria = "F01";
+                    bHeaderText = true;
+                    sHeaderTitle = "Header Text"
+                }else{
+                    sFilterCriteria = "F02"
+                    sHeaderTitle = "Header Note"
+                }
+                let aFilters = [];
+                aFilters.push(new Filter("PoNum", FilterOperator.EQ, this.PONumber));
+                aFilters.push(new Filter("TxtId", FilterOperator.EQ, sFilterCriteria));
+                const finalFilter = new Filter({
+                    filters: aFilters,
+                    and: true
+                })
+                const data = await this.getData("/POHeaderTextSet", "", [], finalFilter);
+                let sHeaderDetails = data.results.map(headerNote => headerNote.TxtLine).join(";");
+                if(bHeaderText && !sHeaderDetails){
+                    sHeaderDetails = "No header text found";
+                }else if(!bHeaderText && !sHeaderDetails){
+                    sHeaderDetails = "No header note found";
+                }
+
+                this.getView().getModel("appModel").setProperty("/HeaderDetails", "");
+                this.getView().getModel("appModel").setProperty("/HeaderTitle", "");
+                this.getView().getModel("appModel").refresh(true);
+                this.getView().getModel("appModel").setProperty("/HeaderDetails", sHeaderDetails);
+                this.getView().getModel("appModel").setProperty("/HeaderTitle", sHeaderTitle);
+
+                if (!oHeaderDetailsPopOver) {
+                    oHeaderDetailsPopOver = await this.loadFragment(sFragmentName, this.getView(), this);
+                }
+                oHeaderDetailsPopOver.openBy(oSourceObj);
+
             }
 
         });

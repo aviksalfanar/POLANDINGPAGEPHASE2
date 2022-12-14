@@ -1,0 +1,7 @@
+<core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
+    <Popover title="{appModel>/HeaderTitle}" placement="Bottom" contentWidth="20%">
+        <content>
+            <Text class="sapUiSmallMargin" text="{appModel>/HeaderDetails}"></Text>
+        </content>
+    </Popover>
+</core:FragmentDefinition>

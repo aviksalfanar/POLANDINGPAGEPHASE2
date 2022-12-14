@@ -40,7 +40,15 @@
                         <layout:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="32%" />
                     </layout:layoutData>
                     <layout:contentAreas>
-                        <Panel id="_IDGenPanel1" headerText="{i18n>POHeader}" width="auto" accessibleRole="Region">
+                        <Panel id="_IDGenPanel1" width="auto" accessibleRole="Region">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="{i18n>POHeader}" />
+                                    <ToolbarSpacer />
+                                    <Link text="{i18n>HeaderText}" emphasized="true" press="onHeaderClick" />
+                                    <Link text="{i18n>HeaderNote}" emphasized="true" press="onHeaderClick" />
+                                </OverflowToolbar>
+                            </headerToolbar>
                             <content>
                                 <FlexBox direction="Row" justifyContent="Start" wrap="Wrap" class="sapUiMediumMarginBegin sapUiSmallMarginBottom">
                                     <!-- <GenericTag text="{i18n>POValue}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
@@ -110,7 +118,7 @@
                 <!-- Splitter 2 PO Analysis -->
                 <layout:Splitter id="_IDGenSplitter2">
                     <layout:layoutData>
-                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="20%" resizable="true"/>
+                        <layout:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="20%" resizable="true" />
                     </layout:layoutData>
                     <layout:contentAreas>
                         <Panel id="_IDGenPanelPOANalysis" width="auto" accessibleRole="Region">
@@ -134,7 +142,7 @@
                 </layout:Splitter>
 
                 <!-- Splitter 3 PO Item and PO Item History -->
-                <layout:Splitter id="_IDGenSplitter3" >
+                <layout:Splitter id="_IDGenSplitter3">
                     <layout:layoutData>
                         <layout:SplitterLayoutData id="_IDGenSplitterLayoutData4" size="23%" resizable="true" />
                     </layout:layoutData>
