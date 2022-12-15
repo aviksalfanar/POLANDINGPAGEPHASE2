@@ -14,18 +14,15 @@
             <Column width="7em" minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>OrderPo}" />
             </Column>
-            <Column width="7em" minScreenWidth="Phone" demandPopin="false">
-                <Text text="{i18n>Vendor}" />
-            </Column>
             <Column minScreenWidth="Phone" demandPopin="false">
                 <Text text="{i18n>VendorName}" />
             </Column>
-            <Column minScreenWidth="Phone" demandPopin="false" width="7em">
+            <!-- <Column minScreenWidth="Phone" demandPopin="false" width="7em">
                 <Text text="{i18n>INCOTerm}" />
             </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="7em">
                 <Text text="{i18n>PaymentTerm}" />
-            </Column>
+            </Column> -->
             <Column minScreenWidth="Phone" demandPopin="false" width="7em">
                 <Text text="{i18n>Date}" />
             </Column>
@@ -41,25 +38,24 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>OrderQuantity}" />
             </Column>
-            <!-- <Column minScreenWidth="Phone" demandPopin="false" width="4em">
+            <Column minScreenWidth="Phone" demandPopin="false" width="4em">
                 <Text text="{i18n>More}" />
-            </Column> -->
+            </Column>
         </columns>
         <items>
             <ColumnListItem>
                 <cells>
                     <Text text="{appModel>PoNum}" />
-                    <Text text="{appModel>VndCode}" />
                     <Text text="{appModel>VndName}" />
-                    <Text text="{appModel>ITerm}" />
-                    <Text text="{appModel>PTerm}" />
+                    <!-- <Text text="{appModel>ITerm}" />
+                    <Text text="{appModel>PTerm}" /> -->
                     <Text text="{path: 'appModel>CreDate', formatter: '.formatter.getDateFormatted'}" />
                     <Text text="{appModel>MatPrice}" />
                     <Text text="{appModel>Currency}" />
                     <Text text="{appModel>MatPriceLcl}" />
                     <Text text="{appModel>OrdQty}" />
 
-                    <!-- <Link text="More" press="onPOItemHistoryTableMore" /> -->
+                    <Link text="More" press="onPOItemHistoryTableMore" />
                 </cells>
             </ColumnListItem>
         </items>
