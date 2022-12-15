@@ -1,14 +1,14 @@
 <core:FragmentDefinition height="100%" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Dialog resizable="true" draggable="true" title="{i18n>RetentionPM}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="90%">
+    <Dialog resizable="true" draggable="true" title="{i18n>MoreDetails}" class="sapUiSizeCompact" contentHeight="30%" contentWidth="90%">
         <content>
             <Table sticky="ColumnHeaders" autoPopinMode="true" contextualWidth="Auto" mode="SingleSelectMaster" alternateRowColors="true" items="{appModel>/POItemHistoryMore}" class="sapUiMediumMarginBottom">
-                <headerToolbar>
+                <!-- <headerToolbar>
                     <OverflowToolbar>
                         <content>
                             <Title text="{i18n>POItemsHist}" level="H2" />
                         </content>
                     </OverflowToolbar>
-                </headerToolbar>
+                </headerToolbar> -->
                 <dependents>
                     <plugins:ColumnResizer />
                 </dependents>
@@ -19,15 +19,15 @@
                     <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>INCOTerm}" />
                     </Column>
-                    <Column minScreenWidth="Phone" demandPopin="false" >
+                    <!-- <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>Description}" />
-                    </Column>
+                    </Column> -->
                     <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>PaymentTerm}" />
                     </Column>
-                    <Column minScreenWidth="Phone" demandPopin="false" >
+                    <!-- <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>Description}" />
-                    </Column>
+                    </Column> -->
                     <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>Plant}" />
                     </Column>
@@ -41,9 +41,9 @@
                         <cells>
                             <Text text="{appModel>VndCode}" />
                             <Text text="{appModel>ITerm}" />
-                            <Text text="{appModel>ITermDesc}" />
+                            <!-- <Text text="{appModel>ITermDesc}" /> -->
                             <Text text="{appModel>PTerm}" />
-                            <Text text="{appModel>PTermDesc}" />
+                            <!-- <Text text="{appModel>PTermDesc}" /> -->
                             <Text text="{appModel>Plant}" />
                             <Text text="{appModel>VndCntr}" />
                         </cells>
