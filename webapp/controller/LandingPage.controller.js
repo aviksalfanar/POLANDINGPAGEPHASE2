@@ -1092,7 +1092,7 @@ sap.ui.define([
                     and: true
                 })
                 const data = await this.getData("/POHeaderTextSet", "", [], finalFilter);
-                let sHeaderDetails = data.results.map(headerNote => headerNote.TxtLine).join(";");
+                let sHeaderDetails = data.results.map(headerNote => headerNote.TxtLine).join("\n");
                 if(bHeaderText && !sHeaderDetails){
                     sHeaderDetails = "No header text found";
                 }else if(!bHeaderText && !sHeaderDetails){

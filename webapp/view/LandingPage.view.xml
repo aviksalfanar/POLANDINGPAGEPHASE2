@@ -44,7 +44,6 @@
                             <headerToolbar>
                                 <OverflowToolbar>
                                     <Title text="{i18n>POHeader}" />
-                                    <ToolbarSpacer />
                                     <Link text="{i18n>HeaderText}" emphasized="true" press="onHeaderClick" />
                                     <Link text="{i18n>HeaderNote}" emphasized="true" press="onHeaderClick" />
                                 </OverflowToolbar>
