@@ -476,7 +476,7 @@ sap.ui.define([
                     data.HdrToApDec.results.forEach(approval => {
                         if(approval.Comments){
                             if(approval.Comments.length <= 20){
-                                approval.smallComment = `${approval.Comments}...`;
+                                approval.smallComment = `${approval.Comments}`;
                                 approval.linkEnable = true;
                             }else{
                                 approval.smallComment = `${approval.Comments.substring(0, 20)}...`;
