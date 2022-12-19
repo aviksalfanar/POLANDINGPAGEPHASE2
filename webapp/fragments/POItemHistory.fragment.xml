@@ -38,6 +38,9 @@
             <Column minScreenWidth="Phone" demandPopin="false" width="5em">
                 <Text text="{i18n>OrderQuantity}" />
             </Column>
+            <Column minScreenWidth="Phone" demandPopin="false" width="5em">
+                <Text text="{i18n>Plant}" />
+            </Column>
             <Column minScreenWidth="Phone" demandPopin="false" width="4em">
                 <Text text="{i18n>More}" />
             </Column>
@@ -54,6 +57,7 @@
                     <Text text="{appModel>Currency}" />
                     <Text text="{appModel>MatPriceLcl}" />
                     <Text text="{appModel>OrdQty}" />
+                    <Text text="{appModel>Plant}" />
                     <Link text="More" press="onPOItemHistoryTableMore" />
                 </cells>
             </ColumnListItem>

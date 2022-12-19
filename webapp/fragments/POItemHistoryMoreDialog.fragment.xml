@@ -28,9 +28,9 @@
                     <!-- <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>Description}" />
                     </Column> -->
-                    <Column minScreenWidth="Phone" demandPopin="false" >
+                    <!-- <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>Plant}" />
-                    </Column>
+                    </Column> -->
                     <Column minScreenWidth="Phone" demandPopin="false" >
                         <Text text="{i18n>VendorCountry}" />
                     </Column>
@@ -44,7 +44,7 @@
                             <!-- <Text text="{appModel>ITermDesc}" /> -->
                             <Text text="{appModel>PTerm}" />
                             <!-- <Text text="{appModel>PTermDesc}" /> -->
-                            <Text text="{appModel>Plant}" />
+                            <!-- <Text text="{appModel>Plant}" /> -->
                             <Text text="{appModel>VndCntr}" />
                         </cells>
                     </ColumnListItem>
