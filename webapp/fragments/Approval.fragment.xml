@@ -1,5 +1,5 @@
 <core:FragmentDefinition height="100%" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:plugins="sap.m.plugins">
-    <Table id="idApprovalDecision" popinLayout="GridSmall" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{appModel>/ApprovalLevels}" class="sapUiMediumMarginBottom">
+    <Table id="idApprovalDecision" popinLayout="GridSmall" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" autoPopinMode="true" contextualWidth="Auto" mode="None" alternateRowColors="true" items="{ path:'appModel>/ApprovalLevels', factory:'.approvalArrangement'}" class="sapUiMediumMarginBottom">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -33,7 +33,7 @@
         <dependents>
             <plugins:ColumnResizer />
         </dependents>
-        <items>
+        <!-- <items>
             <ColumnListItem>
                 <cells>
                     <Text text="{appModel>ApLevel}" />
@@ -41,9 +41,10 @@
                     <Text text="{appModel>EmpPostn}" />
                     <Text text="{path: 'appModel>ActDate', formatter: '.formatter.getDateFormatted'}" />
                     <Text text="{appModel>Status}" />
-                    <Link text="{appModel>smallComment}" press="onApprovalTableMoreClick" enabled="{appModel>linkEnable}"/>
+                    <Text text="{appModel>smallComment}"  visible="{appModel>textVisible}"/>                  
+                    <Link text="{appModel>smallComment}" press="onApprovalTableMoreClick" visible="{appModel>linkVisible}"/>
                 </cells>
             </ColumnListItem>
-        </items>
+        </items> -->
     </Table>
 </core:FragmentDefinition>

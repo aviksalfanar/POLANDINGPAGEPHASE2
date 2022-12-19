@@ -151,7 +151,7 @@ sap.ui.define([
                 }
                 oMaterialPriceVsOldFragment.open();
                 this.setChartPopOver(oMaterialPriceVsOldFragment.getContent()[0].getItems()[2].getFlexContent());
-                const oComboBox = oMaterialPriceVsOldFragment.getContent()[0].getItems()[1].getItems()[0];    
+                const oComboBox = oMaterialPriceVsOldFragment.getContent()[0].getItems()[1].getItems()[0];
                 this.setFilterFirstTime(sSelectedMaterial, oComboBox);
 
             },
@@ -473,18 +473,21 @@ sap.ui.define([
                     // Setting the PO Items Data
                     this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
                     // Add the 20 character in comments and ...
-                    data.HdrToApDec.results.forEach(approval => {
-                        if(approval.Comments){
-                            if(approval.Comments.length <= 20){
+                    data.HdrToApDec.results.forEach((approval, index) => {
+                        if (approval.Comments) {
+                            if (approval.Comments.length <= 20) {
                                 approval.smallComment = `${approval.Comments}`;
-                                approval.linkEnable = false;
-                            }else{
+                                approval.linkVisible = false;
+                                approval.textVisible = true;
+                            } else {
                                 approval.smallComment = `${approval.Comments.substring(0, 20)}...`;
-                                approval.linkEnable = true;
+                                approval.linkVisible = true;
+                                approval.textVisible = false;
                             }
-                        }else{
+                        } else {
                             approval.smallComment = "No Comments"
-                            approval.linkEnable = false;
+                            approval.linkVisible = false;
+                            approval.textVisible = true;
                         }
                     })
 
@@ -511,6 +514,30 @@ sap.ui.define([
                 } catch (error) {
                     console.log(error.responseText);
                 }
+
+            },
+            approvalArrangement: function (sId, oContext) {
+                debugger;
+                let oLinkTextControl;
+                let sActionDate = oContext.getProperty("ActDate");
+                sActionDate = formatter.getDateFormatted(sActionDate);
+                if (oContext.getProperty("textVisible")) {
+                    oLinkTextControl = new sap.m.Text({ text: "{appModel>smallComment}" });
+                } else {
+                    oLinkTextControl = new sap.m.Link({ text: "{appModel>smallComment}" }).attachPress(this.onApprovalTableMoreClick, this);
+                }
+
+                return new sap.m.ColumnListItem({
+                    cells:[
+                        new sap.m.Text({text: "{appModel>ApLevel}"}),
+                        new sap.m.Text({text: "{appModel>EmpName}"}),
+                        new sap.m.Text({text: "{appModel>EmpPostn}"}),
+                        new sap.m.Text({text: sActionDate}),
+                        new sap.m.Text({text: "{appModel>Status}"}),
+                        oLinkTextControl,
+
+                    ]
+                })
 
             },
             setReadStatus: function (WI) {
@@ -1086,17 +1113,17 @@ sap.ui.define([
                 oPopOverInventoryAnalysis.openBy(oBtn);
 
             },
-            onHeaderClick: async function(oEvent){
+            onHeaderClick: async function (oEvent) {
                 const oSourceObj = oEvent.getSource();
                 const sFragmentName = "com.alfanar.polandingpage.polandingpage.fragments.HeaderPopOver";
                 let sFilterCriteria, sHeaderTitle;
                 let bHeaderText = false;
                 let oHeaderDetailsPopOver;
-                if(oSourceObj.getText().includes("Header Text")){
+                if (oSourceObj.getText().includes("Header Text")) {
                     sFilterCriteria = "F01";
                     bHeaderText = true;
                     sHeaderTitle = "Header Text"
-                }else{
+                } else {
                     sFilterCriteria = "F02"
                     sHeaderTitle = "Header Note"
                 }
@@ -1109,9 +1136,9 @@ sap.ui.define([
                 })
                 const data = await this.getData("/POHeaderTextSet", "", [], finalFilter);
                 let sHeaderDetails = data.results.map(headerNote => headerNote.TxtLine).join("\n");
-                if(bHeaderText && !sHeaderDetails){
+                if (bHeaderText && !sHeaderDetails) {
                     sHeaderDetails = "No header text found";
-                }else if(!bHeaderText && !sHeaderDetails){
+                } else if (!bHeaderText && !sHeaderDetails) {
                     sHeaderDetails = "No header note found";
                 }
 
