@@ -477,7 +477,7 @@ sap.ui.define([
                         if(approval.Comments){
                             if(approval.Comments.length <= 20){
                                 approval.smallComment = `${approval.Comments}`;
-                                approval.linkEnable = true;
+                                approval.linkEnable = false;
                             }else{
                                 approval.smallComment = `${approval.Comments.substring(0, 20)}...`;
                                 approval.linkEnable = true;
