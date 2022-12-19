@@ -41,7 +41,7 @@
                     <Text text="{appModel>EmpPostn}" />
                     <Text text="{path: 'appModel>ActDate', formatter: '.formatter.getDateFormatted'}" />
                     <Text text="{appModel>Status}" />
-                    <Link text="{i18n>Comments}" press="onApprovalTableMoreClick" />
+                    <Link text="{appModel>smallComment}" press="onApprovalTableMoreClick" enabled="{appModel>linkEnable}"/>
                 </cells>
             </ColumnListItem>
         </items>

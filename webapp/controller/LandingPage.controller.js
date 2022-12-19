@@ -472,6 +472,22 @@ sap.ui.define([
                     this.setHDRToMstones(data.HdrToMStones.results)
                     // Setting the PO Items Data
                     this.getView().getModel("appModel").setProperty("/PoDataItems", data.HdrToItems.results);
+                    // Add the 20 character in comments and ...
+                    data.HdrToApDec.results.forEach(approval => {
+                        if(approval.Comments){
+                            if(approval.Comments.length <= 20){
+                                approval.smallComment = `${approval.Comments}...`;
+                                approval.linkEnable = true;
+                            }else{
+                                approval.smallComment = `${approval.Comments.substring(0, 20)}...`;
+                                approval.linkEnable = true;
+                            }
+                        }else{
+                            approval.smallComment = "No Comments"
+                            approval.linkEnable = false;
+                        }
+                    })
+
                     this.getView().getModel("appModel").setProperty("/ApprovalLevels", data.HdrToApDec.results);
                     // Set the property for attachments
                     this.getView().getModel("appModel").setProperty("/POAttach", data.HdrToAttach.results)
