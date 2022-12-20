@@ -496,7 +496,6 @@ sap.ui.define([
                     this.getView().getModel("appModel").setProperty("/POAttach", data.HdrToAttach.results)
                     this.addVendorAttachmentsIcons(data.HdrToAttach.results);
                     this.setPoAnalysisModels(data.HdrToAnalysis.results);
-                    console.log(this.getView().getModel("appModel").getData());
                     this.VndCode = data.VndCode;
                     this.PurOrg = data.PurOrg;
 
@@ -508,7 +507,7 @@ sap.ui.define([
                     await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
                     await this.setBoLineMap(data.PlantCod, data.PurOrg, data.VndCode);
                     this.getView().getModel("appModel").refresh(true);
-                    await this.setReadStatus();
+                    await this.setReadStatus(this.WI);
 
 
                 } catch (error) {
@@ -517,10 +516,12 @@ sap.ui.define([
 
             },
             approvalArrangement: function (sId, oContext) {
-                debugger;
                 let oLinkTextControl;
-                let sActionDate = oContext.getProperty("ActDate");
-                sActionDate = formatter.getDateFormatted(sActionDate);
+                let sActionDate = null;
+                if(oContext.getProperty("ActDate")){
+                    sActionDate = oContext.getProperty("ActDate");
+                    sActionDate = formatter.getDateFormatted(sActionDate);
+                }
                 if (oContext.getProperty("textVisible")) {
                     oLinkTextControl = new sap.m.Text({ text: "{appModel>smallComment}" });
                 } else {
@@ -860,7 +861,6 @@ sap.ui.define([
                 aFilters.push(new Filter("PoNum", FilterOperator.EQ, sPoNo));
                 aFilters.push(new Filter("MatNum", FilterOperator.EQ, sMatNo));
                 const data = await this.getData(sPath, "", [], aFilters);
-                console.log(data);
 
                 let aItemHistory = data.results.map(oData => {
                     return {
@@ -870,8 +870,7 @@ sap.ui.define([
                 });
                 this.getView().getModel("appModel").setProperty("/ItemHistorySet", data.results);
                 this.getView().getModel("appModel").setProperty("/ItemHisData", aItemHistory);
-                console.log(data.results);
-                console.log(aItemHistory);
+
             },
 
             setBoLineMap: async function (sPlant, sPurchaseOrg, sVCode) {
