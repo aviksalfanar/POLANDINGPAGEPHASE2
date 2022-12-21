@@ -50,21 +50,6 @@
                             </headerToolbar>
                             <content>
                                 <FlexBox direction="Row" justifyContent="Start" wrap="Wrap" class="sapUiMediumMarginBegin sapUiSmallMarginBottom">
-                                    <!-- <GenericTag text="{i18n>POValue}" design="StatusIconHidden" status="Information" class="sapUiSmallMarginEnd">
-                                        <ObjectNumber state="Information" number="{appModel>/PoValue}" unit="{appModel>/PovCur}"/>
-                                    </GenericTag>
-                                    <GenericTag text="{i18n>POType}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                                        <ObjectNumber state="Warning" number="{appModel>/PoType}" />
-                                    </GenericTag>
-                                    <GenericTag text="{i18n>INCOTerm}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                                        <ObjectNumber state="Warning" number="{appModel>/IncoTerm}" />
-                                    </GenericTag>
-                                    <GenericTag text="{i18n>PurchasingGroup}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                                        <ObjectNumber state="Warning" number="{appModel>/PurGroup}" />
-                                    </GenericTag>
-                                    <GenericTag text="{i18n>POSaving}" design="StatusIconHidden" status="Warning" class="sapUiSmallMarginEnd">
-                                        <ObjectNumber state="Warning" number="{appModel>/PoSaving}" />
-                                    </GenericTag> -->
                                     <layout:VerticalLayout class="sapUiTinyMarginEnd sapUiTinyMarginBottom alternategenerictag">
                                         <Label text="{i18n>POValue}" textAlign="Center" design="Bold" class="blackText" />
                                         <Label text="{appModel>/PoValue} {appModel>/PovCur}" design="Bold" textAlign="Center" class="blueText" />

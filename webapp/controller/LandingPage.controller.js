@@ -507,7 +507,9 @@ sap.ui.define([
                     await this.setBOLineAreaMap(data.VndCode, data.PurOrg);
                     await this.setBoLineMap(data.PlantCod, data.PurOrg, data.VndCode);
                     this.getView().getModel("appModel").refresh(true);
-                    await this.setReadStatus(this.WI);
+                    if(this.WI){
+                        await this.setReadStatus(this.WI);
+                    }
 
 
                 } catch (error) {
@@ -544,22 +546,24 @@ sap.ui.define([
             setReadStatus: function (WI) {
                 var that = this
                 var sPath = "/WFStatusSet('" + WI + "')";
-                this.getModel().read(sPath, {
-                    success: function (oData, oResponce) {
+                const oModel = this.getView().getModel();
+                oModel.read(sPath, {
+                    success: function (oData) {
                         if (oData.WiStat === "COMPLETED") {
                             MessageBox.information("This Purchase order task was already completed");
-                            that.byId("idApprovButton").setEnabled(false)
-                            that.byId("idRejectButton").setEnabled(false)
+                            that.getView().byId("idApprovButton").setEnabled(false)
+                            that.getView().byId("idRejectButton").setEnabled(false)
                         } else if (oData.WiStat === "READY" || oData.WiStat === "STARTED") {
-                            that.byId("idApprovButton").setEnabled(true)
-                            that.byId("idRejectButton").setEnabled(true)
+                            that.getView().byId("idApprovButton").setEnabled(true)
+                            that.getView().byId("idRejectButton").setEnabled(true)
                         }
                         else {
-                            that.byId("idApprovButton").setEnabled(false)
-                            that.byId("idRejectButton").setEnabled(false)
+                            that.getView().byId("idApprovButton").setEnabled(false)
+                            that.getView().byId("idRejectButton").setEnabled(false)
                         }
                     },
                     error: function (oError) {
+                        console.log(oError);
                     }
                 });
             },
@@ -997,7 +1001,7 @@ sap.ui.define([
 
             _fnHandleApproveTask: function (sAction) {
                 if (sAction === "OK") {
-                    var oRemarks = this.byId("idGetText").getValue();
+                    var oRemarks = this.getView().byId("idGetText").getValue();
                     var oApprovepayload = {
                         "Decision": "0",
                         "ApprovalSet": [{
@@ -1043,7 +1047,7 @@ sap.ui.define([
 
             _fnHandleRejectTask: function (sAction) {
                 if (sAction === "OK") {
-                    var oRemarks = this.byId("idGetText").getValue();
+                    var oRemarks = this.getView().byId("idGetText").getValue();
                     if (oRemarks !== "") {
                         this.getView().byId("idGetText").setValueState("None")
                         var oApprovepayload = {
@@ -1056,7 +1060,7 @@ sap.ui.define([
                                 "Remarks": oRemarks
                             }]
                         }
-                        this.getModel("INBOX").create("/ApprovalHeaderSet", oApprovepayload, {
+                        this.getView().getModel("INBOX").create("/ApprovalHeaderSet", oApprovepayload, {
                             success: jQuery.proxy(this._fnHandleSuccessReject, this),
                             error: jQuery.proxy(this._fnHandleErrorReject, this)
                         });
